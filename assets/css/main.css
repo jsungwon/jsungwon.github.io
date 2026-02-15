@@ -9,18 +9,22 @@
   --font-body: 'IBM Plex Sans KR', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  --color-bg: #faf8f5;
+  --color-bg: #f0f4f8;
   --color-surface: #ffffff;
-  --color-text: #2c2c2c;
-  --color-text-muted: #6b6b6b;
-  --color-accent: #c45d3e;
-  --color-accent-soft: #f4e6df;
-  --color-tech: #2d6a4f;
-  --color-tech-soft: #d8f3dc;
-  --color-food: #e07a5f;
-  --color-food-soft: #fde8e0;
-  --color-border: #e8e4df;
-  --color-code-bg: #282c34;
+  --color-text: #1e293b;
+  --color-text-muted: #64748b;
+  --color-accent: #2563eb;
+  --color-accent-soft: #dbeafe;
+  --color-research: #1e40af;
+  --color-research-soft: #dbeafe;
+  --color-tech: #0369a1;
+  --color-tech-soft: #e0f2fe;
+  --color-trip: #0d9488;
+  --color-trip-soft: #ccfbf1;
+  --color-food: #7c3aed;
+  --color-food-soft: #ede9fe;
+  --color-border: #cbd5e1;
+  --color-code-bg: #1e293b;
 
   --max-width: 1120px;
   --content-width: 720px;
@@ -70,7 +74,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(250, 248, 245, 0.92);
+  background: rgba(240, 244, 248, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
 }
@@ -239,11 +243,23 @@ img {
 .post-card__image {
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--color-tech-soft), var(--color-food-soft));
+  background: linear-gradient(135deg, var(--color-accent-soft), var(--color-tech-soft));
+}
+
+.post-card--research .post-card__image {
+  background: linear-gradient(135deg, var(--color-research-soft), var(--color-accent-soft));
+}
+
+.post-card--tech .post-card__image {
+  background: linear-gradient(135deg, var(--color-tech-soft), var(--color-accent-soft));
+}
+
+.post-card--trip .post-card__image {
+  background: linear-gradient(135deg, var(--color-trip-soft), var(--color-tech-soft));
 }
 
 .post-card--food .post-card__image {
-  background: linear-gradient(135deg, var(--color-food-soft), #ffe0cc);
+  background: linear-gradient(135deg, var(--color-food-soft), var(--color-accent-soft));
 }
 
 .post-card__image img {
@@ -336,9 +352,19 @@ img {
   font-size: 0.8rem;
 }
 
+.post-category--research {
+  color: var(--color-research);
+  background: var(--color-research-soft);
+}
+
 .post-category--tech {
   color: var(--color-tech);
   background: var(--color-tech-soft);
+}
+
+.post-category--trip {
+  color: var(--color-trip);
+  background: var(--color-trip-soft);
 }
 
 .post-category--food {
@@ -435,7 +461,7 @@ img {
 .post-content code {
   font-family: var(--font-mono);
   font-size: 0.85em;
-  background: #f0ede8;
+  background: #e2e8f0;
   padding: 0.15em 0.4em;
   border-radius: 4px;
 }
