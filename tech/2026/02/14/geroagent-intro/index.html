@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeroAgent: AI Agent로 Aging 연구 자동화하기 — Sungwon's Lab & Life</title>
+  <meta name="description" content="Aging 연구에는 방대한 문헌 리뷰, 복잡한 데이터 분석, 
+그리고 다층적인 실험 설계가 필요합니다.
+GeroAgent는 이 과정을 AI agent로 자동화하는 시스템입니다.
+">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- SEO -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>GeroAgent: AI Agent로 Aging 연구 자동화하기 | Sungwon’s Lab &amp; Life</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="GeroAgent: AI Agent로 Aging 연구 자동화하기" />
+<meta name="author" content="Sungwon" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Aging 연구에는 방대한 문헌 리뷰, 복잡한 데이터 분석, 그리고 다층적인 실험 설계가 필요합니다. GeroAgent는 이 과정을 AI agent로 자동화하는 시스템입니다." />
+<meta property="og:description" content="Aging 연구에는 방대한 문헌 리뷰, 복잡한 데이터 분석, 그리고 다층적인 실험 설계가 필요합니다. GeroAgent는 이 과정을 AI agent로 자동화하는 시스템입니다." />
+<link rel="canonical" href="https://jsungwon.github.io/tech/2026/02/14/geroagent-intro/" />
+<meta property="og:url" content="https://jsungwon.github.io/tech/2026/02/14/geroagent-intro/" />
+<meta property="og:site_name" content="Sungwon’s Lab &amp; Life" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-02-14T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GeroAgent: AI Agent로 Aging 연구 자동화하기" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sungwon"},"dateModified":"2026-02-14T00:00:00+00:00","datePublished":"2026-02-14T00:00:00+00:00","description":"Aging 연구에는 방대한 문헌 리뷰, 복잡한 데이터 분석, 그리고 다층적인 실험 설계가 필요합니다. GeroAgent는 이 과정을 AI agent로 자동화하는 시스템입니다.","headline":"GeroAgent: AI Agent로 Aging 연구 자동화하기","mainEntityOfPage":{"@type":"WebPage","@id":"https://jsungwon.github.io/tech/2026/02/14/geroagent-intro/"},"url":"https://jsungwon.github.io/tech/2026/02/14/geroagent-intro/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <span class="logo-icon">◈</span>
+      <span class="logo-text">Sungwon's Lab & Life</span>
+    </a>
+    
+    <nav class="site-nav">
+      <a href="/" class="nav-link ">Home</a>
+      <a href="/tech/" class="nav-link nav-link--active">🧬 Tech</a>
+      <a href="/food/" class="nav-link ">🍽️ Food</a>
+      <a href="/about/" class="nav-link ">About</a>
+    </nav>
+
+    <button class="nav-toggle" aria-label="메뉴 열기">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  toggle?.addEventListener('click', () => {
+    nav.classList.toggle('is-open');
+    toggle.classList.toggle('is-active');
+  });
+</script>
+
+  
+  <main class="site-main">
+    <article class="post-full">
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-category post-category--tech">
+        🧬 Tech & Research
+      </span>
+      <time datetime="2026-02-14T00:00:00+00:00">
+        2026년 02월 14일
+      </time>
+    </div>
+    <h1 class="post-title">GeroAgent: AI Agent로 Aging 연구 자동화하기</h1>
+    
+    <p class="post-subtitle">LLM 기반 연구 자동화 시스템의 설계와 구현</p>
+    
+    
+    <div class="post-tags">
+      
+      <span class="tag">#AI</span>
+      
+      <span class="tag">#agent</span>
+      
+      <span class="tag">#aging</span>
+      
+      <span class="tag">#automation</span>
+      
+      <span class="tag">#LLM</span>
+      
+    </div>
+    
+  </header>
+
+  
+
+  <div class="post-content">
+    <p>Aging 연구에는 방대한 문헌 리뷰, 복잡한 데이터 분석, 
+그리고 다층적인 실험 설계가 필요합니다.
+GeroAgent는 이 과정을 AI agent로 자동화하는 시스템입니다.</p>
+
+<h2 id="geroagent란">GeroAgent란?</h2>
+
+<p>GeroAgent는 aging research에 특화된 AI agent system으로,
+다음과 같은 작업을 수행합니다:</p>
+
+<ol>
+  <li><strong>문헌 탐색 및 요약</strong>: PubMed, bioRxiv에서 관련 논문을 자동으로 수집하고 핵심 내용을 정리</li>
+  <li><strong>데이터 분석 파이프라인</strong>: Multi-omics 데이터의 통합 분석을 자동으로 수행</li>
+  <li><strong>가설 생성</strong>: 기존 연구 결과를 바탕으로 새로운 연구 가설을 제안</li>
+  <li><strong>실험 설계 보조</strong>: 통계적 검정력 분석과 실험 프로토콜 제안</li>
+</ol>
+
+<h2 id="기술-스택">기술 스택</h2>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">framework</span><span class="pi">:</span> <span class="s">LangGraph + Custom Agents</span>
+<span class="na">llm</span><span class="pi">:</span> <span class="s">Claude API</span>
+<span class="na">data</span><span class="pi">:</span> <span class="s">Multi-omics pipelines</span>
+<span class="na">vector_db</span><span class="pi">:</span> <span class="s">ChromaDB</span>
+<span class="na">tools</span><span class="pi">:</span> <span class="s">PubMed API, NCBI E-utilities, BioPython</span>
+</code></pre></div></div>
+
+<h2 id="향후-계획">향후 계획</h2>
+
+<p>현재 3년 과제로 개발 중이며, 
+1차년도에는 문헌 분석과 가설 생성에 집중하고 있습니다.
+오픈소스 공개도 검토 중입니다.</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-nav">
+      
+      <a class="post-nav__prev" href="/tech/2026/02/10/rna-aging-clock/">
+        <span class="post-nav__label">← 이전 글</span>
+        <span class="post-nav__title">RNA-Aging Clock으로 생물학적 나이 예측하기</span>
+      </a>
+      
+      
+    </div>
+  </footer>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-icon">◈</span>
+      <p>Aging Research, Bioinformatics, and Life Beyond the Lab</p>
+    </div>
+    <div class="footer-links">
+      
+      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      
+      
+      <a href="mailto:">Email</a>
+      
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 Sungwon. Built with Jekyll & GitHub Pages.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
