@@ -1,12 +1,12 @@
 /* ===================================================================
-   Sungwon's Lab & Life — Blog Theme
-   A refined editorial design with warmth
+   놀놀할할 — Blog Theme
+   A modern, clean design
    =================================================================== */
 
 /* --- Reset & Variables --- */
 :root {
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-body: 'IBM Plex Sans KR', -apple-system, sans-serif;
+  --font-display: 'Inter', 'Noto Sans KR', -apple-system, sans-serif;
+  --font-body: 'Noto Sans KR', 'Inter', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   --color-bg: #f0f4f8;
@@ -93,8 +93,9 @@ img {
   align-items: center;
   gap: 0.6rem;
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  letter-spacing: -0.02em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 .logo-icon {
@@ -173,9 +174,10 @@ img {
 
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  letter-spacing: -0.03em;
-  line-height: 1.15;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
   margin-bottom: var(--space-md);
 }
 
@@ -204,7 +206,8 @@ img {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -286,8 +289,9 @@ img {
 
 .post-card__title {
   font-family: var(--font-display);
-  font-size: 1.2rem;
-  line-height: 1.35;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
   margin: 0.5rem 0;
   letter-spacing: -0.01em;
 }
@@ -378,9 +382,10 @@ img {
 
 .post-title {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.2;
+  line-height: 1.25;
   margin-bottom: 0.5rem;
 }
 
@@ -420,7 +425,8 @@ img {
 
 .post-content h2 {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.45rem;
+  font-weight: 700;
   margin-top: var(--space-xl);
   margin-bottom: var(--space-md);
   letter-spacing: -0.02em;
@@ -559,7 +565,8 @@ img {
 
 .category-title {
   font-family: var(--font-display);
-  font-size: 2.2rem;
+  font-size: 2rem;
+  font-weight: 700;
   letter-spacing: -0.03em;
 }
 
@@ -582,7 +589,8 @@ img {
 
 .about-header h1 {
   font-family: var(--font-display);
-  font-size: 2.2rem;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .about-content {
