@@ -98,6 +98,10 @@ img {
   letter-spacing: -0.03em;
 }
 
+.logo-svg {
+  flex-shrink: 0;
+}
+
 .logo-icon {
   font-size: 1.4rem;
   color: var(--color-accent);
