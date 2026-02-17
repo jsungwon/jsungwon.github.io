@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scDiffusion: 확산 모델을 활용한 고품질 단일세포 데이터 생성 — 놀놀할할</title>
+  <meta name="description" content="
+  논문 정보
+  
+    Title: scDiffusion: conditional generation of high-quality single-cell data using diffusion model
+    Authors: Erpai Luo, Minsheng Hao, Lei Wei, Xuegong Zhang
+    Affiliation: MOE Key Lab of Bioinformatics, Tsinghua University, Beijing
+    Journal: Bioinformatics, Volume 40, Issue 9, btae518 (2024)
+    DOI: 10.1093/bioinformatics/btae518
+  
+
+">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- SEO -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>scDiffusion: 확산 모델을 활용한 고품질 단일세포 데이터 생성 | 놀놀할할</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="scDiffusion: 확산 모델을 활용한 고품질 단일세포 데이터 생성" />
+<meta name="author" content="Sungwon" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="논문 정보 Title: scDiffusion: conditional generation of high-quality single-cell data using diffusion model Authors: Erpai Luo, Minsheng Hao, Lei Wei, Xuegong Zhang Affiliation: MOE Key Lab of Bioinformatics, Tsinghua University, Beijing Journal: Bioinformatics, Volume 40, Issue 9, btae518 (2024) DOI: 10.1093/bioinformatics/btae518" />
+<meta property="og:description" content="논문 정보 Title: scDiffusion: conditional generation of high-quality single-cell data using diffusion model Authors: Erpai Luo, Minsheng Hao, Lei Wei, Xuegong Zhang Affiliation: MOE Key Lab of Bioinformatics, Tsinghua University, Beijing Journal: Bioinformatics, Volume 40, Issue 9, btae518 (2024) DOI: 10.1093/bioinformatics/btae518" />
+<link rel="canonical" href="https://jsungwon.github.io/research/2026/02/17/scdiffusion-single-cell-data-generation/" />
+<meta property="og:url" content="https://jsungwon.github.io/research/2026/02/17/scdiffusion-single-cell-data-generation/" />
+<meta property="og:site_name" content="놀놀할할" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-02-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="scDiffusion: 확산 모델을 활용한 고품질 단일세포 데이터 생성" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sungwon"},"dateModified":"2026-02-17T00:00:00+00:00","datePublished":"2026-02-17T00:00:00+00:00","description":"논문 정보 Title: scDiffusion: conditional generation of high-quality single-cell data using diffusion model Authors: Erpai Luo, Minsheng Hao, Lei Wei, Xuegong Zhang Affiliation: MOE Key Lab of Bioinformatics, Tsinghua University, Beijing Journal: Bioinformatics, Volume 40, Issue 9, btae518 (2024) DOI: 10.1093/bioinformatics/btae518","headline":"scDiffusion: 확산 모델을 활용한 고품질 단일세포 데이터 생성","mainEntityOfPage":{"@type":"WebPage","@id":"https://jsungwon.github.io/research/2026/02/17/scdiffusion-single-cell-data-generation/"},"url":"https://jsungwon.github.io/research/2026/02/17/scdiffusion-single-cell-data-generation/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWB335C28N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DWB335C28N');
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <span class="logo-icon">◈</span>
+      <span class="logo-text">놀놀할할</span>
+    </a>
+    
+    <nav class="site-nav">
+      <a href="/research/" class="nav-link nav-link--active">Research</a>
+      <a href="/tech/" class="nav-link ">Tech</a>
+      <a href="/trip/" class="nav-link ">Trip</a>
+      <a href="/food/" class="nav-link ">Food</a>
+      <a href="/about/" class="nav-link ">About</a>
+    </nav>
+
+    <button class="nav-toggle" aria-label="메뉴 열기">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  toggle?.addEventListener('click', () => {
+    nav.classList.toggle('is-open');
+    toggle.classList.toggle('is-active');
+  });
+</script>
+
+  
+  <main class="site-main">
+    <article class="post-full">
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-category post-category--research">
+        🧬 Tech & Research
+      </span>
+      <time datetime="2026-02-17T00:00:00+00:00">
+        2026년 02월 17일
+      </time>
+    </div>
+    <h1 class="post-title">scDiffusion: 확산 모델을 활용한 고품질 단일세포 데이터 생성</h1>
+    
+    <p class="post-subtitle">Bioinformatics (2024) — 잠재 확산 모델과 파운데이션 모델의 결합으로 조건부 scRNA-seq 데이터 생성</p>
+    
+    
+    <div class="post-tags">
+      
+      <span class="tag">#paper review</span>
+      
+      <span class="tag">#single-cell</span>
+      
+      <span class="tag">#diffusion model</span>
+      
+      <span class="tag">#deep learning</span>
+      
+      <span class="tag">#generative model</span>
+      
+    </div>
+    
+  </header>
+
+  
+
+  <div class="post-content">
+    <blockquote>
+  <p><strong>논문 정보</strong></p>
+  <ul>
+    <li><strong>Title</strong>: scDiffusion: conditional generation of high-quality single-cell data using diffusion model</li>
+    <li><strong>Authors</strong>: Erpai Luo, Minsheng Hao, Lei Wei, Xuegong Zhang</li>
+    <li><strong>Affiliation</strong>: MOE Key Lab of Bioinformatics, Tsinghua University, Beijing</li>
+    <li><strong>Journal</strong>: Bioinformatics, Volume 40, Issue 9, btae518 (2024)</li>
+    <li><strong>DOI</strong>: <a href="https://doi.org/10.1093/bioinformatics/btae518">10.1093/bioinformatics/btae518</a></li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h2 id="연구-배경-및-동기">연구 배경 및 동기</h2>
+
+<p>단일세포 RNA 시퀀싱(scRNA-seq)은 세포 수준에서 생명 현상을 연구하는 데 핵심적인 기술이다. 그러나 충분한 양의 고품질 scRNA-seq 데이터를 확보하는 것은 여전히 어려운 과제다. 실험 비용이 높고, 특히 <strong>희귀 세포 유형(rare cell type)</strong>의 경우 충분한 수의 세포를 포착하기 어렵다.</p>
+
+<p>이 문제를 해결하기 위해 <strong>생성 모델(generative model)</strong>을 활용하여 합성 scRNA-seq 데이터를 생성하려는 시도가 있어왔다. 기존 방법으로는 scGAN(GAN 기반), scDesign3(통계 학습 기반), SPARSim, SCRIP 등이 있으나, 생성된 데이터의 현실성이 부족하고, 특히 <strong>조건부 생성(conditional generation)</strong> — 특정 세포 유형이나 조직에 맞춰 데이터를 생성하는 것 — 에서 한계를 보였다.</p>
+
+<p>한편, 이미지 생성 분야에서는 <strong>확산 모델(diffusion model)</strong>이 높은 충실도(fidelity)의 데이터 생성에서 압도적인 성능을 보여주고 있었다. 저자들은 이 확산 모델의 장점을 scRNA-seq 데이터 생성에 접목하여, <strong>scDiffusion</strong>이라는 새로운 생성 모델을 제안한다.</p>
+
+<hr />
+
+<h2 id="모델-아키텍처">모델 아키텍처</h2>
+
+<p><img src="https://github.com/EperLuo/scDiffusion/raw/main/model_archi.png" alt="scDiffusion 모델 아키텍처 — 오토인코더(SCimilarity), 디노이징 네트워크, 조건부 분류기로 구성된 잠재 확산 모델" />
+<em>Figure 1: scDiffusion의 전체 아키텍처 개요. 학습 단계에서 SCimilarity 인코더가 유전자 발현을 잠재 공간으로 변환하고, 확산 과정을 통해 노이즈를 추가한 뒤 디노이징 네트워크가 역방향 과정을 학습한다. 추론 단계에서는 가우시안 노이즈로부터 새로운 세포 임베딩을 생성한다. (출처: Luo et al., Bioinformatics 2024)</em></p>
+
+<p>scDiffusion은 <strong>잠재 확산 모델(Latent Diffusion Model, LDM)</strong>과 <strong>파운데이션 모델(foundation model)</strong>을 결합한 구조로, 세 가지 핵심 모듈로 구성된다:</p>
+
+<h3 id="1-오토인코더-autoencoder--scimilarity">1. 오토인코더 (Autoencoder) — SCimilarity</h3>
+
+<ul>
+  <li>사전 학습된 파운데이션 모델 <strong>SCimilarity</strong>를 오토인코더로 활용</li>
+  <li>SCimilarity는 <strong>399개의 scRNA-seq 연구에서 수집한 2,270만 개 세포</strong>로 사전 학습된 인코더-디코더 네트워크</li>
+  <li>유전자 발현 프로파일을 <strong>128차원 잠재 공간(latent space)</strong>으로 압축</li>
+  <li>원시 분포를 <strong>가우시안 유사 분포</strong>로 변환하여 확산 과정에 적합한 형태로 정규화</li>
+  <li>사전 학습 가중치를 기반으로 미세 조정(fine-tuning)하여, 처음부터 학습하는 것 대비 더 빠르고 우수한 성능 달성</li>
+</ul>
+
+<h3 id="2-디노이징-네트워크-denoising-network">2. 디노이징 네트워크 (Denoising Network)</h3>
+
+<ul>
+  <li>유전자 발현 데이터의 특성(긴 길이, 희소성, 비정렬)을 고려한 새로운 아키텍처 설계</li>
+  <li>CNN이나 Transformer 대신 <strong>스킵 연결 다층 퍼셉트론(skip-connected MLP)</strong> 기반 구조 채택</li>
+  <li>스킵 연결 구조는 다양한 레벨의 특징을 보존하고 정보 손실을 줄임</li>
+  <li>확산 과정의 <strong>역방향 과정(reverse process)</strong>을 학습하여 노이즈를 제거하고 의미있는 임베딩을 복원</li>
+</ul>
+
+<h3 id="3-조건부-제어기-condition-controller--분류기-가이던스">3. 조건부 제어기 (Condition Controller) — 분류기 가이던스</h3>
+
+<ul>
+  <li>세포 유형 분류기(classifier)를 통한 <strong>분류기 가이던스(classifier guidance)</strong> 방식 적용</li>
+  <li>분류기는 4층 MLP 구조로, 세포 유형이나 조직 유형 등의 조건 레이블을 예측</li>
+  <li>디노이징 네트워크의 학습에 간섭하지 않고 <strong>별도로 학습</strong>되어 그래디언트를 제공</li>
+  <li><strong>다중 분류기</strong>를 동시에 사용하여 여러 조건 조합으로 데이터 생성 가능</li>
+</ul>
+
+<hr />
+
+<h2 id="학습-및-추론-파이프라인">학습 및 추론 파이프라인</h2>
+
+<h3 id="학습-단계-training">학습 단계 (Training)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>단계</th>
+      <th>내용</th>
+      <th>세부 사항</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Step 1</strong></td>
+      <td>오토인코더 미세 조정</td>
+      <td>SCimilarity 사전 학습 가중치 기반, 첫/마지막 레이어만 재학습</td>
+    </tr>
+    <tr>
+      <td><strong>Step 2</strong></td>
+      <td>디노이징 네트워크 학습</td>
+      <td>600,000~800,000 스텝, 학습률 어닐링 적용</td>
+    </tr>
+    <tr>
+      <td><strong>Step 3</strong></td>
+      <td>분류기 학습</td>
+      <td>~200,000 이터레이션, 데이터셋 카테고리 수에 맞춰 설정</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>학습 과정에서 SCimilarity 모델이 유전자 발현 프로파일을 잠재 공간으로 임베딩한 후, 확산 과정을 통해 각 임베딩에 노이즈를 추가하여 노이즈 임베딩 시퀀스를 생성한다. 이 노이즈 임베딩이 디노이징 네트워크의 학습 데이터가 되며, 동시에 분류기는 임베딩으로부터 조건 레이블을 예측하도록 학습된다.</p>
+
+<h3 id="추론-단계-inference">추론 단계 (Inference)</h3>
+
+<ol>
+  <li>가우시안 노이즈를 입력으로 받음</li>
+  <li>디노이징 네트워크가 <strong>T=1,000 스텝</strong>에 걸쳐 반복적으로 노이즈를 제거</li>
+  <li>분류기 가이던스 또는 Gradient Interpolation 전략으로 생성 방향 제어</li>
+  <li>생성된 잠재 임베딩을 디코더에 입력하여 최종 유전자 발현 프로파일 복원</li>
+</ol>
+
+<hr />
+
+<h2 id="gradient-interpolation-전략">Gradient Interpolation 전략</h2>
+
+<p>scDiffusion의 가장 독창적인 기여 중 하나는 <strong>Gradient Interpolation</strong> 전략이다. 이는 이산적인 세포 상태(discrete cell states)로부터 <strong>연속적인 세포 발달 궤적(continuous developmental trajectory)</strong>을 생성할 수 있는 새로운 제어 전략이다.</p>
+
+<p>기존의 직접 보간(linear interpolation)과 달리, Gradient Interpolation은 확산 모델이 학습한 세포 분포를 활용하여 생물학적으로 더 타당한 중간 상태를 생성한다. 구체적으로:</p>
+
+<ul>
+  <li>두 개의 조건(예: 발달 시점 day 3과 day 4.5)을 분류기에 입력</li>
+  <li>두 조건 사이의 그래디언트를 보간하여 중간 상태를 연속적으로 생성</li>
+  <li>시퀀싱 간격 사이의 빈 구간을 채워 더 포괄적인 발달 타임라인 제공</li>
+</ul>
+
+<hr />
+
+<h2 id="실험-데이터셋">실험 데이터셋</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>데이터셋</th>
+      <th>세포 수</th>
+      <th>유전자 수</th>
+      <th>세포 유형</th>
+      <th>용도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Tabula Muris</strong></td>
+      <td>54,865</td>
+      <td>23,433</td>
+      <td>55</td>
+      <td>비조건부/단일조건부 생성</td>
+    </tr>
+    <tr>
+      <td><strong>PBMC68k</strong></td>
+      <td>68,579</td>
+      <td>~2,000+</td>
+      <td>11</td>
+      <td>비조건부/단일조건부 생성</td>
+    </tr>
+    <tr>
+      <td><strong>Human Lung PF</strong></td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>비조건부 생성</td>
+    </tr>
+    <tr>
+      <td><strong>Tabula Sapiens</strong></td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>다중조건부 생성</td>
+    </tr>
+    <tr>
+      <td><strong>Mouse embryo</strong></td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>Gradient Interpolation</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="주요-결과">주요 결과</h2>
+
+<h3 id="1-비조건부-생성-unconditional-generation">1. 비조건부 생성 (Unconditional Generation)</h3>
+
+<p>scDiffusion이 조건 없이 생성한 세포 데이터의 품질을 scGAN, scDesign3, SPARSim, SCRIP과 비교했다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>메트릭</th>
+      <th>scDiffusion</th>
+      <th>scGAN</th>
+      <th>scDesign3</th>
+      <th>SPARSim</th>
+      <th>SCRIP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SCC</strong> (↑)</td>
+      <td><strong>0.984</strong></td>
+      <td>유사</td>
+      <td>유사</td>
+      <td>낮음</td>
+      <td>낮음</td>
+    </tr>
+    <tr>
+      <td><strong>MMD</strong> (↓)</td>
+      <td><strong>0.018</strong></td>
+      <td>유사</td>
+      <td>유사</td>
+      <td>높음</td>
+      <td>높음</td>
+    </tr>
+    <tr>
+      <td><strong>LISI</strong> (↑)</td>
+      <td><strong>0.887</strong></td>
+      <td>유사</td>
+      <td>유사</td>
+      <td>낮음</td>
+      <td>낮음</td>
+    </tr>
+    <tr>
+      <td><strong>RF AUC</strong> (→0.5)</td>
+      <td><strong>0.697</strong></td>
+      <td>유사</td>
+      <td>유사</td>
+      <td>낮음</td>
+      <td>낮음</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><strong>SCC (Spearman Correlation Coefficient)</strong>: 실제와 생성 데이터 간 유전자 발현 상관관계. 0.984로 매우 높은 유사도</li>
+  <li><strong>MMD (Maximum Mean Discrepancy)</strong>: 분포 간 거리. 0.018로 실제 데이터와 매우 근접</li>
+  <li><strong>LISI (Local Inverse Simpson’s Index)</strong>: 실제와 생성 세포의 혼합 정도. 0.887로 높은 혼합도</li>
+  <li><strong>RF AUC</strong>: 랜덤 포레스트가 실제/생성 세포를 구분하는 정확도. 0.5에 가까울수록 구분 불가능</li>
+</ul>
+
+<p>UMAP 시각화에서도 scDiffusion이 생성한 세포들이 실제 세포들과 잘 겹치는 것을 확인할 수 있었다.</p>
+
+<h3 id="2-단일-조건부-생성-single-conditional-generation">2. 단일 조건부 생성 (Single-Conditional Generation)</h3>
+
+<p>세포 유형 분류기를 가이드로 사용하여 <strong>특정 세포 유형</strong>의 데이터를 조건부로 생성했다.</p>
+
+<ul>
+  <li><strong>Tabula Muris</strong>: 세포 유형별로 동일 수의 세포를 조건부 생성. UMAP에서 실제 세포와 시각적으로 중첩</li>
+  <li><strong>희귀 세포 유형도 성공적으로 생성</strong>:
+    <ul>
+      <li>Thymus 세포 (전체의 2.5%): 정확하게 생성</li>
+      <li>CD34+ 세포 (전체의 0.4%): 정확하게 생성</li>
+    </ul>
+  </li>
+  <li><strong>KNN 평가</strong>: 모든 세포 유형에서 AUC가 0.5 근처로, KNN 모델이 실제와 생성 세포를 구분하지 못함</li>
+  <li><strong>CellTypist 분류</strong>: 생성 세포의 평균 분류 정확도 <strong>0.93</strong> (실제 세포: 0.98)
+    <ul>
+      <li>비교: scDesign3 생성 세포는 평균 0.99, scGAN 생성 세포는 평균 0.04 (구분 불가)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="3-다중-조건부-생성-multi-conditional-generation">3. 다중 조건부 생성 (Multi-Conditional Generation)</h3>
+
+<p><strong>세포 유형 + 조직 유형</strong> 두 가지 분류기를 동시에 사용하여, <strong>학습 데이터에 없었던 조합</strong>의 세포를 생성하는 실험을 수행했다.</p>
+
+<p>예를 들어, 학습 데이터에 유방(mammary gland)의 B세포는 있었지만, 흉선(thymus)의 기억 B세포(memory B cell)나 비장(spleen)의 대식세포(macrophage)는 없었다. scDiffusion은 이러한 <strong>분포 외(out-of-distribution)</strong> 조합도 성공적으로 생성했다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>생성 조건</th>
+      <th>CellTypist 분류 정확도 (생성)</th>
+      <th>CellTypist 분류 정확도 (실제)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>유방 B세포</td>
+      <td>98%</td>
+      <td>92%</td>
+    </tr>
+    <tr>
+      <td>흉선 기억 B세포</td>
+      <td>96.75%</td>
+      <td>96.91%</td>
+    </tr>
+    <tr>
+      <td>비장 대식세포</td>
+      <td>96.63%</td>
+      <td>99.53%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>마커 유전자(marker gene) 발현 수준에서도 생성된 세포가 실제 세포와 유사한 패턴을 보였다.</p>
+
+<h3 id="4-gradient-interpolation을-통한-발달-궤적-재구성">4. Gradient Interpolation을 통한 발달 궤적 재구성</h3>
+
+<p>마우스 배아 발달 데이터에서 day 0~8 시점의 세포(day 3.5와 day 4 제외)로 scDiffusion을 학습한 뒤, day 3과 day 4.5 사이의 <strong>중간 발달 상태</strong>를 Gradient Interpolation으로 생성했다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>메트릭</th>
+      <th>scDiffusion (Gradient Interpolation)</th>
+      <th>직접 보간 (Linear Interpolation)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mean MMD</strong> (↓)</td>
+      <td><strong>0.3217</strong></td>
+      <td>0.5206</td>
+    </tr>
+    <tr>
+      <td><strong>Mean LISI</strong> (↑)</td>
+      <td><strong>0.4488</strong></td>
+      <td>0.3217</td>
+    </tr>
+    <tr>
+      <td>State 6 MMD</td>
+      <td><strong>0.047</strong></td>
+      <td>0.1289</td>
+    </tr>
+    <tr>
+      <td>State 8 MMD</td>
+      <td><strong>0.0545</strong></td>
+      <td>0.1167</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>scDiffusion은 치료(treatment) 정보 없이 학습되었음에도, 직접 보간보다 유의미하게 우수한 성능을 보였다. 이는 확산 모델이 세포 분포의 다양한 양상을 잘 포착하고, 중간 상태를 적절히 보간할 수 있음을 시사한다.</p>
+
+<hr />
+
+<h2 id="의의-및-한계">의의 및 한계</h2>
+
+<h3 id="의의">의의</h3>
+
+<ol>
+  <li><strong>파운데이션 모델 활용</strong>: SCimilarity라는 대규모 사전 학습 모델을 오토인코더로 활용하여, 유전자 발현의 보편적 표현(universal representation)을 확보</li>
+  <li><strong>다중 조건부 생성</strong>: 여러 분류기를 동시에 활용하여 학습 데이터에 없던 조건 조합의 세포도 생성 가능</li>
+  <li><strong>Gradient Interpolation</strong>: 이산적 발달 시점 사이의 연속적 궤적을 생성하는 독창적 전략</li>
+  <li><strong>희귀 세포 유형 생성</strong>: 전체의 0.4%에 불과한 세포 유형도 정확하게 생성 가능</li>
+  <li><strong>확장성</strong>: 이론적으로 멀티오믹스(multi-omics) 데이터 등 다른 유형의 단일세포 데이터에도 적용 가능 (후속 연구 scDiffusion-X로 이어짐)</li>
+</ol>
+
+<h3 id="한계-및-후속-연구-방향">한계 및 후속 연구 방향</h3>
+
+<ul>
+  <li><strong>학습 비용</strong>: 오토인코더, 디노이징 네트워크, 분류기를 순차적으로 학습해야 하며, 디노이징 네트워크만 60~80만 스텝이 필요</li>
+  <li><strong>분류기 의존성</strong>: 조건부 생성을 위해 별도의 분류기를 학습해야 하는 점은 한계. 후속 연구인 <strong>cfDiffusion</strong>은 분류기 없는(classifier-free) 가이던스로 이 문제를 해결</li>
+  <li><strong>조건 레이블 필요</strong>: 조건부 생성에는 세포 유형 등의 레이블 정보가 필수적이므로, 레이블이 없는 데이터에 대한 적용이 제한적</li>
+  <li><strong>평가 지표의 한계</strong>: 생성된 단일세포 데이터의 품질을 종합적으로 평가하기 위한 표준화된 벤치마크가 아직 부족</li>
+</ul>
+
+<hr />
+
+<h2 id="개인적-소감">개인적 소감</h2>
+
+<p>scDiffusion은 이미지 생성에서 혁명적인 성과를 보인 확산 모델을 단일세포 유전체학에 접목한 흥미로운 시도다. 특히 인상적인 부분은:</p>
+
+<ol>
+  <li>
+    <p><strong>파운데이션 모델과 확산 모델의 결합</strong>: 2,270만 개 세포로 학습된 SCimilarity의 표현력과 확산 모델의 생성력을 결합한 전략이 효과적이다. 유전자 발현 데이터의 고차원성과 희소성이라는 고유한 문제를 잠재 공간으로의 매핑을 통해 우아하게 해결했다.</p>
+  </li>
+  <li>
+    <p><strong>OOD 생성 능력</strong>: 학습 데이터에 없는 조건 조합(예: 특정 조직의 특정 세포 유형)을 생성할 수 있다는 점은 실용적 가치가 매우 크다. 실험적으로 얻기 어려운 조건의 세포 데이터를 in silico로 생성할 수 있기 때문이다.</p>
+  </li>
+  <li>
+    <p><strong>Gradient Interpolation</strong>: 발달 생물학 관점에서, 시퀀싱 시점 사이의 공백을 채워 연속적인 발달 궤적을 재구성할 수 있다는 것은 강력한 도구다.</p>
+  </li>
+</ol>
+
+<p>노화 연구(aging research) 관점에서, scDiffusion과 같은 모델은 노화 과정에서의 세포 유형 변화를 모델링하는 데 활용될 수 있을 것이다. 특히 노화에 따라 감소하는 특정 면역세포나 줄기세포 데이터를 증강(augmentation)하거나, Gradient Interpolation을 통해 노화의 연속적인 전사체 변화 궤적을 재구성하는 데 적용할 수 있는 가능성이 있다.</p>
+
+<hr />
+
+<p><strong>References</strong></p>
+<ul>
+  <li>Luo, E., Hao, M., Wei, L. &amp; Zhang, X. scDiffusion: conditional generation of high-quality single-cell data using diffusion model. <em>Bioinformatics</em> <strong>40</strong>, btae518 (2024). <a href="https://doi.org/10.1093/bioinformatics/btae518">https://doi.org/10.1093/bioinformatics/btae518</a></li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://pubmed.ncbi.nlm.nih.gov/39171840/">PubMed</a></td>
+          <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11368386/">PMC Full Text</a></td>
+          <td><a href="https://github.com/EperLuo/scDiffusion">GitHub</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-nav">
+      
+      <a class="post-nav__prev" href="/trip/2026/02/16/hyde-park-walking/">
+        <span class="post-nav__label">← 이전 글</span>
+        <span class="post-nav__title">하이드 파크 산책: 런던 한복판의 고요한 겨울 오후</span>
+      </a>
+      
+      
+    </div>
+  </footer>
+   <!-- 댓글 (giscus) -->
+  
+   <!-- 댓글 영역 -->
+<div class="comments-section">
+    <h2 class="comments-title">💬 댓글</h2>
+    <script src="https://giscus.app/client.js"
+    data-repo="jsungwon/jsungwon.github.io"
+    data-repo-id="R_kgDORQmu8A"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORQmu8M4C2eY7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+</script>
+  </div>
+  
+  <style>
+    .comments-section {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #e8e4df;
+    }
+    .comments-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+  </style>
+  
+ 
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-icon">◈</span>
+      <p>Bioinformatics, Tech, Travel & Life</p>
+    </div>
+    <div class="footer-links">
+      
+      <a href="https://github.com/jsungwon" target="_blank" rel="noopener">GitHub</a>
+      
+      
+      <a href="mailto:jsw0061@gmail.com">Email</a>
+      
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 Sungwon. Built with Jekyll & GitHub Pages.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
