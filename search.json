@@ -19,15 +19,6 @@
   },
   
   {
-    "title": "하이드 파크 산책: 런던 한복판의 고요한 겨울 오후",
-    "url": "/trip/2026/02/16/hyde-park-walking/",
-    "date": "2026-02-16",
-    "category": "trip",
-    "tags": ["영국","런던","하이드파크","산책","서펜타인"],
-    "subtitle": "서펜타인 호수와 겨울 나무 사이를 걸으며 보낸 느긋한 시간"
-  },
-  
-  {
     "title": "Claude Code 완벽 셋팅 가이드: 설치부터 실전 활용까지",
     "url": "/tech/2026/02/16/claude-code-setup-guide/",
     "date": "2026-02-16",
@@ -52,6 +43,24 @@
     "category": "trip",
     "tags": ["England","Seven Sisters","hiking","South Downs","Brighton"],
     "subtitle": "런던에서 브라이턴을 거쳐, 하얀 절벽 위를 걷는 하루"
+  },
+  
+  {
+    "title": "하이드 파크 산책: 런던 한복판의 고요한 가을 오후",
+    "url": "/trip/2025/10/26/hyde-park-walking/",
+    "date": "2025-10-26",
+    "category": "trip",
+    "tags": ["영국","런던","하이드파크","산책","서펜타인"],
+    "subtitle": "서펜타인 호수와 단풍 든 나무 사이를 걸으며 보낸 느긋한 시간"
+  },
+  
+  {
+    "title": "Borough Market의 거대한 빠에야, Bomba Paella",
+    "url": "/food/2025/10/26/borough-market-paella/",
+    "date": "2025-10-26",
+    "category": "food",
+    "tags": ["London","Borough Market","paella","street food","seafood"],
+    "subtitle": "줄 서서라도 먹을 가치가 있는 버로우 마켓의 시푸드 빠에야"
   },
   
   {
