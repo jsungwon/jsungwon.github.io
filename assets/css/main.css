@@ -139,6 +139,7 @@ img {
   border: none;
   cursor: pointer;
   padding: 4px;
+  margin-left: 0;
 }
 
 .nav-toggle span {
@@ -835,6 +836,245 @@ img {
   }
 
   .hero { padding: var(--space-xl) 0 var(--space-lg); }
+}
+
+/* --- Header Actions --- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: none;
+  color: var(--color-text-muted);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.search-toggle:hover {
+  color: var(--color-text);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* --- Search Modal --- */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.search-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-modal {
+  width: 100%;
+  max-width: 580px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 70px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transform: translateY(-8px) scale(0.98);
+  transition: transform 0.2s ease;
+  border: 1px solid var(--color-border);
+}
+
+.search-overlay.is-active .search-modal {
+  transform: translateY(0) scale(1);
+}
+
+.search-modal__header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.search-input-icon {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  background: transparent;
+}
+
+.search-input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.search-kbd {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-muted);
+}
+
+.search-modal__body {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.search-empty {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.search-empty__text {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.search-results {
+  list-style: none;
+  padding: 0.5rem;
+}
+
+.search-result {
+  border-radius: var(--radius);
+}
+
+.search-result__link {
+  display: block;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  transition: background 0.15s;
+}
+
+.search-result__link:hover {
+  background: var(--color-bg);
+}
+
+.search-result__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.search-result__category {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+}
+
+.search-result__category--research {
+  color: var(--color-research);
+  background: var(--color-research-soft);
+}
+
+.search-result__category--tech {
+  color: var(--color-tech);
+  background: var(--color-tech-soft);
+}
+
+.search-result__category--trip {
+  color: var(--color-trip);
+  background: var(--color-trip-soft);
+}
+
+.search-result__category--food {
+  color: var(--color-food);
+  background: var(--color-food-soft);
+}
+
+.search-result__date {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.search-result__title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.search-result__title mark {
+  background: #fef08a;
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+.search-result__subtitle {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+  line-height: 1.5;
+}
+
+.search-result__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+}
+
+.tag--highlight {
+  background: #fef9c3;
+  color: var(--color-text);
+}
+
+.tag--highlight mark {
+  background: #fef08a;
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+@media (max-width: 768px) {
+  .search-overlay {
+    padding-top: 0;
+    align-items: stretch;
+  }
+
+  .search-modal {
+    max-width: 100%;
+    border-radius: 0;
+    height: 100%;
+    max-height: none;
+  }
+
+  .search-modal__body {
+    max-height: none;
+    flex: 1;
+  }
 }
 
 /* --- Animations --- */

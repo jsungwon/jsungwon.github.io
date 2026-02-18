@@ -1,0 +1,48 @@
+[
+  
+  {
+    "title": "scDiffusion: 확산 모델을 활용한 고품질 단일세포 데이터 생성",
+    "url": "/research/2026/02/17/scdiffusion-single-cell-data-generation/",
+    "date": "2026-02-17",
+    "category": "research",
+    "tags": ["paper review","single-cell","diffusion model","deep learning","generative model"],
+    "subtitle": "Bioinformatics (2024) — 잠재 확산 모델과 파운데이션 모델의 결합으로 조건부 scRNA-seq 데이터 생성"
+  },
+  
+  {
+    "title": "하이드 파크 산책: 런던 한복판의 고요한 겨울 오후",
+    "url": "/trip/2026/02/16/hyde-park-walking/",
+    "date": "2026-02-16",
+    "category": "trip",
+    "tags": ["영국","런던","하이드파크","산책","서펜타인"],
+    "subtitle": "서펜타인 호수와 겨울 나무 사이를 걸으며 보낸 느긋한 시간"
+  },
+  
+  {
+    "title": "Claude Code 완벽 셋팅 가이드: 설치부터 실전 활용까지",
+    "url": "/tech/2026/02/16/claude-code-setup-guide/",
+    "date": "2026-02-16",
+    "category": "tech",
+    "tags": ["Claude Code","AI coding","CLI","developer tools","productivity"],
+    "subtitle": "Anthropic의 AI 코딩 에이전트 Claude Code를 처음부터 끝까지 셋팅하고 활용하는 방법"
+  },
+  
+  {
+    "title": "PRnet: 딥 생성 모델을 활용한 화학적 섭동에 대한 전사체 반응 예측",
+    "url": "/research/2026/02/15/prnet-transcriptional-response-prediction/",
+    "date": "2026-02-15",
+    "category": "research",
+    "tags": ["paper review","drug discovery","deep learning","transcriptomics","generative model"],
+    "subtitle": "Nature Communications (2024) — 신약 개발을 위한 in-silico 전사체 반응 예측 모델"
+  },
+  
+  {
+    "title": "케임브리지 산책: 캠 강변의 여유로운 오후",
+    "url": "/trip/2025/09/15/cambridge-walking/",
+    "date": "2025-09-15",
+    "category": "trip",
+    "tags": ["영국","케임브리지","산책","캠 강","펀팅"],
+    "subtitle": "800년 역사의 대학 도시를 걸으며 보낸 느긋한 하루"
+  }
+  
+]
