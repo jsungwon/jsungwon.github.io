@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화 — 놀놀할할</title>
+  <meta name="description" content="
+  개발자에게 블로그는 기술적 성장을 기록하는 가장 좋은 방법 중 하나다. GitHub Pages는 무료 호스팅, Git 기반 워크플로우, 마크다운 지원이라는 세 가지 장점을 모두 갖추고 있다. 여기에 Claude를 더하면 블로그 구축부터 포스트 작성까지 대부분의 과정을 자동화할 수 있다.
+
+">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- SEO -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화 | 놀놀할할</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화" />
+<meta name="author" content="Sungwon" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="개발자에게 블로그는 기술적 성장을 기록하는 가장 좋은 방법 중 하나다. GitHub Pages는 무료 호스팅, Git 기반 워크플로우, 마크다운 지원이라는 세 가지 장점을 모두 갖추고 있다. 여기에 Claude를 더하면 블로그 구축부터 포스트 작성까지 대부분의 과정을 자동화할 수 있다." />
+<meta property="og:description" content="개발자에게 블로그는 기술적 성장을 기록하는 가장 좋은 방법 중 하나다. GitHub Pages는 무료 호스팅, Git 기반 워크플로우, 마크다운 지원이라는 세 가지 장점을 모두 갖추고 있다. 여기에 Claude를 더하면 블로그 구축부터 포스트 작성까지 대부분의 과정을 자동화할 수 있다." />
+<link rel="canonical" href="https://jsungwon.github.io/tech/2026/02/18/github-pages-blog-with-claude/" />
+<meta property="og:url" content="https://jsungwon.github.io/tech/2026/02/18/github-pages-blog-with-claude/" />
+<meta property="og:site_name" content="놀놀할할" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-02-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sungwon"},"dateModified":"2026-02-18T00:00:00+00:00","datePublished":"2026-02-18T00:00:00+00:00","description":"개발자에게 블로그는 기술적 성장을 기록하는 가장 좋은 방법 중 하나다. GitHub Pages는 무료 호스팅, Git 기반 워크플로우, 마크다운 지원이라는 세 가지 장점을 모두 갖추고 있다. 여기에 Claude를 더하면 블로그 구축부터 포스트 작성까지 대부분의 과정을 자동화할 수 있다.","headline":"GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화","mainEntityOfPage":{"@type":"WebPage","@id":"https://jsungwon.github.io/tech/2026/02/18/github-pages-blog-with-claude/"},"url":"https://jsungwon.github.io/tech/2026/02/18/github-pages-blog-with-claude/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWB335C28N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DWB335C28N');
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <svg class="logo-svg" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">놀놀할할</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="/research/" class="nav-link ">Research</a>
+      <a href="/tech/" class="nav-link nav-link--active">Tech</a>
+      <a href="/trip/" class="nav-link ">Trip</a>
+      <a href="/food/" class="nav-link ">Food</a>
+      <a href="/about/" class="nav-link ">About</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="search-toggle" aria-label="검색 열기">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+      <button class="nav-toggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-modal__header">
+      <div class="search-input-wrap">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="제목 또는 태그로 검색..."
+          autocomplete="off"
+        >
+        <kbd class="search-kbd">ESC</kbd>
+      </div>
+    </div>
+    <div class="search-modal__body" id="searchResults">
+      <div class="search-empty">
+        <p class="search-empty__text">검색어를 입력하세요</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/search.js"></script>
+
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  toggle?.addEventListener('click', () => {
+    nav.classList.toggle('is-open');
+    toggle.classList.toggle('is-active');
+  });
+</script>
+
+  
+  <main class="site-main">
+    <article class="post-full">
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-category post-category--tech">
+        💻 Tech
+      </span>
+      <time datetime="2026-02-18T00:00:00+00:00">
+        2026년 02월 18일
+      </time>
+    </div>
+    <h1 class="post-title">GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화</h1>
+    
+    <p class="post-subtitle">Jekyll + GitHub Pages로 무료 블로그를 구축하고, Claude를 활용해 포스트 작성과 관리를 자동화하는 방법</p>
+    
+    
+    <div class="post-tags">
+      
+      <span class="tag">#GitHub Pages</span>
+      
+      <span class="tag">#Jekyll</span>
+      
+      <span class="tag">#blog</span>
+      
+      <span class="tag">#Claude</span>
+      
+      <span class="tag">#automation</span>
+      
+    </div>
+    
+  </header>
+
+  
+
+  <div class="post-content">
+    <blockquote>
+  <p>개발자에게 블로그는 기술적 성장을 기록하는 가장 좋은 방법 중 하나다. <strong>GitHub Pages</strong>는 무료 호스팅, Git 기반 워크플로우, 마크다운 지원이라는 세 가지 장점을 모두 갖추고 있다. 여기에 <strong>Claude</strong>를 더하면 블로그 구축부터 포스트 작성까지 대부분의 과정을 자동화할 수 있다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="왜-github-pages인가">왜 GitHub Pages인가</h2>
+
+<p>블로그 플랫폼은 많지만, 개발자가 GitHub Pages를 선택해야 하는 이유는 명확하다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>GitHub Pages</th>
+      <th>WordPress</th>
+      <th>Notion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>비용</strong></td>
+      <td>무료</td>
+      <td>호스팅 비용 발생</td>
+      <td>무료 (제한적)</td>
+    </tr>
+    <tr>
+      <td><strong>커스터마이징</strong></td>
+      <td>완전한 제어</td>
+      <td>테마/플러그인 의존</td>
+      <td>제한적</td>
+    </tr>
+    <tr>
+      <td><strong>버전 관리</strong></td>
+      <td>Git 내장</td>
+      <td>별도 백업 필요</td>
+      <td>히스토리 제한</td>
+    </tr>
+    <tr>
+      <td><strong>배포</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">git push</code>로 자동</td>
+      <td>FTP/대시보드</td>
+      <td>즉시 반영</td>
+    </tr>
+    <tr>
+      <td><strong>마크다운</strong></td>
+      <td>네이티브 지원</td>
+      <td>플러그인 필요</td>
+      <td>부분 지원</td>
+    </tr>
+    <tr>
+      <td><strong>커스텀 도메인</strong></td>
+      <td>무료 지원</td>
+      <td>유료 플랜</td>
+      <td>유료 플랜</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>핵심은 <strong>코드처럼 블로그를 관리</strong>할 수 있다는 점이다. 포스트 하나를 쓰는 것도 커밋이고, 디자인을 바꾸는 것도 PR이다.</p>
+
+<hr />
+
+<h2 id="step-1-github-저장소-생성">Step 1: GitHub 저장소 생성</h2>
+
+<p>GitHub Pages는 <code class="language-plaintext highlighter-rouge">username.github.io</code> 형태의 저장소 이름을 사용한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># GitHub에서 새 저장소 생성 후 클론</span>
+git clone https://github.com/username/username.github.io.git
+<span class="nb">cd </span>username.github.io
+</code></pre></div></div>
+
+<p>저장소 이름이 <code class="language-plaintext highlighter-rouge">username.github.io</code>이면 GitHub가 자동으로 Pages 사이트로 인식한다. 별도의 설정 없이 <code class="language-plaintext highlighter-rouge">https://username.github.io</code>로 접속할 수 있다.</p>
+
+<hr />
+
+<h2 id="step-2-jekyll-설치-및-초기화">Step 2: Jekyll 설치 및 초기화</h2>
+
+<p>Jekyll은 GitHub Pages의 공식 정적 사이트 생성기(Static Site Generator)다.</p>
+
+<h3 id="ruby-및-jekyll-설치">Ruby 및 Jekyll 설치</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># macOS (Homebrew)</span>
+brew <span class="nb">install </span>ruby
+gem <span class="nb">install </span>jekyll bundler
+
+<span class="c"># Ubuntu/Debian</span>
+<span class="nb">sudo </span>apt <span class="nb">install </span>ruby-full build-essential
+gem <span class="nb">install </span>jekyll bundler
+</code></pre></div></div>
+
+<h3 id="새-jekyll-사이트-생성">새 Jekyll 사이트 생성</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new <span class="nb">.</span> <span class="nt">--force</span>
+</code></pre></div></div>
+
+<p>이 명령어는 기본 디렉토리 구조를 생성한다:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>username.github.io/
+├── _posts/           # 블로그 포스트
+├── _layouts/         # HTML 레이아웃 템플릿
+├── _includes/        # 재사용 가능한 HTML 조각
+├── _config.yml       # Jekyll 설정 파일
+├── assets/           # CSS, JS, 이미지
+├── index.html        # 홈페이지
+├── Gemfile           # Ruby 의존성
+└── 404.html          # 404 페이지
+</code></pre></div></div>
+
+<h3 id="로컬-서버-실행">로컬 서버 실행</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p>브라우저에서 <code class="language-plaintext highlighter-rouge">http://localhost:4000</code>으로 확인할 수 있다. <code class="language-plaintext highlighter-rouge">--livereload</code> 옵션을 추가하면 파일 변경 시 브라우저가 자동 새로고침된다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--livereload</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="step-3-_configyml-설정">Step 3: _config.yml 설정</h2>
+
+<p><code class="language-plaintext highlighter-rouge">_config.yml</code>은 사이트의 모든 설정을 담고 있다. 기본 설정을 자신에 맞게 수정한다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">My</span><span class="nv"> </span><span class="s">Blog"</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">개발과</span><span class="nv"> </span><span class="s">일상을</span><span class="nv"> </span><span class="s">기록하는</span><span class="nv"> </span><span class="s">블로그"</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Your</span><span class="nv"> </span><span class="s">Name"</span>
+<span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://username.github.io"</span>
+<span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+
+<span class="c1"># 마크다운 처리</span>
+<span class="na">markdown</span><span class="pi">:</span> <span class="s">kramdown</span>
+<span class="na">highlighter</span><span class="pi">:</span> <span class="s">rouge</span>
+
+<span class="c1"># 퍼마링크 구조</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/:categories/:year/:month/:day/:title/</span>
+
+<span class="c1"># 페이지네이션</span>
+<span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-paginate</span>
+  <span class="pi">-</span> <span class="s">jekyll-seo-tag</span>
+  <span class="pi">-</span> <span class="s">jekyll-sitemap</span>
+
+<span class="na">paginate</span><span class="pi">:</span> <span class="m">8</span>
+<span class="na">paginate_path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/page/:num/"</span>
+
+<span class="c1"># 빌드 제외</span>
+<span class="na">exclude</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">Gemfile</span>
+  <span class="pi">-</span> <span class="s">Gemfile.lock</span>
+  <span class="pi">-</span> <span class="s">README.md</span>
+  <span class="pi">-</span> <span class="s">node_modules</span>
+</code></pre></div></div>
+
+<p><strong>주요 설정 항목:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">permalink</code>: URL 구조를 결정한다. 카테고리와 날짜를 포함하면 SEO에 유리하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">plugins</code>: <code class="language-plaintext highlighter-rouge">jekyll-seo-tag</code>는 메타 태그를 자동 생성하고, <code class="language-plaintext highlighter-rouge">jekyll-sitemap</code>은 검색 엔진용 사이트맵을 만들어준다.</li>
+  <li><code class="language-plaintext highlighter-rouge">paginate</code>: 홈페이지에 표시할 포스트 수를 결정한다.</li>
+</ul>
+
+<hr />
+
+<h2 id="step-4-첫-번째-포스트-작성">Step 4: 첫 번째 포스트 작성</h2>
+
+<p>Jekyll 포스트는 <code class="language-plaintext highlighter-rouge">_posts/</code> 디렉토리에 <code class="language-plaintext highlighter-rouge">YYYY-MM-DD-title.md</code> 형식으로 저장한다.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">첫</span><span class="nv"> </span><span class="s">번째</span><span class="nv"> </span><span class="s">포스트"</span>
+<span class="na">date</span><span class="pi">:</span> <span class="s">2026-02-18</span>
+<span class="na">category</span><span class="pi">:</span> <span class="s">tech</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">blog</span><span class="pi">,</span> <span class="nv">jekyll</span><span class="pi">,</span> <span class="nv">github pages</span><span class="pi">]</span>
+<span class="na">subtitle</span><span class="pi">:</span> <span class="s2">"</span><span class="s">GitHub</span><span class="nv"> </span><span class="s">Pages</span><span class="nv"> </span><span class="s">블로그의</span><span class="nv"> </span><span class="s">시작"</span>
+<span class="nn">---</span>
+
+<span class="gu">## 블로그를 시작하며</span>
+
+이 블로그는 GitHub Pages와 Jekyll로 만들었다.
+마크다운으로 글을 쓰고, <span class="sb">`git push`</span>로 배포한다.
+
+<span class="gu">### 코드도 깔끔하게</span>
+
+​<span class="sb">```python
+print("Hello, Blog!")
+​```</span>
+
+<span class="gs">**볼드**</span>, <span class="ge">*이탤릭*</span>, <span class="sb">`인라인 코드`</span> 모두 지원된다.
+</code></pre></div></div>
+
+<p><strong>Frontmatter</strong> (YAML 머리말)는 포스트의 메타데이터를 정의한다. <code class="language-plaintext highlighter-rouge">layout</code>, <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">date</code>는 필수이며, <code class="language-plaintext highlighter-rouge">category</code>와 <code class="language-plaintext highlighter-rouge">tags</code>로 포스트를 분류할 수 있다.</p>
+
+<hr />
+
+<h2 id="step-5-테마-커스터마이징">Step 5: 테마 커스터마이징</h2>
+
+<p>Jekyll의 기본 테마 <code class="language-plaintext highlighter-rouge">minima</code>도 괜찮지만, 직접 커스터마이징하면 더 나은 결과를 얻을 수 있다.</p>
+
+<h3 id="레이아웃-구조">레이아웃 구조</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- _layouts/default.html --&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화 | 놀놀할할<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/assets/css/main.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"site-header"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"header-inner"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/"</span> <span class="na">class=</span><span class="s">"site-logo"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;svg</span> <span class="na">class=</span><span class="s">"logo-svg"</span> <span class="na">width=</span><span class="s">"26"</span> <span class="na">height=</span><span class="s">"26"</span> <span class="na">viewBox=</span><span class="s">"0 0 28 28"</span> <span class="na">fill=</span><span class="s">"none"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;path</span> <span class="na">d=</span><span class="s">"M9 2C20 5 20 10 14 14C8 18 8 23 19 26"</span> <span class="na">stroke=</span><span class="s">"#2563eb"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">fill=</span><span class="s">"none"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;path</span> <span class="na">d=</span><span class="s">"M19 2C8 5 8 10 14 14C20 18 20 23 9 26"</span> <span class="na">stroke=</span><span class="s">"#7c3aed"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">fill=</span><span class="s">"none"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;line</span> <span class="na">x1=</span><span class="s">"11"</span> <span class="na">y1=</span><span class="s">"6"</span> <span class="na">x2=</span><span class="s">"17"</span> <span class="na">y2=</span><span class="s">"6"</span> <span class="na">stroke=</span><span class="s">"#93c5fd"</span> <span class="na">stroke-width=</span><span class="s">"1.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;line</span> <span class="na">x1=</span><span class="s">"12"</span> <span class="na">y1=</span><span class="s">"10"</span> <span class="na">x2=</span><span class="s">"16"</span> <span class="na">y2=</span><span class="s">"10"</span> <span class="na">stroke=</span><span class="s">"#c4b5fd"</span> <span class="na">stroke-width=</span><span class="s">"1.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;line</span> <span class="na">x1=</span><span class="s">"12"</span> <span class="na">y1=</span><span class="s">"18"</span> <span class="na">x2=</span><span class="s">"16"</span> <span class="na">y2=</span><span class="s">"18"</span> <span class="na">stroke=</span><span class="s">"#93c5fd"</span> <span class="na">stroke-width=</span><span class="s">"1.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;line</span> <span class="na">x1=</span><span class="s">"11"</span> <span class="na">y1=</span><span class="s">"22"</span> <span class="na">x2=</span><span class="s">"17"</span> <span class="na">y2=</span><span class="s">"22"</span> <span class="na">stroke=</span><span class="s">"#c4b5fd"</span> <span class="na">stroke-width=</span><span class="s">"1.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/svg&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"logo-text"</span><span class="nt">&gt;</span>놀놀할할<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+
+    <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"site-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/research/"</span> <span class="na">class=</span><span class="s">"nav-link "</span><span class="nt">&gt;</span>Research<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tech/"</span> <span class="na">class=</span><span class="s">"nav-link nav-link--active"</span><span class="nt">&gt;</span>Tech<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/trip/"</span> <span class="na">class=</span><span class="s">"nav-link "</span><span class="nt">&gt;</span>Trip<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/food/"</span> <span class="na">class=</span><span class="s">"nav-link "</span><span class="nt">&gt;</span>Food<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/about/"</span> <span class="na">class=</span><span class="s">"nav-link "</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/nav&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"header-actions"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"search-toggle"</span> <span class="na">aria-label=</span><span class="s">"검색 열기"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;svg</span> <span class="na">width=</span><span class="s">"18"</span> <span class="na">height=</span><span class="s">"18"</span> <span class="na">viewBox=</span><span class="s">"0 0 24 24"</span> <span class="na">fill=</span><span class="s">"none"</span> <span class="na">stroke=</span><span class="s">"currentColor"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-linejoin=</span><span class="s">"round"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;circle</span> <span class="na">cx=</span><span class="s">"11"</span> <span class="na">cy=</span><span class="s">"11"</span> <span class="na">r=</span><span class="s">"8"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;line</span> <span class="na">x1=</span><span class="s">"21"</span> <span class="na">y1=</span><span class="s">"21"</span> <span class="na">x2=</span><span class="s">"16.65"</span> <span class="na">y2=</span><span class="s">"16.65"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/svg&gt;</span>
+      <span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"nav-toggle"</span> <span class="na">aria-label=</span><span class="s">"메뉴 열기"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;span&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;span&gt;&lt;/span&gt;</span>
+      <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/header&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-overlay"</span> <span class="na">id=</span><span class="s">"searchOverlay"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-modal"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-modal__header"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-input-wrap"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;svg</span> <span class="na">class=</span><span class="s">"search-input-icon"</span> <span class="na">width=</span><span class="s">"18"</span> <span class="na">height=</span><span class="s">"18"</span> <span class="na">viewBox=</span><span class="s">"0 0 24 24"</span> <span class="na">fill=</span><span class="s">"none"</span> <span class="na">stroke=</span><span class="s">"currentColor"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-linejoin=</span><span class="s">"round"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;circle</span> <span class="na">cx=</span><span class="s">"11"</span> <span class="na">cy=</span><span class="s">"11"</span> <span class="na">r=</span><span class="s">"8"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;line</span> <span class="na">x1=</span><span class="s">"21"</span> <span class="na">y1=</span><span class="s">"21"</span> <span class="na">x2=</span><span class="s">"16.65"</span> <span class="na">y2=</span><span class="s">"16.65"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/svg&gt;</span>
+        <span class="nt">&lt;input</span>
+          <span class="na">type=</span><span class="s">"text"</span>
+          <span class="na">class=</span><span class="s">"search-input"</span>
+          <span class="na">id=</span><span class="s">"searchInput"</span>
+          <span class="na">placeholder=</span><span class="s">"제목 또는 태그로 검색..."</span>
+          <span class="na">autocomplete=</span><span class="s">"off"</span>
+        <span class="nt">&gt;</span>
+        <span class="nt">&lt;kbd</span> <span class="na">class=</span><span class="s">"search-kbd"</span><span class="nt">&gt;</span>ESC<span class="nt">&lt;/kbd&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-modal__body"</span> <span class="na">id=</span><span class="s">"searchResults"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search-empty"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"search-empty__text"</span><span class="nt">&gt;</span>검색어를 입력하세요<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/search.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">const</span> <span class="nx">toggle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.nav-toggle</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">nav</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.site-nav</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">toggle</span><span class="p">?.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">nav</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">toggle</span><span class="p">(</span><span class="dl">'</span><span class="s1">is-open</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">toggle</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">toggle</span><span class="p">(</span><span class="dl">'</span><span class="s1">is-active</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+
+  <span class="nt">&lt;main&gt;&lt;article</span> <span class="na">class=</span><span class="s">"post-full"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"post-header"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"post-meta"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"post-category post-category--research"</span><span class="nt">&gt;</span>
+        🧬 Research
+      <span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;time</span> <span class="na">datetime=</span><span class="s">"2026-02-17T00:00:00+00:00"</span><span class="nt">&gt;</span>
+        2026년 02월 17일
+      <span class="nt">&lt;/time&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"post-title"</span><span class="nt">&gt;</span>scDiffusion: 확산 모델을 활용한 고품질 단일세포 데이터 생성<span class="nt">&lt;/h1&gt;</span>
+    
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"post-subtitle"</span><span class="nt">&gt;</span>Bioinformatics (2024) — 잠재 확산 모델과 파운데이션 모델의 결합으로 조건부 scRNA-seq 데이터 생성<span class="nt">&lt;/p&gt;</span>
+    
+    
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"post-tags"</span><span class="nt">&gt;</span>
+      
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag"</span><span class="nt">&gt;</span>#paper review<span class="nt">&lt;/span&gt;</span>
+      
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag"</span><span class="nt">&gt;</span>#single-cell<span class="nt">&lt;/span&gt;</span>
+      
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag"</span><span class="nt">&gt;</span>#diffusion model<span class="nt">&lt;/span&gt;</span>
+      
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag"</span><span class="nt">&gt;</span>#deep learning<span class="nt">&lt;/span&gt;</span>
+      
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag"</span><span class="nt">&gt;</span>#generative model<span class="nt">&lt;/span&gt;</span>
+      
+    <span class="nt">&lt;/div&gt;</span>
+    
+  <span class="nt">&lt;/header&gt;</span>
+
+  
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"post-content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;blockquote&gt;</span>
+  <span class="nt">&lt;p&gt;&lt;strong&gt;</span>논문 정보<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;strong&gt;</span>Title<span class="nt">&lt;/strong&gt;</span>: scDiffusion: conditional generation of high-quality single-cell data using diffusion model<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;strong&gt;</span>Authors<span class="nt">&lt;/strong&gt;</span>: Erpai Luo, Minsheng Hao, Lei Wei, Xuegong Zhang<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;strong&gt;</span>Affiliation<span class="nt">&lt;/strong&gt;</span>: MOE Key Lab of Bioinformatics, Tsinghua University, Beijing<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;strong&gt;</span>Journal<span class="nt">&lt;/strong&gt;</span>: Bioinformatics, Volume 40, Issue 9, btae518 (2024)<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;strong&gt;</span>DOI<span class="nt">&lt;/strong&gt;</span>: <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://doi.org/10.1093/bioinformatics/btae518"</span><span class="nt">&gt;</span>10.1093/bioinformatics/btae518<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/blockquote&gt;</span>
+
+<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"연구-배경-및-동기"</span><span class="nt">&gt;</span>연구 배경 및 동기<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>단일세포 RNA 시퀀싱(scRNA-seq)은 세포 수준에서 생명 현상을 연구하는 데 핵심적인 기술이다. 그러나 충분한 양의 고품질 scRNA-seq 데이터를 확보하는 것은 여전히 어려운 과제다. 실험 비용이 높고, 특히 <span class="nt">&lt;strong&gt;</span>희귀 세포 유형(rare cell type)<span class="nt">&lt;/strong&gt;</span>의 경우 충분한 수의 세포를 포착하기 어렵다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>이 문제를 해결하기 위해 <span class="nt">&lt;strong&gt;</span>생성 모델(generative model)<span class="nt">&lt;/strong&gt;</span>을 활용하여 합성 scRNA-seq 데이터를 생성하려는 시도가 있어왔다. 기존 방법으로는 scGAN(GAN 기반), scDesign3(통계 학습 기반), SPARSim, SCRIP 등이 있으나, 생성된 데이터의 현실성이 부족하고, 특히 <span class="nt">&lt;strong&gt;</span>조건부 생성(conditional generation)<span class="nt">&lt;/strong&gt;</span> — 특정 세포 유형이나 조직에 맞춰 데이터를 생성하는 것 — 에서 한계를 보였다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>한편, 이미지 생성 분야에서는 <span class="nt">&lt;strong&gt;</span>확산 모델(diffusion model)<span class="nt">&lt;/strong&gt;</span>이 높은 충실도(fidelity)의 데이터 생성에서 압도적인 성능을 보여주고 있었다. 저자들은 이 확산 모델의 장점을 scRNA-seq 데이터 생성에 접목하여, <span class="nt">&lt;strong&gt;</span>scDiffusion<span class="nt">&lt;/strong&gt;</span>이라는 새로운 생성 모델을 제안한다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"모델-아키텍처"</span><span class="nt">&gt;</span>모델 아키텍처<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">"https://github.com/EperLuo/scDiffusion/raw/main/model_archi.png"</span> <span class="na">alt=</span><span class="s">"scDiffusion 모델 아키텍처 — 오토인코더(SCimilarity), 디노이징 네트워크, 조건부 분류기로 구성된 잠재 확산 모델"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;em&gt;</span>Figure 1: scDiffusion의 전체 아키텍처 개요. 학습 단계에서 SCimilarity 인코더가 유전자 발현을 잠재 공간으로 변환하고, 확산 과정을 통해 노이즈를 추가한 뒤 디노이징 네트워크가 역방향 과정을 학습한다. 추론 단계에서는 가우시안 노이즈로부터 새로운 세포 임베딩을 생성한다. (출처: Luo et al., Bioinformatics 2024)<span class="nt">&lt;/em&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>scDiffusion은 <span class="nt">&lt;strong&gt;</span>잠재 확산 모델(Latent Diffusion Model, LDM)<span class="nt">&lt;/strong&gt;</span>과 <span class="nt">&lt;strong&gt;</span>파운데이션 모델(foundation model)<span class="nt">&lt;/strong&gt;</span>을 결합한 구조로, 세 가지 핵심 모듈로 구성된다:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"1-오토인코더-autoencoder--scimilarity"</span><span class="nt">&gt;</span>1. 오토인코더 (Autoencoder) — SCimilarity<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>사전 학습된 파운데이션 모델 <span class="nt">&lt;strong&gt;</span>SCimilarity<span class="nt">&lt;/strong&gt;</span>를 오토인코더로 활용<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>SCimilarity는 <span class="nt">&lt;strong&gt;</span>399개의 scRNA-seq 연구에서 수집한 2,270만 개 세포<span class="nt">&lt;/strong&gt;</span>로 사전 학습된 인코더-디코더 네트워크<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>유전자 발현 프로파일을 <span class="nt">&lt;strong&gt;</span>128차원 잠재 공간(latent space)<span class="nt">&lt;/strong&gt;</span>으로 압축<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>원시 분포를 <span class="nt">&lt;strong&gt;</span>가우시안 유사 분포<span class="nt">&lt;/strong&gt;</span>로 변환하여 확산 과정에 적합한 형태로 정규화<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>사전 학습 가중치를 기반으로 미세 조정(fine-tuning)하여, 처음부터 학습하는 것 대비 더 빠르고 우수한 성능 달성<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"2-디노이징-네트워크-denoising-network"</span><span class="nt">&gt;</span>2. 디노이징 네트워크 (Denoising Network)<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>유전자 발현 데이터의 특성(긴 길이, 희소성, 비정렬)을 고려한 새로운 아키텍처 설계<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>CNN이나 Transformer 대신 <span class="nt">&lt;strong&gt;</span>스킵 연결 다층 퍼셉트론(skip-connected MLP)<span class="nt">&lt;/strong&gt;</span> 기반 구조 채택<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>스킵 연결 구조는 다양한 레벨의 특징을 보존하고 정보 손실을 줄임<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>확산 과정의 <span class="nt">&lt;strong&gt;</span>역방향 과정(reverse process)<span class="nt">&lt;/strong&gt;</span>을 학습하여 노이즈를 제거하고 의미있는 임베딩을 복원<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"3-조건부-제어기-condition-controller--분류기-가이던스"</span><span class="nt">&gt;</span>3. 조건부 제어기 (Condition Controller) — 분류기 가이던스<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>세포 유형 분류기(classifier)를 통한 <span class="nt">&lt;strong&gt;</span>분류기 가이던스(classifier guidance)<span class="nt">&lt;/strong&gt;</span> 방식 적용<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>분류기는 4층 MLP 구조로, 세포 유형이나 조직 유형 등의 조건 레이블을 예측<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>디노이징 네트워크의 학습에 간섭하지 않고 <span class="nt">&lt;strong&gt;</span>별도로 학습<span class="nt">&lt;/strong&gt;</span>되어 그래디언트를 제공<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>다중 분류기<span class="nt">&lt;/strong&gt;</span>를 동시에 사용하여 여러 조건 조합으로 데이터 생성 가능<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"학습-및-추론-파이프라인"</span><span class="nt">&gt;</span>학습 및 추론 파이프라인<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"학습-단계-training"</span><span class="nt">&gt;</span>학습 단계 (Training)<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>단계<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>내용<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>세부 사항<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>Step 1<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>오토인코더 미세 조정<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>SCimilarity 사전 학습 가중치 기반, 첫/마지막 레이어만 재학습<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>Step 2<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>디노이징 네트워크 학습<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>600,000~800,000 스텝, 학습률 어닐링 적용<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>Step 3<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>분류기 학습<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>~200,000 이터레이션, 데이터셋 카테고리 수에 맞춰 설정<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>학습 과정에서 SCimilarity 모델이 유전자 발현 프로파일을 잠재 공간으로 임베딩한 후, 확산 과정을 통해 각 임베딩에 노이즈를 추가하여 노이즈 임베딩 시퀀스를 생성한다. 이 노이즈 임베딩이 디노이징 네트워크의 학습 데이터가 되며, 동시에 분류기는 임베딩으로부터 조건 레이블을 예측하도록 학습된다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"추론-단계-inference"</span><span class="nt">&gt;</span>추론 단계 (Inference)<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;</span>가우시안 노이즈를 입력으로 받음<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>디노이징 네트워크가 <span class="nt">&lt;strong&gt;</span>T=1,000 스텝<span class="nt">&lt;/strong&gt;</span>에 걸쳐 반복적으로 노이즈를 제거<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>분류기 가이던스 또는 Gradient Interpolation 전략으로 생성 방향 제어<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>생성된 잠재 임베딩을 디코더에 입력하여 최종 유전자 발현 프로파일 복원<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+
+<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"gradient-interpolation-전략"</span><span class="nt">&gt;</span>Gradient Interpolation 전략<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>scDiffusion의 가장 독창적인 기여 중 하나는 <span class="nt">&lt;strong&gt;</span>Gradient Interpolation<span class="nt">&lt;/strong&gt;</span> 전략이다. 이는 이산적인 세포 상태(discrete cell states)로부터 <span class="nt">&lt;strong&gt;</span>연속적인 세포 발달 궤적(continuous developmental trajectory)<span class="nt">&lt;/strong&gt;</span>을 생성할 수 있는 새로운 제어 전략이다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>기존의 직접 보간(linear interpolation)과 달리, Gradient Interpolation은 확산 모델이 학습한 세포 분포를 활용하여 생물학적으로 더 타당한 중간 상태를 생성한다. 구체적으로:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>두 개의 조건(예: 발달 시점 day 3과 day 4.5)을 분류기에 입력<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>두 조건 사이의 그래디언트를 보간하여 중간 상태를 연속적으로 생성<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>시퀀싱 간격 사이의 빈 구간을 채워 더 포괄적인 발달 타임라인 제공<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"실험-데이터셋"</span><span class="nt">&gt;</span>실험 데이터셋<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>데이터셋<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>세포 수<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>유전자 수<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>세포 유형<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>용도<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>Tabula Muris<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>54,865<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>23,433<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>55<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>비조건부/단일조건부 생성<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>PBMC68k<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>68,579<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>~2,000+<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>11<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>비조건부/단일조건부 생성<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>Human Lung PF<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>비조건부 생성<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>Tabula Sapiens<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>다중조건부 생성<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>Mouse embryo<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>-<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>Gradient Interpolation<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+
+<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"주요-결과"</span><span class="nt">&gt;</span>주요 결과<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"1-비조건부-생성-unconditional-generation"</span><span class="nt">&gt;</span>1. 비조건부 생성 (Unconditional Generation)<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>scDiffusion이 조건 없이 생성한 세포 데이터의 품질을 scGAN, scDesign3, SPARSim, SCRIP과 비교했다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>메트릭<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>scDiffusion<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>scGAN<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>scDesign3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>SPARSim<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>SCRIP<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>SCC<span class="nt">&lt;/strong&gt;</span> (↑)<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>0.984<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>유사<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>유사<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>낮음<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>낮음<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>MMD<span class="nt">&lt;/strong&gt;</span> (↓)<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>0.018<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>유사<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>유사<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>높음<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>높음<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>LISI<span class="nt">&lt;/strong&gt;</span> (↑)<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>0.887<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>유사<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>유사<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>낮음<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>낮음<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>RF AUC<span class="nt">&lt;/strong&gt;</span> (→0.5)<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>0.697<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>유사<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>유사<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>낮음<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>낮음<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>SCC (Spearman Correlation Coefficient)<span class="nt">&lt;/strong&gt;</span>: 실제와 생성 데이터 간 유전자 발현 상관관계. 0.984로 매우 높은 유사도<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>MMD (Maximum Mean Discrepancy)<span class="nt">&lt;/strong&gt;</span>: 분포 간 거리. 0.018로 실제 데이터와 매우 근접<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>LISI (Local Inverse Simpson’s Index)<span class="nt">&lt;/strong&gt;</span>: 실제와 생성 세포의 혼합 정도. 0.887로 높은 혼합도<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>RF AUC<span class="nt">&lt;/strong&gt;</span>: 랜덤 포레스트가 실제/생성 세포를 구분하는 정확도. 0.5에 가까울수록 구분 불가능<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>UMAP 시각화에서도 scDiffusion이 생성한 세포들이 실제 세포들과 잘 겹치는 것을 확인할 수 있었다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"2-단일-조건부-생성-single-conditional-generation"</span><span class="nt">&gt;</span>2. 단일 조건부 생성 (Single-Conditional Generation)<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>세포 유형 분류기를 가이드로 사용하여 <span class="nt">&lt;strong&gt;</span>특정 세포 유형<span class="nt">&lt;/strong&gt;</span>의 데이터를 조건부로 생성했다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>Tabula Muris<span class="nt">&lt;/strong&gt;</span>: 세포 유형별로 동일 수의 세포를 조건부 생성. UMAP에서 실제 세포와 시각적으로 중첩<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>희귀 세포 유형도 성공적으로 생성<span class="nt">&lt;/strong&gt;</span>:
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;</span>Thymus 세포 (전체의 2.5%): 정확하게 생성<span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>CD34+ 세포 (전체의 0.4%): 정확하게 생성<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>KNN 평가<span class="nt">&lt;/strong&gt;</span>: 모든 세포 유형에서 AUC가 0.5 근처로, KNN 모델이 실제와 생성 세포를 구분하지 못함<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>CellTypist 분류<span class="nt">&lt;/strong&gt;</span>: 생성 세포의 평균 분류 정확도 <span class="nt">&lt;strong&gt;</span>0.93<span class="nt">&lt;/strong&gt;</span> (실제 세포: 0.98)
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;</span>비교: scDesign3 생성 세포는 평균 0.99, scGAN 생성 세포는 평균 0.04 (구분 불가)<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"3-다중-조건부-생성-multi-conditional-generation"</span><span class="nt">&gt;</span>3. 다중 조건부 생성 (Multi-Conditional Generation)<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;strong&gt;</span>세포 유형 + 조직 유형<span class="nt">&lt;/strong&gt;</span> 두 가지 분류기를 동시에 사용하여, <span class="nt">&lt;strong&gt;</span>학습 데이터에 없었던 조합<span class="nt">&lt;/strong&gt;</span>의 세포를 생성하는 실험을 수행했다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>예를 들어, 학습 데이터에 유방(mammary gland)의 B세포는 있었지만, 흉선(thymus)의 기억 B세포(memory B cell)나 비장(spleen)의 대식세포(macrophage)는 없었다. scDiffusion은 이러한 <span class="nt">&lt;strong&gt;</span>분포 외(out-of-distribution)<span class="nt">&lt;/strong&gt;</span> 조합도 성공적으로 생성했다:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>생성 조건<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>CellTypist 분류 정확도 (생성)<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>CellTypist 분류 정확도 (실제)<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>유방 B세포<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>98%<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>92%<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>흉선 기억 B세포<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>96.75%<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>96.91%<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>비장 대식세포<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>96.63%<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>99.53%<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>마커 유전자(marker gene) 발현 수준에서도 생성된 세포가 실제 세포와 유사한 패턴을 보였다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"4-gradient-interpolation을-통한-발달-궤적-재구성"</span><span class="nt">&gt;</span>4. Gradient Interpolation을 통한 발달 궤적 재구성<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>마우스 배아 발달 데이터에서 day 0~8 시점의 세포(day 3.5와 day 4 제외)로 scDiffusion을 학습한 뒤, day 3과 day 4.5 사이의 <span class="nt">&lt;strong&gt;</span>중간 발달 상태<span class="nt">&lt;/strong&gt;</span>를 Gradient Interpolation으로 생성했다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>메트릭<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>scDiffusion (Gradient Interpolation)<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>직접 보간 (Linear Interpolation)<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>Mean MMD<span class="nt">&lt;/strong&gt;</span> (↓)<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>0.3217<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>0.5206<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>Mean LISI<span class="nt">&lt;/strong&gt;</span> (↑)<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>0.4488<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>0.3217<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>State 6 MMD<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>0.047<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>0.1289<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>State 8 MMD<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;strong&gt;</span>0.0545<span class="nt">&lt;/strong&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>0.1167<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>scDiffusion은 치료(treatment) 정보 없이 학습되었음에도, 직접 보간보다 유의미하게 우수한 성능을 보였다. 이는 확산 모델이 세포 분포의 다양한 양상을 잘 포착하고, 중간 상태를 적절히 보간할 수 있음을 시사한다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"의의-및-한계"</span><span class="nt">&gt;</span>의의 및 한계<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"의의"</span><span class="nt">&gt;</span>의의<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>파운데이션 모델 활용<span class="nt">&lt;/strong&gt;</span>: SCimilarity라는 대규모 사전 학습 모델을 오토인코더로 활용하여, 유전자 발현의 보편적 표현(universal representation)을 확보<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>다중 조건부 생성<span class="nt">&lt;/strong&gt;</span>: 여러 분류기를 동시에 활용하여 학습 데이터에 없던 조건 조합의 세포도 생성 가능<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>Gradient Interpolation<span class="nt">&lt;/strong&gt;</span>: 이산적 발달 시점 사이의 연속적 궤적을 생성하는 독창적 전략<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>희귀 세포 유형 생성<span class="nt">&lt;/strong&gt;</span>: 전체의 0.4%에 불과한 세포 유형도 정확하게 생성 가능<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>확장성<span class="nt">&lt;/strong&gt;</span>: 이론적으로 멀티오믹스(multi-omics) 데이터 등 다른 유형의 단일세포 데이터에도 적용 가능 (후속 연구 scDiffusion-X로 이어짐)<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"한계-및-후속-연구-방향"</span><span class="nt">&gt;</span>한계 및 후속 연구 방향<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>학습 비용<span class="nt">&lt;/strong&gt;</span>: 오토인코더, 디노이징 네트워크, 분류기를 순차적으로 학습해야 하며, 디노이징 네트워크만 60~80만 스텝이 필요<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>분류기 의존성<span class="nt">&lt;/strong&gt;</span>: 조건부 생성을 위해 별도의 분류기를 학습해야 하는 점은 한계. 후속 연구인 <span class="nt">&lt;strong&gt;</span>cfDiffusion<span class="nt">&lt;/strong&gt;</span>은 분류기 없는(classifier-free) 가이던스로 이 문제를 해결<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>조건 레이블 필요<span class="nt">&lt;/strong&gt;</span>: 조건부 생성에는 세포 유형 등의 레이블 정보가 필수적이므로, 레이블이 없는 데이터에 대한 적용이 제한적<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;strong&gt;</span>평가 지표의 한계<span class="nt">&lt;/strong&gt;</span>: 생성된 단일세포 데이터의 품질을 종합적으로 평가하기 위한 표준화된 벤치마크가 아직 부족<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"개인적-소감"</span><span class="nt">&gt;</span>개인적 소감<span class="nt">&lt;/h2&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>scDiffusion은 이미지 생성에서 혁명적인 성과를 보인 확산 모델을 단일세포 유전체학에 접목한 흥미로운 시도다. 특히 인상적인 부분은:<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;strong&gt;</span>파운데이션 모델과 확산 모델의 결합<span class="nt">&lt;/strong&gt;</span>: 2,270만 개 세포로 학습된 SCimilarity의 표현력과 확산 모델의 생성력을 결합한 전략이 효과적이다. 유전자 발현 데이터의 고차원성과 희소성이라는 고유한 문제를 잠재 공간으로의 매핑을 통해 우아하게 해결했다.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;strong&gt;</span>OOD 생성 능력<span class="nt">&lt;/strong&gt;</span>: 학습 데이터에 없는 조건 조합(예: 특정 조직의 특정 세포 유형)을 생성할 수 있다는 점은 실용적 가치가 매우 크다. 실험적으로 얻기 어려운 조건의 세포 데이터를 in silico로 생성할 수 있기 때문이다.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;strong&gt;</span>Gradient Interpolation<span class="nt">&lt;/strong&gt;</span>: 발달 생물학 관점에서, 시퀀싱 시점 사이의 공백을 채워 연속적인 발달 궤적을 재구성할 수 있다는 것은 강력한 도구다.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>노화 연구(aging research) 관점에서, scDiffusion과 같은 모델은 노화 과정에서의 세포 유형 변화를 모델링하는 데 활용될 수 있을 것이다. 특히 노화에 따라 감소하는 특정 면역세포나 줄기세포 데이터를 증강(augmentation)하거나, Gradient Interpolation을 통해 노화의 연속적인 전사체 변화 궤적을 재구성하는 데 적용할 수 있는 가능성이 있다.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;p&gt;&lt;strong&gt;</span>References<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Luo, E., Hao, M., Wei, L. <span class="ni">&amp;amp;</span> Zhang, X. scDiffusion: conditional generation of high-quality single-cell data using diffusion model. <span class="nt">&lt;em&gt;</span>Bioinformatics<span class="nt">&lt;/em&gt;</span> <span class="nt">&lt;strong&gt;</span>40<span class="nt">&lt;/strong&gt;</span>, btae518 (2024). <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://doi.org/10.1093/bioinformatics/btae518"</span><span class="nt">&gt;</span>https://doi.org/10.1093/bioinformatics/btae518<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;table&gt;</span>
+      <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+          <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://pubmed.ncbi.nlm.nih.gov/39171840/"</span><span class="nt">&gt;</span>PubMed<span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://pmc.ncbi.nlm.nih.gov/articles/PMC11368386/"</span><span class="nt">&gt;</span>PMC Full Text<span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+          <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/EperLuo/scDiffusion"</span><span class="nt">&gt;</span>GitHub<span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;/tbody&gt;</span>
+    <span class="nt">&lt;/table&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"post-footer"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"post-nav"</span><span class="nt">&gt;</span>
+      
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"post-nav__prev"</span> <span class="na">href=</span><span class="s">"/trip/2026/02/16/hyde-park-walking/"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"post-nav__label"</span><span class="nt">&gt;</span>← 이전 글<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"post-nav__title"</span><span class="nt">&gt;</span>하이드 파크 산책: 런던 한복판의 고요한 겨울 오후<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;/a&gt;</span>
+      
+      
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"post-nav__next"</span> <span class="na">href=</span><span class="s">"/tech/2026/02/18/github-pages-blog-with-claude/"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"post-nav__label"</span><span class="nt">&gt;</span>다음 글 →<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"post-nav__title"</span><span class="nt">&gt;</span>GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;/a&gt;</span>
+      
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/footer&gt;</span>
+   <span class="c">&lt;!-- 댓글 (giscus) --&gt;</span>
+  
+   <span class="c">&lt;!-- 댓글 영역 --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"comments-section"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"comments-title"</span><span class="nt">&gt;</span>💬 댓글<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://giscus.app/client.js"</span>
+    <span class="na">data-repo=</span><span class="s">"jsungwon/jsungwon.github.io"</span>
+    <span class="na">data-repo-id=</span><span class="s">"R_kgDORQmu8A"</span>
+    <span class="na">data-category=</span><span class="s">"Announcements"</span>
+    <span class="na">data-category-id=</span><span class="s">"DIC_kwDORQmu8M4C2eY7"</span>
+    <span class="na">data-mapping=</span><span class="s">"pathname"</span>
+    <span class="na">data-strict=</span><span class="s">"0"</span>
+    <span class="na">data-reactions-enabled=</span><span class="s">"1"</span>
+    <span class="na">data-emit-metadata=</span><span class="s">"0"</span>
+    <span class="na">data-input-position=</span><span class="s">"bottom"</span>
+    <span class="na">data-theme=</span><span class="s">"preferred_color_scheme"</span>
+    <span class="na">data-lang=</span><span class="s">"ko"</span>
+    <span class="na">crossorigin=</span><span class="s">"anonymous"</span>
+    <span class="na">async</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  
+  <span class="nt">&lt;style&gt;</span>
+    <span class="nc">.comments-section</span> <span class="p">{</span>
+      <span class="nl">max-width</span><span class="p">:</span> <span class="m">720px</span><span class="p">;</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">3rem</span> <span class="nb">auto</span> <span class="m">0</span><span class="p">;</span>
+      <span class="nl">padding-top</span><span class="p">:</span> <span class="m">2rem</span><span class="p">;</span>
+      <span class="nl">border-top</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nx">#e8e4df</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.comments-title</span> <span class="p">{</span>
+      <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'DM Serif Display'</span><span class="p">,</span> <span class="n">Georgia</span><span class="p">,</span> <span class="nb">serif</span><span class="p">;</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.3rem</span><span class="p">;</span>
+      <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">1.5rem</span><span class="p">;</span>
+      <span class="nl">letter-spacing</span><span class="p">:</span> <span class="m">-0.02em</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="nt">&lt;/style&gt;</span>
+  
+ 
+<span class="nt">&lt;/article&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+  <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"site-footer"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"footer-inner"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"footer-brand"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;svg</span> <span class="na">class=</span><span class="s">"logo-svg logo-svg--footer"</span> <span class="na">width=</span><span class="s">"30"</span> <span class="na">height=</span><span class="s">"30"</span> <span class="na">viewBox=</span><span class="s">"0 0 28 28"</span> <span class="na">fill=</span><span class="s">"none"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;path</span> <span class="na">d=</span><span class="s">"M9 2C20 5 20 10 14 14C8 18 8 23 19 26"</span> <span class="na">stroke=</span><span class="s">"#2563eb"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">fill=</span><span class="s">"none"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;path</span> <span class="na">d=</span><span class="s">"M19 2C8 5 8 10 14 14C20 18 20 23 9 26"</span> <span class="na">stroke=</span><span class="s">"#7c3aed"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">fill=</span><span class="s">"none"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;line</span> <span class="na">x1=</span><span class="s">"11"</span> <span class="na">y1=</span><span class="s">"6"</span> <span class="na">x2=</span><span class="s">"17"</span> <span class="na">y2=</span><span class="s">"6"</span> <span class="na">stroke=</span><span class="s">"#93c5fd"</span> <span class="na">stroke-width=</span><span class="s">"1.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;line</span> <span class="na">x1=</span><span class="s">"12"</span> <span class="na">y1=</span><span class="s">"10"</span> <span class="na">x2=</span><span class="s">"16"</span> <span class="na">y2=</span><span class="s">"10"</span> <span class="na">stroke=</span><span class="s">"#c4b5fd"</span> <span class="na">stroke-width=</span><span class="s">"1.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;line</span> <span class="na">x1=</span><span class="s">"12"</span> <span class="na">y1=</span><span class="s">"18"</span> <span class="na">x2=</span><span class="s">"16"</span> <span class="na">y2=</span><span class="s">"18"</span> <span class="na">stroke=</span><span class="s">"#93c5fd"</span> <span class="na">stroke-width=</span><span class="s">"1.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;line</span> <span class="na">x1=</span><span class="s">"11"</span> <span class="na">y1=</span><span class="s">"22"</span> <span class="na">x2=</span><span class="s">"17"</span> <span class="na">y2=</span><span class="s">"22"</span> <span class="na">stroke=</span><span class="s">"#c4b5fd"</span> <span class="na">stroke-width=</span><span class="s">"1.5"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/svg&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Bioinformatics, Tech, Travel <span class="err">&amp;</span> Life<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"footer-links"</span><span class="nt">&gt;</span>
+      
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/jsungwon"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>GitHub<span class="nt">&lt;/a&gt;</span>
+      
+      
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"mailto:jsw0061@gmail.com"</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/a&gt;</span>
+      
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"footer-copy"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;</span><span class="ni">&amp;copy;</span> 2026 Sungwon. Built with Jekyll <span class="err">&amp;</span> GitHub Pages.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/footer&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="css-커스터마이징">CSS 커스터마이징</h3>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* assets/css/main.css */</span>
+<span class="nd">:root</span> <span class="p">{</span>
+  <span class="py">--primary-color</span><span class="p">:</span> <span class="nx">#2d3748</span><span class="p">;</span>
+  <span class="py">--accent-color</span><span class="p">:</span> <span class="nx">#4a90d9</span><span class="p">;</span>
+  <span class="py">--bg-color</span><span class="p">:</span> <span class="nx">#ffffff</span><span class="p">;</span>
+  <span class="py">--text-color</span><span class="p">:</span> <span class="nx">#1a202c</span><span class="p">;</span>
+  <span class="py">--code-bg</span><span class="p">:</span> <span class="nx">#f7fafc</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="o">-</span><span class="n">apple-system</span><span class="p">,</span> <span class="n">BlinkMacSystemFont</span><span class="p">,</span> <span class="s2">'Segoe UI'</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="l">--text-color</span><span class="p">);</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">1.8</span><span class="p">;</span>
+  <span class="nl">max-width</span><span class="p">:</span> <span class="m">800px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span> <span class="m">1.5rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">pre</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="l">--code-bg</span><span class="p">);</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">8px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+  <span class="nl">overflow-x</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="카테고리-페이지">카테고리 페이지</h3>
+
+<p>카테고리별 페이지를 만들면 포스트를 체계적으로 분류할 수 있다.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">&lt;!-- tech/index.html --&gt;
+---
+</span>layout: category
+title: Tech
+<span class="gh">category: tech
+---
+</span></code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- _layouts/category.html --&gt;</span>
+---
+layout: default
+---
+<span class="nt">&lt;h1&gt;</span>GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화<span class="nt">&lt;/h1&gt;</span>
+
+
+  <span class="nt">&lt;article&gt;</span>
+    <span class="nt">&lt;h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/tech/2026/02/18/github-pages-blog-with-claude/"</span><span class="nt">&gt;</span>GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화<span class="nt">&lt;/a&gt;&lt;/h2&gt;</span>
+    <span class="nt">&lt;time&gt;</span>2026-02-18<span class="nt">&lt;/time&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Jekyll + GitHub Pages로 무료 블로그를 구축하고, Claude를 활용해 포스트 작성과 관리를 자동화하는 방법<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/article&gt;</span>
+
+  <span class="nt">&lt;article&gt;</span>
+    <span class="nt">&lt;h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/tech/2026/02/16/claude-code-setup-guide/"</span><span class="nt">&gt;</span>Claude Code 완벽 셋팅 가이드: 설치부터 실전 활용까지<span class="nt">&lt;/a&gt;&lt;/h2&gt;</span>
+    <span class="nt">&lt;time&gt;</span>2026-02-16<span class="nt">&lt;/time&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Anthropic의 AI 코딩 에이전트 Claude Code를 처음부터 끝까지 셋팅하고 활용하는 방법<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/article&gt;</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="step-6-배포">Step 6: 배포</h2>
+
+<p>모든 변경사항을 커밋하고 푸시하면 GitHub Actions가 자동으로 사이트를 빌드하고 배포한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Initial blog setup with Jekyll"</span>
+git push origin main
+</code></pre></div></div>
+
+<p>배포 상태는 저장소의 <strong>Actions</strong> 탭에서 확인할 수 있다. 보통 1~2분 내에 <code class="language-plaintext highlighter-rouge">https://username.github.io</code>에서 사이트를 확인할 수 있다.</p>
+
+<h3 id="커스텀-도메인-설정">커스텀 도메인 설정</h3>
+
+<p>자신만의 도메인을 사용하고 싶다면:</p>
+
+<ol>
+  <li>도메인 구매 후 DNS에 CNAME 레코드 추가:</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CNAME    www    username.github.io
+</code></pre></div></div>
+
+<ol>
+  <li>저장소 루트에 <code class="language-plaintext highlighter-rouge">CNAME</code> 파일 생성:</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>www.yourdomain.com
+</code></pre></div></div>
+
+<ol>
+  <li>GitHub 저장소 Settings → Pages에서 커스텀 도메인 입력 및 HTTPS 활성화</li>
+</ol>
+
+<hr />
+
+<h2 id="claude를-활용한-블로그-자동화">Claude를 활용한 블로그 자동화</h2>
+
+<p>여기까지가 기본적인 GitHub Pages 블로그 구축이다. 이제 <strong>Claude</strong>를 활용해 블로그 운영을 자동화하는 방법을 살펴보자.</p>
+
+<h3 id="claude-code로-블로그-관리하기">Claude Code로 블로그 관리하기</h3>
+
+<p><a href="https://docs.anthropic.com/en/docs/claude-code/overview">Claude Code</a>는 터미널에서 동작하는 AI 코딩 에이전트다. 블로그 저장소에서 Claude Code를 실행하면 포스트 작성, 코드 수정, 배포까지 한 번에 처리할 수 있다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 블로그 디렉토리에서 Claude Code 실행</span>
+<span class="nb">cd </span>username.github.io
+claude
+</code></pre></div></div>
+
+<h3 id="1-claudemd로-블로그-규칙-정의">1. CLAUDE.md로 블로그 규칙 정의</h3>
+
+<p>프로젝트 루트에 <code class="language-plaintext highlighter-rouge">.claude/CLAUDE.md</code> 파일을 만들면 Claude가 블로그의 규칙과 스타일을 자동으로 이해한다.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># Blog Rules</span>
+
+<span class="gu">## 포스트 작성 규칙</span>
+<span class="p">-</span> 파일명: YYYY-MM-DD-title-in-english.md
+<span class="p">-</span> 위치: _posts/ 디렉토리
+<span class="p">-</span> Frontmatter 필수 필드: layout, title, date, category, tags, subtitle
+
+<span class="gu">## 카테고리</span>
+<span class="p">-</span> tech: 기술 관련 글
+<span class="p">-</span> research: 연구/논문 리뷰
+<span class="p">-</span> trip: 여행기
+<span class="p">-</span> food: 맛집 리뷰
+
+<span class="gu">## 마크다운 스타일</span>
+<span class="p">-</span> 제목은 ##부터 시작
+<span class="p">-</span> 코드 블록에 언어 태그 필수
+<span class="p">-</span> 한국어 중심, 기술 용어는 영문 병기
+</code></pre></div></div>
+
+<p>이 파일이 있으면 Claude에게 “새 포스트 써줘”라고만 해도 올바른 형식과 스타일로 포스트를 생성한다.</p>
+
+<h3 id="2-custom-slash-command로-포스트-템플릿-자동화">2. Custom Slash Command로 포스트 템플릿 자동화</h3>
+
+<p><code class="language-plaintext highlighter-rouge">.claude/skills/</code> 디렉토리에 커스텀 명령어를 정의하면 반복 작업을 자동화할 수 있다.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">&lt;!-- .claude/skills/write-tech-post.md --&gt;
+---
+description: "기술 블로그 포스트 작성"
+---
+</span>
+<span class="gh"># Tech 포스트 작성</span>
+
+$ARGUMENTS 주제에 대해 tech 카테고리 포스트를 작성하세요.
+
+<span class="gu">## 규칙</span>
+<span class="p">-</span> _posts/YYYY-MM-DD-title.md 형식으로 생성
+<span class="p">-</span> Frontmatter에 layout, title, date, category, tags, subtitle 포함
+<span class="p">-</span> 명확하고 간결한 기술적 톤
+<span class="p">-</span> 코드 블록에 언어 태그 명시
+<span class="p">-</span> 단계별 설명과 실행 가능한 예시 코드 포함
+</code></pre></div></div>
+
+<p>Claude Code에서 이렇게 사용한다:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; /write-tech-post Docker Compose로 개발 환경 구축하기
+</code></pre></div></div>
+
+<p>이 명령 하나로 올바른 형식의 포스트 파일이 자동 생성된다.</p>
+
+<h3 id="3-github-actions--claude로-cicd-구축">3. GitHub Actions + Claude로 CI/CD 구축</h3>
+
+<p>포스트를 커밋하면 자동으로 빌드, 검증, 배포되는 파이프라인을 만들 수 있다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .github/workflows/blog-ci.yml</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">Blog CI/CD</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">main</span><span class="pi">]</span>
+  <span class="na">pull_request</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">main</span><span class="pi">]</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup Ruby</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">ruby/setup-ruby@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">ruby-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.2'</span>
+          <span class="na">bundler-cache</span><span class="pi">:</span> <span class="kc">true</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build Jekyll site</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec jekyll build</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Check for broken links</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">gem install html-proofer</span>
+          <span class="s">htmlproofer ./_site --disable-external</span>
+</code></pre></div></div>
+
+<p>빌드 실패 시 Claude Code로 에러를 분석하고 수정할 수 있다:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 빌드 에러 확인 및 수정</span>
+claude <span class="s2">"Jekyll 빌드가 실패했어. 에러 로그를 분석하고 수정해줘"</span>
+</code></pre></div></div>
+
+<h3 id="4-claude로-포스트-작성-자동화">4. Claude로 포스트 작성 자동화</h3>
+
+<p>Claude Code에서 자연어로 포스트 작성을 요청할 수 있다.</p>
+
+<p><strong>논문 리뷰 포스트:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; GitHub Pages로 개인 블로그 만드는 방법에 대해 tech 포스트 써줘
+</code></pre></div></div>
+
+<p><strong>여행 포스트:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; 지난주 도쿄 여행 내용으로 trip 포스트 작성해줘. 시부야, 아키하바라, 센소지 방문했어
+</code></pre></div></div>
+
+<p>Claude는 CLAUDE.md에 정의된 규칙을 따라 카테고리별 스타일에 맞는 포스트를 생성한다. Frontmatter 형식, 섹션 구조, 톤까지 자동으로 맞춰준다.</p>
+
+<h3 id="5-기존-포스트-개선">5. 기존 포스트 개선</h3>
+
+<p>이미 작성된 포스트도 Claude로 개선할 수 있다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 특정 포스트의 SEO 개선</span>
+claude <span class="s2">"최근 tech 포스트의 subtitle과 tags를 SEO에 맞게 개선해줘"</span>
+
+<span class="c"># 오타 및 문법 수정</span>
+claude <span class="s2">"최근 포스트에서 오타나 어색한 표현 찾아서 수정해줘"</span>
+
+<span class="c"># 이미지 alt 텍스트 추가</span>
+claude <span class="s2">"모든 포스트의 이미지에 적절한 alt 텍스트가 있는지 확인해줘"</span>
+</code></pre></div></div>
+
+<h3 id="6-블로그-기능-추가-자동화">6. 블로그 기능 추가 자동화</h3>
+
+<p>새로운 기능을 추가할 때도 Claude가 도움을 줄 수 있다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 검색 기능 추가</span>
+claude <span class="s2">"블로그에 클라이언트 사이드 검색 기능을 추가해줘"</span>
+
+<span class="c"># 다크 모드 구현</span>
+claude <span class="s2">"CSS 변수를 활용한 다크 모드 토글을 구현해줘"</span>
+
+<span class="c"># RSS 피드 설정</span>
+claude <span class="s2">"Jekyll RSS 피드를 설정해줘"</span>
+</code></pre></div></div>
+
+<p>코드를 직접 작성하지 않아도, Claude가 프로젝트 구조를 파악하고 적절한 위치에 파일을 생성하거나 수정한다.</p>
+
+<hr />
+
+<h2 id="블로그-운영-팁">블로그 운영 팁</h2>
+
+<h3 id="seo-기본-설정">SEO 기본 설정</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">jekyll-seo-tag</code> 플러그인으로 메타 태그 자동 생성</li>
+  <li><code class="language-plaintext highlighter-rouge">jekyll-sitemap</code>으로 <code class="language-plaintext highlighter-rouge">sitemap.xml</code> 자동 생성</li>
+  <li>포스트마다 <code class="language-plaintext highlighter-rouge">subtitle</code>을 작성하여 검색 결과에 설명 노출</li>
+  <li>이미지에 alt 텍스트 추가</li>
+</ul>
+
+<h3 id="글쓰기-습관">글쓰기 습관</h3>
+
+<ul>
+  <li><strong>일정한 주기</strong>로 포스트 작성 (주 1회라도 꾸준히)</li>
+  <li><strong>카테고리를 미리 정의</strong>하고 균형 있게 작성</li>
+  <li><strong>코드 예시는 실행 가능</strong>하게 작성</li>
+  <li><strong>TIL(Today I Learned)</strong> 형태의 짧은 글도 좋다</li>
+</ul>
+
+<h3 id="성능-최적화">성능 최적화</h3>
+
+<ul>
+  <li>이미지는 WebP 형식으로 변환하여 용량 절감</li>
+  <li>CSS/JS는 minify 처리</li>
+  <li><code class="language-plaintext highlighter-rouge">lazy loading</code>으로 이미지 지연 로드</li>
+  <li>Google PageSpeed Insights로 주기적 점검</li>
+</ul>
+
+<hr />
+
+<h2 id="마치며">마치며</h2>
+
+<p>GitHub Pages + Jekyll 조합은 개발자에게 가장 효율적인 블로그 플랫폼이다. Git 워크플로우와 자연스럽게 통합되고, 마크다운으로 빠르게 글을 쓸 수 있으며, 무료다.</p>
+
+<p>여기에 Claude를 더하면 블로그 운영의 반복적인 작업들—포스트 템플릿 생성, Frontmatter 관리, 코드 리뷰, 기능 추가—을 자동화할 수 있다. CLAUDE.md로 블로그 규칙을 정의하고, Custom Slash Command로 자주 쓰는 작업을 등록해두면, 글쓰기에만 집중할 수 있는 환경이 만들어진다.</p>
+
+<p>블로그의 핵심은 결국 <strong>꾸준히 쓰는 것</strong>이다. 도구와 자동화는 그 과정을 조금 더 수월하게 만들어줄 뿐이다.</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-nav">
+      
+      <a class="post-nav__prev" href="/research/2026/02/17/scdiffusion-single-cell-data-generation/">
+        <span class="post-nav__label">← 이전 글</span>
+        <span class="post-nav__title">scDiffusion: 확산 모델을 활용한 고품질 단일세포 데이터 생성</span>
+      </a>
+      
+      
+    </div>
+  </footer>
+   <!-- 댓글 (giscus) -->
+  
+   <!-- 댓글 영역 -->
+<div class="comments-section">
+    <h2 class="comments-title">💬 댓글</h2>
+    <script src="https://giscus.app/client.js"
+    data-repo="jsungwon/jsungwon.github.io"
+    data-repo-id="R_kgDORQmu8A"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORQmu8M4C2eY7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+</script>
+  </div>
+  
+  <style>
+    .comments-section {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #e8e4df;
+    }
+    .comments-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+  </style>
+  
+ 
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="logo-svg logo-svg--footer" width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <p>Bioinformatics, Tech, Travel & Life</p>
+    </div>
+    <div class="footer-links">
+      
+      <a href="https://github.com/jsungwon" target="_blank" rel="noopener">GitHub</a>
+      
+      
+      <a href="mailto:jsw0061@gmail.com">Email</a>
+      
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 Sungwon. Built with Jekyll & GitHub Pages.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

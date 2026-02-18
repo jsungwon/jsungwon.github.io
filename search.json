@@ -1,6 +1,15 @@
 [
   
   {
+    "title": "GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화",
+    "url": "/tech/2026/02/18/github-pages-blog-with-claude/",
+    "date": "2026-02-18",
+    "category": "tech",
+    "tags": ["GitHub Pages","Jekyll","blog","Claude","automation"],
+    "subtitle": "Jekyll + GitHub Pages로 무료 블로그를 구축하고, Claude를 활용해 포스트 작성과 관리를 자동화하는 방법"
+  },
+  
+  {
     "title": "scDiffusion: 확산 모델을 활용한 고품질 단일세포 데이터 생성",
     "url": "/research/2026/02/17/scdiffusion-single-cell-data-generation/",
     "date": "2026-02-17",
