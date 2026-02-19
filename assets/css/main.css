@@ -27,7 +27,7 @@
   --color-code-bg: #1e293b;
 
   --max-width: 1120px;
-  --content-width: 720px;
+  --content-width: 860px;
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -404,12 +404,12 @@ img {
 .badge-ai {
   display: inline-block;
   vertical-align: middle;
-  font-size: 0.55em;
+  font-size: 0.35em;
   font-weight: 600;
   line-height: 1;
-  padding: 0.25em 0.6em;
+  padding: 0.2em 0.45em;
   margin-left: 0.4em;
-  border-radius: 4px;
+  border-radius: 3px;
   background: linear-gradient(135deg, #8b5cf6, #6366f1);
   color: #fff;
   letter-spacing: 0.03em;
@@ -419,8 +419,8 @@ img {
 }
 
 .badge-ai--sm {
-  font-size: 0.65em;
-  padding: 0.2em 0.5em;
+  font-size: 0.45em;
+  padding: 0.15em 0.4em;
   margin-left: 0.3em;
   border-radius: 3px;
 }
