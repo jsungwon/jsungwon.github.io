@@ -400,6 +400,31 @@ img {
   margin-top: 0.5rem;
 }
 
+/* --- AI Generated Badge --- */
+.badge-ai {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0.55em;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.25em 0.6em;
+  margin-left: 0.4em;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: #fff;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  position: relative;
+  top: -0.15em;
+}
+
+.badge-ai--sm {
+  font-size: 0.65em;
+  padding: 0.2em 0.5em;
+  margin-left: 0.3em;
+  border-radius: 3px;
+}
+
 .post-tags {
   margin-top: var(--space-md);
   display: flex;

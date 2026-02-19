@@ -120,7 +120,7 @@
       html += '<span class="search-result__category search-result__category--' + escapeHtml(categoryClass) + '">' + escapeHtml(categoryLabel) + '</span>';
       html += '<span class="search-result__date">' + escapeHtml(post.date) + '</span>';
       html += '</div>';
-      html += '<h3 class="search-result__title">' + highlightMatch(post.title, query) + '</h3>';
+      html += '<h3 class="search-result__title">' + highlightMatch(post.title, query) + (post.ai_generated ? '<span class="badge-ai badge-ai--sm">AI</span>' : '') + '</h3>';
       if (post.subtitle) {
         html += '<p class="search-result__subtitle">' + escapeHtml(post.subtitle) + '</p>';
       }

@@ -6,7 +6,8 @@
     "date": "2026-02-18",
     "category": "tech",
     "tags": ["GitHub Pages","Jekyll","blog","Claude","automation"],
-    "subtitle": "Jekyll + GitHub Pages로 무료 블로그를 구축하고, Claude를 활용해 포스트 작성과 관리를 자동화하는 방법"
+    "subtitle": "Jekyll + GitHub Pages로 무료 블로그를 구축하고, Claude를 활용해 포스트 작성과 관리를 자동화하는 방법",
+    "ai_generated": false
   },
   
   {
@@ -15,7 +16,8 @@
     "date": "2026-02-17",
     "category": "research",
     "tags": ["paper review","single-cell","diffusion model","deep learning","generative model"],
-    "subtitle": "Bioinformatics (2024) — 잠재 확산 모델과 파운데이션 모델의 결합으로 조건부 scRNA-seq 데이터 생성"
+    "subtitle": "Bioinformatics (2024) — 잠재 확산 모델과 파운데이션 모델의 결합으로 조건부 scRNA-seq 데이터 생성",
+    "ai_generated": false
   },
   
   {
@@ -24,7 +26,8 @@
     "date": "2026-02-16",
     "category": "tech",
     "tags": ["Claude Code","AI coding","CLI","developer tools","productivity"],
-    "subtitle": "Anthropic의 AI 코딩 에이전트 Claude Code를 처음부터 끝까지 셋팅하고 활용하는 방법"
+    "subtitle": "Anthropic의 AI 코딩 에이전트 Claude Code를 처음부터 끝까지 셋팅하고 활용하는 방법",
+    "ai_generated": false
   },
   
   {
@@ -33,7 +36,8 @@
     "date": "2026-02-15",
     "category": "research",
     "tags": ["paper review","drug discovery","deep learning","transcriptomics","generative model"],
-    "subtitle": "Nature Communications (2024) — 신약 개발을 위한 in-silico 전사체 반응 예측 모델"
+    "subtitle": "Nature Communications (2024) — 신약 개발을 위한 in-silico 전사체 반응 예측 모델",
+    "ai_generated": false
   },
   
   {
@@ -42,7 +46,8 @@
     "date": "2025-10-27",
     "category": "trip",
     "tags": ["England","Seven Sisters","hiking","South Downs","Brighton"],
-    "subtitle": "런던에서 브라이턴을 거쳐, 하얀 절벽 위를 걷는 하루"
+    "subtitle": "런던에서 브라이턴을 거쳐, 하얀 절벽 위를 걷는 하루",
+    "ai_generated": false
   },
   
   {
@@ -51,7 +56,8 @@
     "date": "2025-10-26",
     "category": "trip",
     "tags": ["영국","런던","하이드파크","산책","서펜타인"],
-    "subtitle": "서펜타인 호수와 단풍 든 나무 사이를 걸으며 보낸 느긋한 시간"
+    "subtitle": "서펜타인 호수와 단풍 든 나무 사이를 걸으며 보낸 느긋한 시간",
+    "ai_generated": false
   },
   
   {
@@ -60,7 +66,8 @@
     "date": "2025-10-26",
     "category": "food",
     "tags": ["London","Borough Market","paella","street food","seafood"],
-    "subtitle": "줄 서서라도 먹을 가치가 있는 버로우 마켓의 시푸드 빠에야"
+    "subtitle": "줄 서서라도 먹을 가치가 있는 버로우 마켓의 시푸드 빠에야",
+    "ai_generated": false
   },
   
   {
@@ -69,7 +76,8 @@
     "date": "2025-09-15",
     "category": "trip",
     "tags": ["영국","케임브리지","산책","캠 강","펀팅"],
-    "subtitle": "800년 역사의 대학 도시를 걸으며 보낸 느긋한 하루"
+    "subtitle": "800년 역사의 대학 도시를 걸으며 보낸 느긋한 하루",
+    "ai_generated": false
   }
   
 ]
