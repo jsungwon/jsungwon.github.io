@@ -1,6 +1,16 @@
 [
   
   {
+    "title": "AI 기반 도구로 밝힌 폐 섬유증과 노화의 관계: IPF는 단순한 가속 노화가 아니다",
+    "url": "/research/2026/02/20/ai-driven-toolset-ipf-aging/",
+    "date": "2026-02-20",
+    "category": "research",
+    "tags": ["paper review","aging","IPF","deep learning","proteomics","generative model"],
+    "subtitle": "Aging (2025) — 프로테오믹 에이징 클락과 Precious3GPT를 활용한 IPF-노화 분자 기전 분석",
+    "ai_generated": true
+  },
+  
+  {
     "title": "GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화",
     "url": "/tech/2026/02/18/github-pages-blog-with-claude/",
     "date": "2026-02-18",

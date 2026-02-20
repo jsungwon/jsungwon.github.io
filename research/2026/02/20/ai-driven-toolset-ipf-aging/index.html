@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 기반 도구로 밝힌 폐 섬유증과 노화의 관계: IPF는 단순한 가속 노화가 아니다 — 놀놀할할</title>
+  <meta name="description" content="
+  논문 정보
+  
+    Title: AI-driven toolset for IPF and aging research associates lung fibrosis with accelerated aging
+    Authors: Fedor Galkin, Shan Chen, Alex Aliper, Alex Zhavoronkov, Feng Ren
+    Affiliation: Insilico Medicine
+    Journal: Aging, Volume 17, Issue 8, pp. 1999–2014 (2025)
+    DOI: 10.18632/aging.206295
+    Preprint: bioRxiv 2025.01.09.632065
+  
+
+">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- SEO -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>AI 기반 도구로 밝힌 폐 섬유증과 노화의 관계: IPF는 단순한 가속 노화가 아니다 | 놀놀할할</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="AI 기반 도구로 밝힌 폐 섬유증과 노화의 관계: IPF는 단순한 가속 노화가 아니다" />
+<meta name="author" content="Sungwon" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="논문 정보 Title: AI-driven toolset for IPF and aging research associates lung fibrosis with accelerated aging Authors: Fedor Galkin, Shan Chen, Alex Aliper, Alex Zhavoronkov, Feng Ren Affiliation: Insilico Medicine Journal: Aging, Volume 17, Issue 8, pp. 1999–2014 (2025) DOI: 10.18632/aging.206295 Preprint: bioRxiv 2025.01.09.632065" />
+<meta property="og:description" content="논문 정보 Title: AI-driven toolset for IPF and aging research associates lung fibrosis with accelerated aging Authors: Fedor Galkin, Shan Chen, Alex Aliper, Alex Zhavoronkov, Feng Ren Affiliation: Insilico Medicine Journal: Aging, Volume 17, Issue 8, pp. 1999–2014 (2025) DOI: 10.18632/aging.206295 Preprint: bioRxiv 2025.01.09.632065" />
+<link rel="canonical" href="https://jsungwon.github.io/research/2026/02/20/ai-driven-toolset-ipf-aging/" />
+<meta property="og:url" content="https://jsungwon.github.io/research/2026/02/20/ai-driven-toolset-ipf-aging/" />
+<meta property="og:site_name" content="놀놀할할" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-02-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="AI 기반 도구로 밝힌 폐 섬유증과 노화의 관계: IPF는 단순한 가속 노화가 아니다" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sungwon"},"dateModified":"2026-02-20T00:00:00+00:00","datePublished":"2026-02-20T00:00:00+00:00","description":"논문 정보 Title: AI-driven toolset for IPF and aging research associates lung fibrosis with accelerated aging Authors: Fedor Galkin, Shan Chen, Alex Aliper, Alex Zhavoronkov, Feng Ren Affiliation: Insilico Medicine Journal: Aging, Volume 17, Issue 8, pp. 1999–2014 (2025) DOI: 10.18632/aging.206295 Preprint: bioRxiv 2025.01.09.632065","headline":"AI 기반 도구로 밝힌 폐 섬유증과 노화의 관계: IPF는 단순한 가속 노화가 아니다","mainEntityOfPage":{"@type":"WebPage","@id":"https://jsungwon.github.io/research/2026/02/20/ai-driven-toolset-ipf-aging/"},"url":"https://jsungwon.github.io/research/2026/02/20/ai-driven-toolset-ipf-aging/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWB335C28N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DWB335C28N');
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <svg class="logo-svg" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">놀놀할할</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="/research/" class="nav-link nav-link--active">Research</a>
+      <a href="/tech/" class="nav-link ">Tech</a>
+      <a href="/trip/" class="nav-link ">Trip</a>
+      <a href="/food/" class="nav-link ">Food</a>
+      <a href="/about/" class="nav-link ">About</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="search-toggle" aria-label="검색 열기">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+      <button class="nav-toggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-modal__header">
+      <div class="search-input-wrap">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="제목 또는 태그로 검색..."
+          autocomplete="off"
+        >
+        <kbd class="search-kbd">ESC</kbd>
+      </div>
+    </div>
+    <div class="search-modal__body" id="searchResults">
+      <div class="search-empty">
+        <p class="search-empty__text">검색어를 입력하세요</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/search.js"></script>
+
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  toggle?.addEventListener('click', () => {
+    nav.classList.toggle('is-open');
+    toggle.classList.toggle('is-active');
+  });
+</script>
+
+  
+  <main class="site-main">
+    <article class="post-full">
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-category post-category--research">
+        🧬 Research
+      </span>
+      <time datetime="2026-02-20T00:00:00+00:00">
+        2026년 02월 20일
+      </time>
+    </div>
+    <h1 class="post-title">AI 기반 도구로 밝힌 폐 섬유증과 노화의 관계: IPF는 단순한 가속 노화가 아니다<span class="badge-ai">AI Generated</span></h1>
+    
+    <p class="post-subtitle">Aging (2025) — 프로테오믹 에이징 클락과 Precious3GPT를 활용한 IPF-노화 분자 기전 분석</p>
+    
+    
+    <div class="post-tags">
+      
+      <span class="tag">#paper review</span>
+      
+      <span class="tag">#aging</span>
+      
+      <span class="tag">#IPF</span>
+      
+      <span class="tag">#deep learning</span>
+      
+      <span class="tag">#proteomics</span>
+      
+      <span class="tag">#generative model</span>
+      
+    </div>
+    
+  </header>
+
+  
+
+  <div class="post-content">
+    <blockquote>
+  <p><strong>논문 정보</strong></p>
+  <ul>
+    <li><strong>Title</strong>: AI-driven toolset for IPF and aging research associates lung fibrosis with accelerated aging</li>
+    <li><strong>Authors</strong>: Fedor Galkin, Shan Chen, Alex Aliper, Alex Zhavoronkov, Feng Ren</li>
+    <li><strong>Affiliation</strong>: Insilico Medicine</li>
+    <li><strong>Journal</strong>: Aging, Volume 17, Issue 8, pp. 1999–2014 (2025)</li>
+    <li><strong>DOI</strong>: <a href="https://doi.org/10.18632/aging.206295">10.18632/aging.206295</a></li>
+    <li><strong>Preprint</strong>: <a href="https://www.biorxiv.org/content/10.1101/2025.01.09.632065v1">bioRxiv 2025.01.09.632065</a></li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h2 id="연구-배경-및-동기">연구 배경 및 동기</h2>
+
+<p><strong>특발성 폐 섬유증(Idiopathic Pulmonary Fibrosis, IPF)</strong>은 주로 고령층에서 발생하는 만성 진행성 폐 질환으로, 폐 조직이 점진적으로 반흔화(scarring)되어 호흡 기능이 저하된다. IPF 환자의 중위 생존기간은 진단 후 약 3~5년에 불과하며, 현재 FDA 승인 약물인 pirfenidone과 nintedanib도 질병의 진행을 완전히 멈추지는 못한다.</p>
+
+<p>오래전부터 IPF와 노화(aging) 사이의 연관성은 관찰되어 왔다. IPF 환자의 대다수가 60세 이상이며, 폐 조직에서 <strong>텔로미어 단축(telomere shortening)</strong>, <strong>세포 노화(cellular senescence)</strong>, <strong>미토콘드리아 기능 장애(mitochondrial dysfunction)</strong> 등 노화의 전형적인 특징들이 관찰된다. 그러나 핵심 질문은 남아 있었다:</p>
+
+<blockquote>
+  <p><strong>IPF는 단순히 폐에서 노화가 가속된 것인가, 아니면 노화와 구별되는 독립적인 병리 과정인가?</strong></p>
+</blockquote>
+
+<p>Insilico Medicine의 연구팀은 이 질문에 답하기 위해, 두 가지 상호보완적인 AI 도구 — <strong>경로 인식 프로테오믹 에이징 클락(pathway-aware proteomic aging clock)</strong>과 <strong>ipf-Precious3GPT(ipf-P3GPT)</strong> — 를 개발하고 적용했다.</p>
+
+<hr />
+
+<h2 id="ai-도구-1-경로-인식-프로테오믹-에이징-클락">AI 도구 1: 경로 인식 프로테오믹 에이징 클락</h2>
+
+<h3 id="아키텍처">아키텍처</h3>
+
+<p>첫 번째 도구는 UK Biobank의 대규모 프로테오믹 데이터를 활용한 <strong>에이징 클락(aging clock)</strong>이다. 기존 에이징 클락과 차별화되는 핵심은 <strong>경로 인식(pathway-aware)</strong> 설계로, 단순히 생물학적 나이를 예측하는 것을 넘어 어떤 생물학적 경로(pathway)가 노화에 기여하는지 해석할 수 있다.</p>
+
+<p>이 클락의 신경망 아키텍처는 다음과 같이 구성된다:</p>
+
+<ol>
+  <li><strong>특징 추출 레이어(Feature Extraction Layers)</strong>: 단백질 측정값을 입력으로 받아 처리</li>
+  <li><strong>이중 분기 구조</strong>: 나이 예측(age prediction)과 경로별 어텐션 메커니즘(pathway-specific attention mechanism)으로 분기</li>
+  <li><strong>해석 가능한 노화 분석</strong>: 어텐션 가중치를 통해 특정 경로의 노화 기여도를 정량화</li>
+</ol>
+
+<h3 id="학습-데이터">학습 데이터</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>세부 사항</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>데이터 출처</strong></td>
+      <td>UK Biobank</td>
+    </tr>
+    <tr>
+      <td><strong>참가자 수</strong></td>
+      <td>55,319명</td>
+    </tr>
+    <tr>
+      <td><strong>연령 범위</strong></td>
+      <td>50–85세</td>
+    </tr>
+    <tr>
+      <td><strong>프로테오믹 플랫폼</strong></td>
+      <td>Olink NPX</td>
+    </tr>
+    <tr>
+      <td><strong>입력 특징</strong></td>
+      <td>프로테오믹 프로파일 + 성별</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="성능">성능</h3>
+
+<p>에이징 클락은 교차 검증에서 <strong>R² = 0.84</strong>의 높은 예측 성능을 보였다. 다만, 연령대별 편향(bias)이 관찰되었다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>연령대</th>
+      <th>특성</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>50–59세</strong></td>
+      <td>약 +2.25세 과대 추정 (overestimation)</td>
+    </tr>
+    <tr>
+      <td><strong>80–89세</strong></td>
+      <td>약 -4.07세 과소 추정 (underestimation), MAE 4.08세</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이는 고령 그룹에서의 생물학적 변이(biological variability)가 더 크다는 점을 반영하며, 프로테오믹 에이징 클락의 일반적인 한계이기도 하다.</p>
+
+<h3 id="covid-19-데이터셋을-통한-검증">COVID-19 데이터셋을 통한 검증</h3>
+
+<p>IPF 환자 코호트에 직접 적용하기 전, 연구팀은 독립 데이터셋인 <strong>COVID-19 코호트</strong>에서 에이징 클락의 유용성을 검증했다. COVID-19 중증 사례는 종종 <strong>폐 섬유증</strong>과 유사한 병리를 동반하므로, 간접적인 검증 수단이 될 수 있다.</p>
+
+<p>선형 회귀 분석 결과, <strong>중증 COVID-19 환자는 건강한 대조군 대비 생물학적 나이가 +2.77세 높게 예측</strong>되었으며, 이는 통계적으로 유의했다 (P = 0.026). 이는 폐 섬유화를 동반하는 질환에서 실제로 생물학적 노화가 가속된다는 에이징 클락의 탐지 능력을 보여준다.</p>
+
+<hr />
+
+<h2 id="ai-도구-2-ipf-precious3gpt-ipf-p3gpt">AI 도구 2: ipf-Precious3GPT (ipf-P3GPT)</h2>
+
+<h3 id="모델-개요">모델 개요</h3>
+
+<p>두 번째 도구인 <strong>ipf-P3GPT</strong>는 Insilico Medicine이 개발한 멀티모달 생성 AI 모델 <strong>Precious3GPT</strong>를 IPF 연구에 특화시킨 버전이다. Precious3GPT는 텍스트 프롬프트로부터 유전자 발현 차이(differential gene expression) 프로파일을 생성할 수 있는 <strong>트랜스포머(transformer) 기반 생성 모델</strong>이다.</p>
+
+<h3 id="학습-데이터-1">학습 데이터</h3>
+
+<p>ipf-P3GPT의 학습에는 원본 P3GPT 학습 프롬프트에서 필터링한 컬렉션이 사용되었다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>프롬프트 유형</th>
+      <th>수량</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>disease2diff2disease</strong></td>
+      <td>672개</td>
+      <td>질병 → 유전자 발현 차이 → 질병 예측</td>
+    </tr>
+    <tr>
+      <td><strong>age_group2diff2age_group</strong></td>
+      <td>3,201개</td>
+      <td>연령대 → 유전자 발현 차이 → 연령대 예측</td>
+    </tr>
+    <tr>
+      <td><strong>전체</strong></td>
+      <td>3,873개</td>
+      <td>IPF 및 노화 관련 프롬프트</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="분석-방법">분석 방법</h3>
+
+<p>ipf-P3GPT는 다음과 같은 방식으로 IPF와 노화의 분자적 관계를 분석했다:</p>
+
+<ol>
+  <li>IPF 환자의 유전자 발현 프로파일 생성</li>
+  <li>정상 폐 노화(30세~70세)에 따른 유전자 발현 변화 프로파일 생성</li>
+  <li>두 프로파일의 비교를 통해 <strong>공유 유전자(shared genes)</strong>와 <strong>고유 유전자(unique genes)</strong> 식별</li>
+  <li>경로 수준(pathway-level) 분석으로 생물학적 기전 해석</li>
+</ol>
+
+<hr />
+
+<h2 id="주요-결과">주요 결과</h2>
+
+<h3 id="1-ipf와-노화의-분자-시그니처-비교">1. IPF와 노화의 분자 시그니처 비교</h3>
+
+<p>ipf-P3GPT 분석에서 가장 핵심적인 발견은 IPF와 노화의 유전자 시그니처가 <strong>상당 부분 독립적</strong>이라는 점이다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>시그니처</th>
+      <th>유전자 수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>IPF 관련 유전자</strong></td>
+      <td>96개</td>
+    </tr>
+    <tr>
+      <td><strong>노화 관련 유전자</strong></td>
+      <td>93개</td>
+    </tr>
+    <tr>
+      <td><strong>공유 유전자 (overlap)</strong></td>
+      <td>15개 (15.6%)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>특히 주목할 점은, <strong>공유 유전자 15개 중 절반 이상(53.3%)이 IPF와 노화에서 반대 방향으로 조절</strong>되었다는 것이다. 이는 IPF가 단순히 노화를 가속시키는 것이 아니라, <strong>정상 노화 경로를 교란(dysregulate)</strong>한다는 것을 의미한다.</p>
+
+<h3 id="2-세포외-기질ecm-관련-유전자의-이중적-역할">2. 세포외 기질(ECM) 관련 유전자의 이중적 역할</h3>
+
+<p>IPF와 노화 시그니처 모두에서 <strong>세포외 기질(Extracellular Matrix, ECM)</strong> 관련 유전자가 유의미하게 풍부(enriched)했으나, 조절 패턴은 뚜렷하게 달랐다:</p>
+
+<p><strong>IPF 시그니처의 ECM 프로파일:</strong></p>
+<ul>
+  <li>다수의 콜라겐 유형 변화: <strong>COL1A1</strong>↓, <strong>COL3A1</strong>↓, <strong>COL5A1</strong>↑, <strong>COL15A1</strong>↑</li>
+  <li>기질 분해 효소 상향 조절: <strong>MMP1</strong>↑, <strong>MMP13</strong>↑</li>
+</ul>
+
+<p><strong>노화 시그니처의 ECM 프로파일:</strong></p>
+<ul>
+  <li>구조 단백질 감소: <strong>ELN</strong>(엘라스틴)↓, <strong>MFAP4</strong>↓, <strong>MFAP5</strong>↓</li>
+  <li>기질 관련 인자 변화: <strong>POSTN</strong>(페리오스틴)↓</li>
+</ul>
+
+<p>특히 <strong>COL1A1</strong>(제1형 콜라겐)은 IPF에서는 하향 조절되지만 노화에서는 상향 조절되어, <strong>기질 재구성 메커니즘이 근본적으로 다르다</strong>는 것을 시사한다.</p>
+
+<h3 id="3-tgf-β-및-염증-경로의-차이">3. TGF-β 및 염증 경로의 차이</h3>
+
+<p>연구팀은 IPF와 노화에서 공통적으로 중요한 <strong>4개의 핵심 경로</strong>를 식별했다:</p>
+
+<ol>
+  <li><strong>TGF-β 신호전달(TGF-β signaling)</strong></li>
+  <li><strong>산화 스트레스(Oxidative stress)</strong></li>
+  <li><strong>염증(Inflammation)</strong></li>
+  <li><strong>세포외 기질 리모델링(ECM remodeling)</strong></li>
+</ol>
+
+<p>그러나 유전자 수준에서는 뚜렷한 차이가 존재했다:</p>
+
+<p><strong>IPF 시그니처:</strong></p>
+<ul>
+  <li>TGF-β 경로 구성요소: <strong>TGFBR1</strong>↓, <strong>GDF15</strong>↓, <strong>BGN</strong>↑</li>
+  <li>염증 매개체: <strong>CXCL8</strong>↑, <strong>IL1B</strong>↓, <strong>CCL8</strong>↓</li>
+</ul>
+
+<p><strong>노화 시그니처:</strong></p>
+<ul>
+  <li>공유 염증 매개체: <strong>IL6</strong>↑, <strong>IL1RL1</strong>↑</li>
+  <li>성장인자 프로파일: <strong>FGF7</strong>↓, <strong>CSF3</strong>↑</li>
+</ul>
+
+<h3 id="4-ipf-고유의-병리-기전">4. IPF 고유의 병리 기전</h3>
+
+<p>비공유 유전자(non-overlapping genes)가 압도적으로 많다는 사실은 IPF가 정상 노화와 구별되는 <strong>고유한 병리 기전</strong>을 가지고 있음을 보여준다:</p>
+
+<ul>
+  <li><strong>비정상적 상처 치유 반응</strong>: MMP1, MMP13</li>
+  <li><strong>변형된 성장인자 신호전달</strong>: TGFBR1, GDF15</li>
+  <li><strong>조절 장애된 염증 매개체</strong>: CXCL8, IL1B</li>
+  <li><strong>IPF 고유 섬유화 인자</strong>: AKT3, IL-6 (IPF 시그니처에만 존재)</li>
+</ul>
+
+<p>핵심 섬유화 유발 인자인 <strong>MMP1</strong>, <strong>MMP13</strong>, <strong>AKT3</strong>, <strong>IL-6</strong>가 IPF 시그니처에만 고유하게 존재한다는 점은, <strong>노화가 IPF에 대한 취약성을 높이지만, 질병 자체는 노화와 독립적인 병리 과정을 따른다</strong>는 결론을 뒷받침한다.</p>
+
+<hr />
+
+<h2 id="의의-및-한계">의의 및 한계</h2>
+
+<h3 id="의의">의의</h3>
+
+<ol>
+  <li><strong>핵심 질문에 대한 답</strong>: IPF는 단순한 가속 노화(accelerated aging)가 아니라, 노화에 의해 형성되지만 고유한 분자적 경로를 가진 <strong>별개의 병리 상태(distinct biological condition)</strong>라는 것을 AI 기반으로 규명</li>
+  <li><strong>두 가지 상호보완적 AI 도구</strong>: 프로테오믹 에이징 클락(단백체 수준)과 ipf-P3GPT(전사체 수준)를 결합하여 다중 오믹스 관점에서 분석</li>
+  <li><strong>확장 가능한 프레임워크</strong>: 개발된 도구는 IPF뿐 아니라 <strong>간 섬유증(liver fibrosis)</strong>, <strong>신장 섬유증(kidney fibrosis)</strong> 등 다른 노화 관련 질환에도 적용 가능</li>
+  <li><strong>치료 전략 시사점</strong>: IPF와 노화의 분자적 차이 규명은 IPF에 특화된 항섬유화 약물 개발과 anti-aging 전략의 분리/통합 여부에 대한 중요한 근거를 제공</li>
+</ol>
+
+<h3 id="한계-및-후속-연구-방향">한계 및 후속 연구 방향</h3>
+
+<ul>
+  <li><strong>실험적 검증 부재</strong>: 연구가 전적으로 계산 모델에 기반하며, 주요 발견에 대한 직접적인 in vitro/in vivo 검증이 이루어지지 않음</li>
+  <li><strong>간접적 IPF 검증</strong>: COVID-19 코호트를 통한 검증은 IPF 병리를 완전히 대표하지 못할 수 있음</li>
+  <li><strong>후성유전학적 요인 미반영</strong>: 전사체 및 단백체 데이터에 의존하여, IPF와 노화 관계에서 중요한 <strong>후성유전학적(epigenetic)</strong> 요인이 충분히 고려되지 않음</li>
+  <li><strong>에이징 클락의 연령대 편향</strong>: 고령 그룹에서의 예측 정확도 저하는 실제 IPF 환자군(주로 60세 이상)에 적용할 때 주의가 필요함</li>
+</ul>
+
+<hr />
+
+<h2 id="개인적-소감">개인적 소감</h2>
+
+<p>이 논문은 <strong>노화와 질병의 관계</strong>라는 근본적인 질문에 AI 도구를 활용하여 접근한 흥미로운 연구다. 특히 인상적인 부분은:</p>
+
+<ol>
+  <li>
+    <p><strong>명확한 결론 도출</strong>: “IPF는 가속 노화인가?”라는 질문에 대해, 공유 유전자의 53.3%가 반대 방향 조절을 보인다는 정량적 근거를 통해 “아니다, IPF는 노화를 교란하는 독립적 과정이다”라는 명확한 답을 제시했다.</p>
+  </li>
+  <li>
+    <p><strong>Precious3GPT의 활용 방식</strong>: 텍스트 프롬프트로부터 유전자 발현 프로파일을 생성하는 접근은, 기존의 데이터 마이닝과 근본적으로 다른 패러다임이다. 실험 데이터가 부족한 조건에서도 AI가 학습한 생물학적 지식을 바탕으로 가설을 생성할 수 있다는 점에서, 노화 연구의 새로운 도구가 될 수 있다.</p>
+  </li>
+  <li>
+    <p><strong>프로테오믹 에이징 클락의 경로 인식 설계</strong>: 단순 나이 예측을 넘어 어떤 경로가 노화에 기여하는지 해석할 수 있는 아키텍처는, 노화의 이질성(heterogeneity)을 연구하는 데 유용하다.</p>
+  </li>
+</ol>
+
+<p>다만, 실험적 검증이 전무하다는 점은 아쉽다. 특히 COL1A1의 반대 방향 조절이나 MMP1/MMP13의 IPF 특이적 상향 조절 같은 핵심 발견은, 환자 유래 조직이나 오가노이드 모델에서의 검증이 뒷받침되어야 설득력이 높아질 것이다. Insilico Medicine이 이미 임상 파이프라인을 보유하고 있는 만큼, 후속 연구에서 실험적 검증이 이루어지길 기대한다.</p>
+
+<p>노화 연구 관점에서, 이 연구가 제시한 프레임워크는 IPF에 국한되지 않고 <strong>다양한 노화 관련 질환(알츠하이머, 골관절염, 2형 당뇨 등)에서 “가속 노화 vs. 독립적 병리”라는 질문</strong>에 체계적으로 답하는 데 활용될 수 있을 것이다.</p>
+
+<hr />
+
+<p><strong>References</strong></p>
+<ul>
+  <li>Galkin, F., Chen, S., Aliper, A., Zhavoronkov, A. &amp; Ren, F. AI-driven toolset for IPF and aging research associates lung fibrosis with accelerated aging. <em>Aging</em> <strong>17</strong>, 1999–2014 (2025). <a href="https://doi.org/10.18632/aging.206295">https://doi.org/10.18632/aging.206295</a></li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://pubmed.ncbi.nlm.nih.gov/40782333/">PubMed</a></td>
+          <td><a href="https://www.biorxiv.org/content/10.1101/2025.01.09.632065v1">bioRxiv Preprint</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-nav">
+      
+      <a class="post-nav__prev" href="/tech/2026/02/18/github-pages-blog-with-claude/">
+        <span class="post-nav__label">← 이전 글</span>
+        <span class="post-nav__title">GitHub Pages로 개인 블로그 만들기: Claude와 함께하는 자동화</span>
+      </a>
+      
+      
+    </div>
+  </footer>
+   <!-- 댓글 (giscus) -->
+  
+   <!-- 댓글 영역 -->
+<div class="comments-section">
+    <h2 class="comments-title">💬 댓글</h2>
+    <script src="https://giscus.app/client.js"
+    data-repo="jsungwon/jsungwon.github.io"
+    data-repo-id="R_kgDORQmu8A"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORQmu8M4C2eY7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+</script>
+  </div>
+  
+  <style>
+    .comments-section {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #e8e4df;
+    }
+    .comments-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+  </style>
+  
+ 
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="logo-svg logo-svg--footer" width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <p>Bioinformatics, Tech, Travel & Life</p>
+    </div>
+    <div class="footer-links">
+      
+      <a href="https://github.com/jsungwon" target="_blank" rel="noopener">GitHub</a>
+      
+      
+      <a href="mailto:jsw0061@gmail.com">Email</a>
+      
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 Sungwon. Built with Jekyll & GitHub Pages.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
