@@ -1076,6 +1076,130 @@ img {
   color: var(--color-text);
 }
 
+/* --- Tag Link (clickable) --- */
+.tag--link {
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tag--link:hover {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+/* --- Tags Page --- */
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: var(--space-xl);
+}
+
+.tag--filter {
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  font-family: var(--font-body);
+  transition: all 0.2s;
+}
+
+.tag--filter:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.tag--filter.tag--active {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+.tag__count {
+  font-size: 0.68rem;
+  opacity: 0.6;
+  margin-left: 0.15rem;
+}
+
+.tag--filter.tag--active .tag__count {
+  opacity: 0.85;
+}
+
+.tags-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-accent-soft);
+  border-radius: var(--radius);
+}
+
+.tags-status__text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.tags-status__clear {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tags-status__clear:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.tags-empty {
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.post-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.post-card__category {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+}
+
+.post-card__category--research {
+  color: var(--color-research);
+  background: var(--color-research-soft);
+}
+
+.post-card__category--tech {
+  color: var(--color-tech);
+  background: var(--color-tech-soft);
+}
+
+.post-card__category--trip {
+  color: var(--color-trip);
+  background: var(--color-trip-soft);
+}
+
+.post-card__category--food {
+  color: var(--color-food);
+  background: var(--color-food-soft);
+}
+
 .tag--highlight mark {
   background: #fef08a;
   color: inherit;
