@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code Skills 완벽 가이드: 나만의 AI 워크플로우 만들기 — 놀놀할할</title>
+  <meta name="description" content="
+  Claude Code는 터미널에서 코드를 읽고, 수정하고, 실행하는 AI 에이전트다. 하지만 프로젝트마다 반복되는 작업이 있다면? Skills를 만들어 Claude에게 “우리 팀은 이렇게 일한다”고 가르칠 수 있다. 이 글에서는 Skills의 개념부터 고급 활용까지 단계별로 다룬다.
+
+">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- SEO -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Claude Code Skills 완벽 가이드: 나만의 AI 워크플로우 만들기 | 놀놀할할</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Claude Code Skills 완벽 가이드: 나만의 AI 워크플로우 만들기" />
+<meta name="author" content="Sungwon" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Claude Code는 터미널에서 코드를 읽고, 수정하고, 실행하는 AI 에이전트다. 하지만 프로젝트마다 반복되는 작업이 있다면? Skills를 만들어 Claude에게 “우리 팀은 이렇게 일한다”고 가르칠 수 있다. 이 글에서는 Skills의 개념부터 고급 활용까지 단계별로 다룬다." />
+<meta property="og:description" content="Claude Code는 터미널에서 코드를 읽고, 수정하고, 실행하는 AI 에이전트다. 하지만 프로젝트마다 반복되는 작업이 있다면? Skills를 만들어 Claude에게 “우리 팀은 이렇게 일한다”고 가르칠 수 있다. 이 글에서는 Skills의 개념부터 고급 활용까지 단계별로 다룬다." />
+<link rel="canonical" href="https://jsungwon.github.io/tech/2026/02/24/claude-code-skills-guide/" />
+<meta property="og:url" content="https://jsungwon.github.io/tech/2026/02/24/claude-code-skills-guide/" />
+<meta property="og:site_name" content="놀놀할할" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-02-24T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Claude Code Skills 완벽 가이드: 나만의 AI 워크플로우 만들기" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sungwon"},"dateModified":"2026-02-24T00:00:00+00:00","datePublished":"2026-02-24T00:00:00+00:00","description":"Claude Code는 터미널에서 코드를 읽고, 수정하고, 실행하는 AI 에이전트다. 하지만 프로젝트마다 반복되는 작업이 있다면? Skills를 만들어 Claude에게 “우리 팀은 이렇게 일한다”고 가르칠 수 있다. 이 글에서는 Skills의 개념부터 고급 활용까지 단계별로 다룬다.","headline":"Claude Code Skills 완벽 가이드: 나만의 AI 워크플로우 만들기","mainEntityOfPage":{"@type":"WebPage","@id":"https://jsungwon.github.io/tech/2026/02/24/claude-code-skills-guide/"},"url":"https://jsungwon.github.io/tech/2026/02/24/claude-code-skills-guide/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWB335C28N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DWB335C28N');
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <svg class="logo-svg" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">놀놀할할</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="/research/" class="nav-link ">Research</a>
+      <a href="/tech/" class="nav-link nav-link--active">Tech</a>
+      <a href="/trip/" class="nav-link ">Trip</a>
+      <a href="/food/" class="nav-link ">Food</a>
+      <a href="/tags/" class="nav-link ">Tags</a>
+      <a href="/about/" class="nav-link ">About</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="search-toggle" aria-label="검색 열기">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+      <button class="nav-toggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-modal__header">
+      <div class="search-input-wrap">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="제목 또는 태그로 검색..."
+          autocomplete="off"
+        >
+        <kbd class="search-kbd">ESC</kbd>
+      </div>
+    </div>
+    <div class="search-modal__body" id="searchResults">
+      <div class="search-empty">
+        <p class="search-empty__text">검색어를 입력하세요</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/search.js"></script>
+
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  toggle?.addEventListener('click', () => {
+    nav.classList.toggle('is-open');
+    toggle.classList.toggle('is-active');
+  });
+</script>
+
+  
+  <main class="site-main">
+    <article class="post-full">
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-category post-category--tech">
+        💻 Tech
+      </span>
+      <time datetime="2026-02-24T00:00:00+00:00">
+        2026년 02월 24일
+      </time>
+    </div>
+    <h1 class="post-title">Claude Code Skills 완벽 가이드: 나만의 AI 워크플로우 만들기<span class="badge-ai">AI Generated</span></h1>
+    
+    <p class="post-subtitle">커스텀 Skill을 만들어 Claude Code를 프로젝트에 맞게 확장하는 방법</p>
+    
+    
+    <div class="post-tags">
+      
+      <a href="/tags/#claude-code" class="tag tag--link">#Claude Code</a>
+      
+      <a href="/tags/#skills" class="tag tag--link">#skills</a>
+      
+      <a href="/tags/#ai-coding" class="tag tag--link">#AI coding</a>
+      
+      <a href="/tags/#automation" class="tag tag--link">#automation</a>
+      
+      <a href="/tags/#productivity" class="tag tag--link">#productivity</a>
+      
+    </div>
+    
+  </header>
+
+  
+
+  <div class="post-content">
+    <blockquote>
+  <p>Claude Code는 터미널에서 코드를 읽고, 수정하고, 실행하는 AI 에이전트다. 하지만 <strong>프로젝트마다 반복되는 작업</strong>이 있다면? Skills를 만들어 Claude에게 “우리 팀은 이렇게 일한다”고 가르칠 수 있다. 이 글에서는 Skills의 개념부터 고급 활용까지 단계별로 다룬다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="skills란-무엇인가">Skills란 무엇인가</h2>
+
+<p><strong>Skills</strong>는 Claude Code에 추가하는 커스텀 명령(Custom Slash Command)이다. 마크다운 파일 하나로 정의하며, Claude가 특정 작업을 수행할 때 따라야 할 지침을 담는다.</p>
+
+<p>예를 들어 <code class="language-plaintext highlighter-rouge">/deploy</code>라는 Skill을 만들면, Claude가 배포 절차를 정확히 따르도록 할 수 있다. <code class="language-plaintext highlighter-rouge">/write-test</code>를 만들면, 팀의 테스트 컨벤션에 맞춰 테스트 코드를 생성한다.</p>
+
+<h3 id="skills-vs-claudemd">Skills vs CLAUDE.md</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>CLAUDE.md</th>
+      <th>Skills</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>역할</strong></td>
+      <td>프로젝트 전반의 규칙</td>
+      <td>특정 작업에 대한 지침</td>
+    </tr>
+    <tr>
+      <td><strong>로딩 시점</strong></td>
+      <td>항상 로딩</td>
+      <td>필요할 때만 로딩</td>
+    </tr>
+    <tr>
+      <td><strong>호출 방식</strong></td>
+      <td>자동</td>
+      <td><code class="language-plaintext highlighter-rouge">/skill-name</code> 또는 자동 감지</td>
+    </tr>
+    <tr>
+      <td><strong>컨텍스트 비용</strong></td>
+      <td>항상 소비</td>
+      <td>호출 시에만 소비</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>CLAUDE.md에 모든 규칙을 넣으면 컨텍스트 윈도우를 불필요하게 소비한다. Skills는 <strong>필요한 순간에만 로딩</strong>되므로 효율적이다.</p>
+
+<hr />
+
+<h2 id="기본-구조">기본 구조</h2>
+
+<h3 id="저장-위치">저장 위치</h3>
+
+<p>Skills는 두 가지 레벨로 저장할 수 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 프로젝트 레벨 (이 프로젝트에서만 사용)
+.claude/skills/skill-name/SKILL.md
+.claude/skills/skill-name.md        # 단일 파일도 가능
+
+# 개인 레벨 (모든 프로젝트에서 사용)
+~/.claude/skills/skill-name/SKILL.md
+</code></pre></div></div>
+
+<p><strong>프로젝트 레벨</strong> Skills는 Git으로 버전 관리되므로 팀원 모두가 같은 워크플로우를 공유할 수 있다. <strong>개인 레벨</strong> Skills는 자신만의 작업 스타일을 정의할 때 유용하다.</p>
+
+<h3 id="파일-형식">파일 형식</h3>
+
+<p>Skill 파일은 <strong>YAML frontmatter + 마크다운 본문</strong>으로 구성된다.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">my-skill</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">이 Skill이 하는 일을 한 줄로 설명</span>
+<span class="nn">---</span>
+
+<span class="gu">## 지침</span>
+
+Claude가 이 Skill을 실행할 때 따라야 할 구체적인 지침을 작성한다.
+<span class="p">
+1.</span> 첫 번째 단계
+<span class="p">2.</span> 두 번째 단계
+<span class="p">3.</span> 세 번째 단계
+</code></pre></div></div>
+
+<p>가장 간단한 형태는 이것뿐이다. <code class="language-plaintext highlighter-rouge">name</code>과 <code class="language-plaintext highlighter-rouge">description</code>만 있으면 동작한다.</p>
+
+<hr />
+
+<h2 id="step-1-첫-번째-skill-만들기">Step 1: 첫 번째 Skill 만들기</h2>
+
+<p>실전 예시로 <strong>코드 리뷰 Skill</strong>을 만들어 보자.</p>
+
+<h3 id="디렉토리-생성">디렉토리 생성</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> .claude/skills
+</code></pre></div></div>
+
+<h3 id="skill-파일-작성">Skill 파일 작성</h3>
+
+<p><code class="language-plaintext highlighter-rouge">.claude/skills/review-code.md</code> 파일을 생성한다.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">review-code</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">코드 리뷰를 수행한다. 보안, 성능, 가독성 관점에서 분석한다.</span>
+<span class="na">argument-hint</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">파일 경로</span><span class="pi">]</span>
+<span class="nn">---</span>
+
+<span class="gu">## 코드 리뷰 절차</span>
+
+지정된 파일에 대해 아래 관점으로 리뷰를 수행한다.
+
+<span class="gu">### 1. 보안 (Security)</span>
+<span class="p">-</span> SQL 인젝션, XSS, 인증 우회 등 OWASP Top 10 취약점 확인
+<span class="p">-</span> 하드코딩된 시크릿이나 API 키 존재 여부
+
+<span class="gu">### 2. 성능 (Performance)</span>
+<span class="p">-</span> N+1 쿼리, 불필요한 반복, 메모리 누수 가능성
+<span class="p">-</span> 캐싱 가능한 로직 식별
+
+<span class="gu">### 3. 가독성 (Readability)</span>
+<span class="p">-</span> 변수/함수 네이밍 컨벤션 준수 여부
+<span class="p">-</span> 복잡한 로직에 대한 주석 필요성
+
+<span class="gu">### 4. 출력 형식</span>
+리뷰 결과를 아래 형식으로 정리한다:
+<span class="p">
+-</span> <span class="gs">**심각도**</span>: 🔴 Critical / 🟡 Warning / 🔵 Info
+<span class="p">-</span> <span class="gs">**위치**</span>: 파일명:라인번호
+<span class="p">-</span> <span class="gs">**설명**</span>: 문제점과 개선 방안
+</code></pre></div></div>
+
+<h3 id="사용">사용</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Claude Code에서 직접 호출</span>
+<span class="o">&gt;</span> /review-code src/auth/login.ts
+</code></pre></div></div>
+
+<p>Claude가 <code class="language-plaintext highlighter-rouge">description</code>을 읽고 관련 상황에서 자동으로 이 Skill을 로딩하기도 한다. “이 파일 리뷰해줘”라고 요청하면 Claude가 <code class="language-plaintext highlighter-rouge">/review-code</code> Skill을 감지해서 적용한다.</p>
+
+<hr />
+
+<h2 id="step-2-frontmatter-옵션-이해하기">Step 2: Frontmatter 옵션 이해하기</h2>
+
+<p>Frontmatter는 Skill의 동작을 제어하는 설정이다. 모든 필드는 선택사항이지만, <code class="language-plaintext highlighter-rouge">description</code>은 반드시 작성하는 것이 좋다.</p>
+
+<h3 id="필수-권장-필드">필수 권장 필드</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>필드</th>
+      <th>타입</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td>String</td>
+      <td><code class="language-plaintext highlighter-rouge">/</code> 뒤에 오는 명령어 이름. 생략 시 디렉토리명 사용</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">description</code></td>
+      <td>String</td>
+      <td>Skill의 역할. Claude가 자동 감지에 사용</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="호출-제어-필드">호출 제어 필드</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>필드</th>
+      <th>타입</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">argument-hint</code></td>
+      <td>String</td>
+      <td>자동완성에서 인자 형태 표시. 예: <code class="language-plaintext highlighter-rouge">[filename] [format]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">disable-model-invocation</code></td>
+      <td>Boolean</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code>면 Claude가 자동 호출 불가. 사용자만 <code class="language-plaintext highlighter-rouge">/</code>로 직접 호출</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">user-invocable</code></td>
+      <td>Boolean</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code>면 <code class="language-plaintext highlighter-rouge">/</code> 메뉴에 숨김. Claude만 내부적으로 사용</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="실행-환경-필드">실행 환경 필드</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>필드</th>
+      <th>타입</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">allowed-tools</code></td>
+      <td>Array</td>
+      <td>Skill 실행 시 허용되는 도구 목록. 예: <code class="language-plaintext highlighter-rouge">[Read, Grep, Bash]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">context</code></td>
+      <td>String</td>
+      <td><code class="language-plaintext highlighter-rouge">fork</code> 설정 시 독립 서브에이전트에서 실행</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">agent</code></td>
+      <td>String</td>
+      <td><code class="language-plaintext highlighter-rouge">context: fork</code> 시 에이전트 타입. <code class="language-plaintext highlighter-rouge">Explore</code>, <code class="language-plaintext highlighter-rouge">Plan</code> 등</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">model</code></td>
+      <td>String</td>
+      <td>이 Skill에 사용할 모델 지정</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="호출-제어-조합">호출 제어 조합</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>설정</th>
+      <th style="text-align: center">사용자가 호출?</th>
+      <th style="text-align: center">Claude가 자동 호출?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>기본값 (둘 다 미설정)</td>
+      <td style="text-align: center">✅</td>
+      <td style="text-align: center">✅</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">disable-model-invocation: true</code></td>
+      <td style="text-align: center">✅</td>
+      <td style="text-align: center">❌</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">user-invocable: false</code></td>
+      <td style="text-align: center">❌</td>
+      <td style="text-align: center">✅</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>부작용이 있는 Skill</strong>(배포, 커밋, 메시지 전송 등)에는 반드시 <code class="language-plaintext highlighter-rouge">disable-model-invocation: true</code>를 설정한다. 의도치 않은 자동 실행을 방지하기 위해서다.</p>
+
+<hr />
+
+<h2 id="step-3-변수-치환-활용하기">Step 3: 변수 치환 활용하기</h2>
+
+<p>Skills는 동적 값을 주입할 수 있는 변수 치환(String Substitution)을 지원한다.</p>
+
+<h3 id="기본-변수">기본 변수</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>변수</th>
+      <th>설명</th>
+      <th>예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">$ARGUMENTS</code></td>
+      <td>전달된 모든 인자</td>
+      <td><code class="language-plaintext highlighter-rouge">/skill arg1 arg2</code> → <code class="language-plaintext highlighter-rouge">arg1 arg2</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">$ARGUMENTS[0]</code>, <code class="language-plaintext highlighter-rouge">$ARGUMENTS[1]</code></td>
+      <td>특정 인자 접근</td>
+      <td>0-based 인덱스</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">$0</code>, <code class="language-plaintext highlighter-rouge">$1</code>, <code class="language-plaintext highlighter-rouge">$2</code></td>
+      <td>특정 인자 단축형</td>
+      <td><code class="language-plaintext highlighter-rouge">$ARGUMENTS[N]</code>과 동일</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">${CLAUDE_SESSION_ID}</code></td>
+      <td>현재 세션 ID</td>
+      <td>로깅/추적에 활용</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="실전-예시-컴포넌트-생성-skill">실전 예시: 컴포넌트 생성 Skill</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">create-component</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">React 컴포넌트를 프로젝트 컨벤션에 맞게 생성한다</span>
+<span class="na">argument-hint</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">컴포넌트명</span><span class="pi">]</span>
+<span class="nn">---</span>
+
+<span class="gu">## 생성 규칙</span>
+
+<span class="sb">`$0`</span> 컴포넌트를 아래 구조로 생성한다:
+<span class="p">
+1.</span> <span class="sb">`src/components/$0/$0.tsx`</span> - 컴포넌트 본체
+<span class="p">2.</span> <span class="sb">`src/components/$0/$0.test.tsx`</span> - 테스트 파일
+<span class="p">3.</span> <span class="sb">`src/components/$0/index.ts`</span> - 배럴 파일(barrel export)
+
+<span class="gu">### 컴포넌트 컨벤션</span>
+<span class="p">-</span> 함수형 컴포넌트 사용
+<span class="p">-</span> Props 타입은 <span class="sb">`$0Props`</span>로 정의
+<span class="p">-</span> CSS Modules 사용 (<span class="sb">`$0.module.css`</span>)
+</code></pre></div></div>
+
+<p>사용:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> /create-component SearchBar
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">$0</code>이 <code class="language-plaintext highlighter-rouge">SearchBar</code>로 치환되어 Claude가 <code class="language-plaintext highlighter-rouge">SearchBar.tsx</code>, <code class="language-plaintext highlighter-rouge">SearchBar.test.tsx</code>, <code class="language-plaintext highlighter-rouge">index.ts</code>를 자동 생성한다.</p>
+
+<hr />
+
+<h2 id="step-4-고급-패턴">Step 4: 고급 패턴</h2>
+
+<h3 id="셸-명령어로-동적-컨텍스트-주입">셸 명령어로 동적 컨텍스트 주입</h3>
+
+<p>Skills에서 <code class="language-plaintext highlighter-rouge">!`command`</code> 구문을 사용하면 셸 명령어의 결과를 프롬프트에 삽입할 수 있다. 이 명령어는 Claude에게 전달되기 <strong>전에</strong> 실행된다.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">pr-review</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">현재 PR을 리뷰한다</span>
+<span class="na">context</span><span class="pi">:</span> <span class="s">fork</span>
+<span class="na">agent</span><span class="pi">:</span> <span class="s">Explore</span>
+<span class="na">allowed-tools</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">Bash(gh *)</span><span class="pi">]</span>
+<span class="nn">---</span>
+
+<span class="gu">## PR 정보</span>
+<span class="p">
+-</span> PR diff: !<span class="sb">`gh pr diff`</span>
+<span class="p">-</span> 변경된 파일: !<span class="sb">`gh pr diff --name-only`</span>
+<span class="p">-</span> PR 코멘트: !<span class="sb">`gh pr view --comments`</span>
+
+<span class="gu">## 리뷰 지침</span>
+
+위 PR의 변경 사항을 분석하고 리뷰를 작성한다.
+코드 품질, 테스트 커버리지, 잠재적 버그를 중점적으로 확인한다.
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">gh pr diff</code>의 실행 결과가 프롬프트에 삽입된 상태로 Claude에게 전달된다. Claude가 직접 명령어를 실행하는 것이 아니라 <strong>전처리(preprocessing)</strong> 단계에서 이루어진다.</p>
+
+<h3 id="서브에이전트로-격리-실행">서브에이전트로 격리 실행</h3>
+
+<p><code class="language-plaintext highlighter-rouge">context: fork</code>를 설정하면 Skill이 독립된 서브에이전트에서 실행된다. 메인 대화 컨텍스트에 영향을 주지 않으므로, 탐색이나 분석 같은 작업에 적합하다.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">find-bugs</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">코드베이스에서 잠재적 버그를 탐색한다</span>
+<span class="na">context</span><span class="pi">:</span> <span class="s">fork</span>
+<span class="na">agent</span><span class="pi">:</span> <span class="s">Explore</span>
+<span class="nn">---</span>
+
+프로젝트 전체를 탐색하여 잠재적 버그를 찾는다:
+<span class="p">
+1.</span> 에러 핸들링이 누락된 곳
+<span class="p">2.</span> 타입 안전성이 보장되지 않는 곳
+<span class="p">3.</span> 경쟁 조건(race condition) 가능성
+<span class="p">4.</span> 리소스 누수 (파일 핸들, DB 연결 등)
+
+파일 경로와 라인 번호를 포함해서 결과를 정리한다.
+</code></pre></div></div>
+
+<h3 id="extended-thinking-활성화">Extended Thinking 활성화</h3>
+
+<p>Skill 본문에 <code class="language-plaintext highlighter-rouge">ultrathink</code>라는 키워드를 포함하면 Claude의 확장 사고(Extended Thinking) 모드가 활성화된다. 복잡한 분석이 필요한 Skill에서 활용할 수 있다.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">architecture-review</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">아키텍처 수준의 깊은 분석을 수행한다</span>
+<span class="nn">---</span>
+
+ultrathink 모드로 아키텍처를 분석한다.
+
+$ARGUMENTS에 대해:
+<span class="p">1.</span> 의존성 그래프 분석
+<span class="p">2.</span> 순환 의존성 검출
+<span class="p">3.</span> 레이어 위반 사항 확인
+<span class="p">4.</span> 개선 방안 제시
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="실전-예시-이-블로그의-skills">실전 예시: 이 블로그의 Skills</h2>
+
+<p>이 블로그 프로젝트에서 실제로 사용 중인 Skills를 소개한다. <code class="language-plaintext highlighter-rouge">.claude/skills/</code> 디렉토리에 4개의 Skill이 정의되어 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.claude/skills/
+├── write-research-post.md   # 논문 리뷰 포스트 작성
+├── write-tech-post.md       # 기술 포스트 작성
+├── write-food-post.md       # 음식 리뷰 포스트 작성
+└── write-trip-post.md       # 여행 포스트 작성
+</code></pre></div></div>
+
+<h3 id="write-tech-postmd-발췌">write-tech-post.md (발췌)</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># Skill: Tech 포스트 작성</span>
+
+<span class="gu">## 설명</span>
+
+기술, 개발, 바이오인포매틱스 도구에 대한 블로그 포스트를 작성한다.
+
+<span class="gu">## 작성 절차</span>
+<span class="p">
+1.</span> 기술 주제와 범위를 확인한다
+<span class="p">2.</span> <span class="sb">`_posts/`</span> 디렉토리에 <span class="sb">`YYYY-MM-DD-title-in-english.md`</span> 형식으로 파일을 생성한다
+<span class="p">3.</span> 아래 템플릿에 따라 내용을 작성한다
+
+<span class="gu">## 작성 지침</span>
+<span class="p">
+-</span> 명확하고 간결한 기술적 톤을 사용한다
+<span class="p">-</span> 코드 블록에는 반드시 언어 태그를 명시한다
+<span class="p">-</span> 단계별 설명을 선호한다
+<span class="p">-</span> 실행 가능한 예시 코드를 포함한다
+</code></pre></div></div>
+
+<p>이 Skill 덕분에 “Claude Code skills에 대한 기술 포스팅 적어줘”라고만 말하면, Claude가 자동으로 이 Skill을 감지하고 블로그의 포맷과 톤에 맞춰 포스트를 작성한다. frontmatter, 파일 위치, 마크다운 스타일까지 모두 Skill에 정의되어 있기 때문이다.</p>
+
+<h3 id="왜-효과적인가">왜 효과적인가</h3>
+
+<ol>
+  <li><strong>일관성</strong>: 매번 같은 포맷으로 포스트가 생성된다</li>
+  <li><strong>효율성</strong>: “이런 주제로 포스트 써줘” 한 마디면 끝이다</li>
+  <li><strong>맥락 분리</strong>: 포스트 작성 규칙이 CLAUDE.md를 비대하게 만들지 않는다</li>
+  <li><strong>공유 가능</strong>: Git에 커밋되므로 협업자도 같은 워크플로우를 사용할 수 있다</li>
+</ol>
+
+<hr />
+
+<h2 id="보조-파일-활용">보조 파일 활용</h2>
+
+<p>Skill이 복잡해지면 <code class="language-plaintext highlighter-rouge">SKILL.md</code> 하나에 모든 내용을 담기 어렵다. 이때 <strong>보조 파일</strong>을 활용한다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.claude/skills/deploy/
+├── SKILL.md           # 메인 지침 (500줄 이하 권장)
+├── checklist.md       # 배포 체크리스트
+├── examples/
+│   └── rollback.md    # 롤백 예시
+└── scripts/
+    └── validate.sh    # 검증 스크립트
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">SKILL.md</code>에서 보조 파일을 참조한다:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">deploy</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">프로덕션 배포를 수행한다</span>
+<span class="na">disable-model-invocation</span><span class="pi">:</span> <span class="kc">true</span>
+<span class="nn">---</span>
+
+<span class="gu">## 배포 절차</span>
+
+배포 전 <span class="p">[</span><span class="nv">checklist.md</span><span class="p">](</span><span class="sx">checklist.md</span><span class="p">)</span>를 확인한다.
+문제 발생 시 <span class="p">[</span><span class="nv">rollback.md</span><span class="p">](</span><span class="sx">examples/rollback.md</span><span class="p">)</span>를 참고한다.
+</code></pre></div></div>
+
+<p>Claude는 보조 파일을 <strong>필요할 때만</strong> 로딩하므로 컨텍스트를 효율적으로 사용한다.</p>
+
+<hr />
+
+<h2 id="도구-접근-제어">도구 접근 제어</h2>
+
+<p><code class="language-plaintext highlighter-rouge">allowed-tools</code>로 Skill이 사용할 수 있는 도구를 제한할 수 있다. 읽기 전용 Skill이 파일을 수정하는 사고를 방지하는 데 유용하다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">codebase-explorer</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">코드베이스를 탐색하고 구조를 분석한다</span>
+<span class="na">allowed-tools</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">Read</span><span class="pi">,</span> <span class="nv">Grep</span><span class="pi">,</span> <span class="nv">Glob</span><span class="pi">]</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>이 Skill은 <code class="language-plaintext highlighter-rouge">Read</code>, <code class="language-plaintext highlighter-rouge">Grep</code>, <code class="language-plaintext highlighter-rouge">Glob</code>만 사용할 수 있다. <code class="language-plaintext highlighter-rouge">Edit</code>, <code class="language-plaintext highlighter-rouge">Write</code>, <code class="language-plaintext highlighter-rouge">Bash</code> 등의 도구는 차단된다.</p>
+
+<p>도구별 세부 제한도 가능하다:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">allowed-tools</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">Bash(git *)</span><span class="pi">,</span> <span class="nv">Bash(npm test)</span><span class="pi">,</span> <span class="nv">Read</span><span class="pi">,</span> <span class="nv">Grep</span><span class="pi">]</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Bash</code>는 <code class="language-plaintext highlighter-rouge">git</code>과 <code class="language-plaintext highlighter-rouge">npm test</code> 명령어만 허용된다.</p>
+
+<hr />
+
+<h2 id="best-practices">Best Practices</h2>
+
+<h3 id="1-description을-구체적으로-작성한다">1. Description을 구체적으로 작성한다</h3>
+
+<p>Claude가 자동 감지에 <code class="language-plaintext highlighter-rouge">description</code>을 사용하므로, 어떤 상황에서 이 Skill이 필요한지 명확히 작성한다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ❌ 너무 모호</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">코드를 처리한다</span>
+
+<span class="c1"># ✅ 구체적</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">Python 함수에 대한 단위 테스트를 pytest 컨벤션으로 생성한다</span>
+</code></pre></div></div>
+
+<h3 id="2-부작용이-있는-skill은-보호한다">2. 부작용이 있는 Skill은 보호한다</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 배포, 커밋, 메시지 전송 등</span>
+<span class="na">disable-model-invocation</span><span class="pi">:</span> <span class="kc">true</span>
+</code></pre></div></div>
+
+<h3 id="3-skillmd는-500줄-이하로-유지한다">3. SKILL.md는 500줄 이하로 유지한다</h3>
+
+<p>길어지면 보조 파일로 분리한다. Claude가 온디맨드로 로딩하므로 컨텍스트 효율이 좋다.</p>
+
+<h3 id="4-프로젝트-skills는-버전-관리한다">4. 프로젝트 Skills는 버전 관리한다</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add .claude/skills/
+git commit <span class="nt">-m</span> <span class="s2">"feat: add code review skill"</span>
+</code></pre></div></div>
+
+<p>팀원 모두가 같은 Skill을 사용할 수 있게 된다.</p>
+
+<h3 id="5-두-가지-호출-방식을-모두-테스트한다">5. 두 가지 호출 방식을 모두 테스트한다</h3>
+
+<ul>
+  <li><strong>직접 호출</strong>: <code class="language-plaintext highlighter-rouge">/skill-name arguments</code></li>
+  <li><strong>자동 감지</strong>: 관련 작업을 자연어로 요청</li>
+</ul>
+
+<hr />
+
+<h2 id="정리">정리</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>핵심 포인트</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Skill은 마크다운 파일</strong></td>
+      <td>YAML frontmatter + 마크다운 본문으로 구성</td>
+    </tr>
+    <tr>
+      <td><strong>두 가지 스코프</strong></td>
+      <td>프로젝트(<code class="language-plaintext highlighter-rouge">.claude/skills/</code>) 또는 개인(<code class="language-plaintext highlighter-rouge">~/.claude/skills/</code>)</td>
+    </tr>
+    <tr>
+      <td><strong>자동 감지 지원</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">description</code>을 기반으로 Claude가 관련 상황에서 자동 로딩</td>
+    </tr>
+    <tr>
+      <td><strong>변수 치환</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">$0</code>, <code class="language-plaintext highlighter-rouge">$ARGUMENTS</code> 등으로 동적 값 주입</td>
+    </tr>
+    <tr>
+      <td><strong>격리 실행</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">context: fork</code>로 서브에이전트에서 독립 실행</td>
+    </tr>
+    <tr>
+      <td><strong>도구 제한</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">allowed-tools</code>로 Skill의 권한을 세밀하게 제어</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Skills는 Claude Code를 <strong>범용 AI 도구에서 프로젝트 전용 어시스턴트로</strong> 바꿔준다. 반복되는 작업이 있다면 Skill로 만들어 보자. 한 번 정의하면 팀 전체가 일관된 워크플로우로 작업할 수 있다.</p>
+
+<p><strong>참고 자료</strong></p>
+<ul>
+  <li><a href="https://docs.anthropic.com/en/docs/claude-code/skills">Claude Code 공식 문서 - Skills</a></li>
+  <li><a href="https://agentskills.io">Agent Skills 오픈 표준</a></li>
+</ul>
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-nav">
+      
+      <a class="post-nav__prev" href="/food/2026/02/23/Seoul-dinner/">
+        <span class="post-nav__label">← 이전 글</span>
+        <span class="post-nav__title">잠실 롯데월드몰 양식 맛집, 쌤쌤쌤 — 라자냐와 잠봉뵈르 파스타</span>
+      </a>
+      
+      
+    </div>
+  </footer>
+   <!-- 댓글 (giscus) -->
+  
+   <!-- 댓글 영역 -->
+<div class="comments-section">
+    <h2 class="comments-title">💬 댓글</h2>
+    <script src="https://giscus.app/client.js"
+    data-repo="jsungwon/jsungwon.github.io"
+    data-repo-id="R_kgDORQmu8A"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORQmu8M4C2eY7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+</script>
+  </div>
+  
+  <style>
+    .comments-section {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #e8e4df;
+    }
+    .comments-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+  </style>
+  
+ 
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="logo-svg logo-svg--footer" width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <p>Bioinformatics, Tech, Travel & Life</p>
+    </div>
+    <div class="footer-links">
+      
+      <a href="https://github.com/jsungwon" target="_blank" rel="noopener">GitHub</a>
+      
+      
+      <a href="mailto:jsw0061@gmail.com">Email</a>
+      
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 Sungwon. Built with Jekyll & GitHub Pages.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
