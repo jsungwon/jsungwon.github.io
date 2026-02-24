@@ -216,6 +216,16 @@ img {
   letter-spacing: -0.02em;
 }
 
+.category-count {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-left: 0.25rem;
+}
+
+.category-count::before { content: "("; }
+.category-count::after { content: ")"; }
+
 .section-link {
   font-size: 0.85rem;
   font-weight: 500;
