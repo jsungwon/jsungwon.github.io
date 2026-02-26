@@ -1,6 +1,16 @@
 [
   
   {
+    "title": "Diffusion Model 기초 이론과 오믹스 데이터 적용 가이드",
+    "url": "/research/2026/02/26/diffusion-model-omics-tutorial/",
+    "date": "2026-02-26",
+    "category": "research",
+    "tags": ["diffusion model","deep learning","omics","single-cell","generative model","tutorial"],
+    "subtitle": "DDPM의 수학적 기초부터 유전자 발현 데이터를 활용한 실전 구현까지",
+    "ai_generated": true
+  },
+  
+  {
     "title": "혈장 프로테오믹스의 현재: 8개 플랫폼 비교를 통한 기술적 혁신과 바이오마커 발견",
     "url": "/research/2026/02/25/plasma-proteomics-platform-comparison/",
     "date": "2026-02-25",
