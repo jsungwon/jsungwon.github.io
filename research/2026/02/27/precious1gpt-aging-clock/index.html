@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precious1GPT: 멀티모달 트랜스포머 기반 노화 시계와 노화 관련 질환 타겟 발굴 — 놀놀할할</title>
+  <meta name="description" content="논문 정보 Title: Precious1GPT: multimodal transformer-based transfer learning for aging clock development and feature importance analysis for aging and age-related disease target discovery Authors: Anatoly Urban, Denis Sidorenko, Diana Zagirova, Ekaterina Kozlova, Aleksandr Kalashnikov, Stefan Pushkov, Vladimir Naumov, Viktoria Sarkisova, Geoffrey Ho Duen Leung, Hoi Wing Leung, Frank W. Pun,...">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- SEO -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Precious1GPT: 멀티모달 트랜스포머 기반 노화 시계와 노화 관련 질환 타겟 발굴 | 놀놀할할</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Precious1GPT: 멀티모달 트랜스포머 기반 노화 시계와 노화 관련 질환 타겟 발굴" />
+<meta name="author" content="Sungwon" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="논문 정보 Title: Precious1GPT: multimodal transformer-based transfer learning for aging clock development and feature importance analysis for aging and age-related disease target discovery Authors: Anatoly Urban, Denis Sidorenko, Diana Zagirova, Ekaterina Kozlova, Aleksandr Kalashnikov, Stefan Pushkov, Vladimir Naumov, Viktoria Sarkisova, Geoffrey Ho Duen Leung, Hoi Wing Leung, Frank W. Pun, Ivan V. Ozerov, Alex Aliper, Feng Ren, Alex Zhavoronkov Affiliation: Insilico Medicine Journal: Aging (Albany NY), Volume 15, Issue 11, pp. 4649–4666 (2023) DOI: 10.18632/aging.204788" />
+<meta property="og:description" content="논문 정보 Title: Precious1GPT: multimodal transformer-based transfer learning for aging clock development and feature importance analysis for aging and age-related disease target discovery Authors: Anatoly Urban, Denis Sidorenko, Diana Zagirova, Ekaterina Kozlova, Aleksandr Kalashnikov, Stefan Pushkov, Vladimir Naumov, Viktoria Sarkisova, Geoffrey Ho Duen Leung, Hoi Wing Leung, Frank W. Pun, Ivan V. Ozerov, Alex Aliper, Feng Ren, Alex Zhavoronkov Affiliation: Insilico Medicine Journal: Aging (Albany NY), Volume 15, Issue 11, pp. 4649–4666 (2023) DOI: 10.18632/aging.204788" />
+<link rel="canonical" href="https://jsungwon.github.io/research/2026/02/27/precious1gpt-aging-clock/" />
+<meta property="og:url" content="https://jsungwon.github.io/research/2026/02/27/precious1gpt-aging-clock/" />
+<meta property="og:site_name" content="놀놀할할" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-02-27T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Precious1GPT: 멀티모달 트랜스포머 기반 노화 시계와 노화 관련 질환 타겟 발굴" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sungwon"},"dateModified":"2026-02-27T00:00:00+00:00","datePublished":"2026-02-27T00:00:00+00:00","description":"논문 정보 Title: Precious1GPT: multimodal transformer-based transfer learning for aging clock development and feature importance analysis for aging and age-related disease target discovery Authors: Anatoly Urban, Denis Sidorenko, Diana Zagirova, Ekaterina Kozlova, Aleksandr Kalashnikov, Stefan Pushkov, Vladimir Naumov, Viktoria Sarkisova, Geoffrey Ho Duen Leung, Hoi Wing Leung, Frank W. Pun, Ivan V. Ozerov, Alex Aliper, Feng Ren, Alex Zhavoronkov Affiliation: Insilico Medicine Journal: Aging (Albany NY), Volume 15, Issue 11, pp. 4649–4666 (2023) DOI: 10.18632/aging.204788","headline":"Precious1GPT: 멀티모달 트랜스포머 기반 노화 시계와 노화 관련 질환 타겟 발굴","mainEntityOfPage":{"@type":"WebPage","@id":"https://jsungwon.github.io/research/2026/02/27/precious1gpt-aging-clock/"},"url":"https://jsungwon.github.io/research/2026/02/27/precious1gpt-aging-clock/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWB335C28N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DWB335C28N');
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <svg class="logo-svg" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">놀놀할할</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="/research/" class="nav-link nav-link--active">Research</a>
+      <a href="/tech/" class="nav-link ">Tech</a>
+      <a href="/trip/" class="nav-link ">Trip</a>
+      <a href="/food/" class="nav-link ">Food</a>
+      <a href="/tags/" class="nav-link ">Tags</a>
+      <a href="/about/" class="nav-link ">About</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="search-toggle" aria-label="검색 열기">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+      <button class="nav-toggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-modal__header">
+      <div class="search-input-wrap">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="제목 또는 태그로 검색..."
+          autocomplete="off"
+        >
+        <kbd class="search-kbd">ESC</kbd>
+      </div>
+    </div>
+    <div class="search-modal__body" id="searchResults">
+      <div class="search-empty">
+        <p class="search-empty__text">검색어를 입력하세요</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/search.js"></script>
+
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  toggle?.addEventListener('click', () => {
+    nav.classList.toggle('is-open');
+    toggle.classList.toggle('is-active');
+  });
+</script>
+
+  
+  <main class="site-main">
+    <article class="post-full">
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-category post-category--research">
+        🧬 Research
+      </span>
+      <time datetime="2026-02-27T00:00:00+00:00">
+        2026년 02월 27일
+      </time>
+    </div>
+    <h1 class="post-title">Precious1GPT: 멀티모달 트랜스포머 기반 노화 시계와 노화 관련 질환 타겟 발굴<span class="badge-ai">AI Generated</span></h1>
+    
+    <p class="post-subtitle">Aging (2023) — Insilico Medicine의 멀티모달 노화 시계를 활용한 치료 타겟 발굴 전략</p>
+    
+    
+    <div class="post-tags">
+      
+      <a href="/tags/#paper-review" class="tag tag--link">#paper review</a>
+      
+      <a href="/tags/#aging-clock" class="tag tag--link">#aging clock</a>
+      
+      <a href="/tags/#transfer-learning" class="tag tag--link">#transfer learning</a>
+      
+      <a href="/tags/#transformer" class="tag tag--link">#transformer</a>
+      
+      <a href="/tags/#drug-target-discovery" class="tag tag--link">#drug target discovery</a>
+      
+    </div>
+    
+  </header>
+
+  
+
+  <div class="post-content">
+    <blockquote>
+  <p><strong>논문 정보</strong></p>
+  <ul>
+    <li><strong>Title</strong>: Precious1GPT: multimodal transformer-based transfer learning for aging clock development and feature importance analysis for aging and age-related disease target discovery</li>
+    <li><strong>Authors</strong>: Anatoly Urban, Denis Sidorenko, Diana Zagirova, Ekaterina Kozlova, Aleksandr Kalashnikov, Stefan Pushkov, Vladimir Naumov, Viktoria Sarkisova, Geoffrey Ho Duen Leung, Hoi Wing Leung, Frank W. Pun, Ivan V. Ozerov, Alex Aliper, Feng Ren, Alex Zhavoronkov</li>
+    <li><strong>Affiliation</strong>: Insilico Medicine</li>
+    <li><strong>Journal</strong>: Aging (Albany NY), Volume 15, Issue 11, pp. 4649–4666 (2023)</li>
+    <li><strong>DOI</strong>: <a href="https://doi.org/10.18632/aging.204788">10.18632/aging.204788</a></li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h2 id="연구-배경-및-동기">연구 배경 및 동기</h2>
+
+<p><strong>노화(aging)</strong>는 다양한 노화 관련 질환(age-related diseases)의 위험을 증가시키는 복잡하고 다인자적인 과정이다. 지난 10여 년간 <strong>노화 시계(aging clock)</strong>에 대한 연구가 폭발적으로 증가하면서, DNA 메틸화(methylation)나 전사체(transcriptome) 데이터를 활용한 생물학적 나이(biological age) 예측 모델이 다수 개발되었다.</p>
+
+<p>그러나 기존의 노화 시계에는 중요한 한계가 존재한다:</p>
+
+<ul>
+  <li><strong>단일 데이터 유형 의존</strong>: 대부분의 노화 시계가 메틸화 또는 전사체 중 하나의 데이터 유형만 활용</li>
+  <li><strong>타겟 발굴과의 단절</strong>: 나이 예측 정확도에만 초점을 맞추어, 실제 <strong>치료 타겟(therapeutic target)</strong> 발굴에 활용되지 못함</li>
+  <li><strong>해석 가능성 부족</strong>: 어떤 유전자가 노화에 기여하는지에 대한 설명이 제한적</li>
+</ul>
+
+<p>Insilico Medicine의 연구팀은 이러한 한계를 극복하기 위해, <strong>메틸화와 전사체 데이터를 동시에 처리하는 멀티모달 트랜스포머 기반 노화 시계</strong> Precious1GPT를 개발했다. 이 이름은 톨킨의 <em>반지의 제왕</em>에 등장하는 “One Ring”에서 영감을 받은 것으로, 하나의 모델로 다양한 데이터를 통합하겠다는 의미를 담고 있다.</p>
+
+<blockquote>
+  <p><strong>Precious1GPT는 나이 예측의 정확도보다 치료 타겟 발굴이라는 실용적 목적에 초점을 맞춘 최초의 노화 시계 모델</strong></p>
+</blockquote>
+
+<hr />
+
+<h2 id="연구-파이프라인">연구 파이프라인</h2>
+
+<p><img src="https://pmc.ncbi.nlm.nih.gov/articles/PMC10292881/bin/aging-15-204788-g001.jpg" alt="Precious1GPT의 전체 파이프라인 — 멀티모달 트랜스포머 기반 회귀 모델 학습, 전이 학습을 통한 분류 모델, 유전자 우선순위 결정, PandaOmics 타겟 분석" />
+<em>Figure 1: Precious1GPT의 전체 파이프라인. (A) 정상 샘플 데이터로 멀티모달 트랜스포머 회귀 모델 학습 → (B) 전이 학습으로 질환-대조군 분류기 구축 → (C) Feature importance 기반 유전자 우선순위 결정 → (D) PandaOmics 플랫폼을 통한 타겟 분석 (출처: Urban et al., Aging 2023)</em></p>
+
+<p>Precious1GPT의 파이프라인은 네 가지 핵심 단계로 구성된다:</p>
+
+<h3 id="1단계-멀티모달-노화-시계-학습">1단계: 멀티모달 노화 시계 학습</h3>
+
+<p>정상 샘플 데이터에서 <strong>트랜스포머 기반 회귀 모델(regressor)</strong>을 학습하여 나이를 예측한다. 메틸화 데이터와 전사체 데이터를 동시에 입력으로 받아 처리한다.</p>
+
+<h3 id="2단계-전이-학습transfer-learning을-통한-분류기-구축">2단계: 전이 학습(Transfer Learning)을 통한 분류기 구축</h3>
+
+<p>1단계에서 학습된 가중치(weights)를 활용하여, <strong>질환군(case)과 대조군(control)을 구분하는 분류기(classifier)</strong>로 미세 조정(fine-tuning)한다. 이때 최종 레이어를 제외한 나머지 가중치를 동결(freeze)하여 노화에 대한 사전 지식을 보존한다.</p>
+
+<h3 id="3단계-feature-importance-기반-유전자-우선순위-결정">3단계: Feature Importance 기반 유전자 우선순위 결정</h3>
+
+<p>회귀 모델(노화 관련성)과 분류기(질환 관련성)에서 각각 <strong>feature importance 값</strong>을 추출하여, 노화와 질환 모두에 관련된 유전자를 우선순위로 정렬한다.</p>
+
+<h3 id="4단계-pandaomics-타겟-분석">4단계: PandaOmics 타겟 분석</h3>
+
+<p>도출된 유전자 목록을 Insilico Medicine의 AI 기반 타겟 발굴 플랫폼인 <strong>PandaOmics TargetID</strong>에 입력하여, 노화 관련 질환에 대한 잠재적 치료 타겟을 분석한다.</p>
+
+<hr />
+
+<h2 id="모델-아키텍처">모델 아키텍처</h2>
+
+<p>Precious1GPT는 <strong>TabTransformer</strong> 아키텍처를 기반으로, 수치형(numerical)과 범주형(categorical) 데이터를 동시에 처리할 수 있도록 설계되었다. 이를 통해 RNA-seq 발현 데이터와 메틸화 데이터 같은 이질적인 데이터 유형을 통합하면서, 데이터 유형과 조직 유형(tissue type) 정보까지 함께 고려한다.</p>
+
+<h3 id="학습-데이터">학습 데이터</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>데이터 유형</th>
+      <th>출처</th>
+      <th>샘플 수</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>메틸화(Methylation)</strong></td>
+      <td>EWAS Data Hub</td>
+      <td>8,374</td>
+      <td>450K Illumina Methylation Array</td>
+    </tr>
+    <tr>
+      <td><strong>전사체(Transcriptomics)</strong></td>
+      <td>GTEx Project</td>
+      <td>12,453</td>
+      <td>RNA-Sequencing</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="하이퍼파라미터-최적화">하이퍼파라미터 최적화</h3>
+
+<p>모든 하이퍼파라미터는 <strong>Optuna</strong> 프레임워크를 통해 최적화되었다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>하이퍼파라미터</th>
+      <th>최적값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hidden layers</td>
+      <td>128, 2048, 128</td>
+    </tr>
+    <tr>
+      <td>Dropout</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Activation</td>
+      <td>ELU</td>
+    </tr>
+    <tr>
+      <td>Learning rate</td>
+      <td>0.00023</td>
+    </tr>
+    <tr>
+      <td>Optimizer</td>
+      <td>AdamW</td>
+    </tr>
+    <tr>
+      <td>Weight decay</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Batch size</td>
+      <td>96</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>구현은 <strong>PyTorch Tabular</strong> 라이브러리(PyTorch 기반)를 사용하여 데이터 전처리, 트랜스포머 아키텍처 구성, 학습을 수행했다.</p>
+
+<hr />
+
+<h2 id="나이-예측-성능">나이 예측 성능</h2>
+
+<p><img src="https://pmc.ncbi.nlm.nih.gov/articles/PMC10292881/bin/aging-15-204788-g002.jpg" alt="Precious1GPT의 나이 예측 결과 — 메틸화, 전사체, 멀티모달 모델의 성능 비교 및 iPSC/태아 조직 검증" />
+<em>Figure 2: 나이 예측 모델의 성능 비교 및 iPSC, 태아 조직 데이터를 활용한 생물학적 검증 (출처: Urban et al., Aging 2023)</em></p>
+
+<h3 id="데이터-유형별-성능-비교">데이터 유형별 성능 비교</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>데이터 유형</th>
+      <th>MAE (년)</th>
+      <th>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>메틸화 단독</strong></td>
+      <td>4.23</td>
+      <td>단일 데이터 유형 중 최고 성능</td>
+    </tr>
+    <tr>
+      <td><strong>전사체 단독</strong></td>
+      <td>6.28</td>
+      <td>조직 다양성으로 인한 변이</td>
+    </tr>
+    <tr>
+      <td><strong>멀티모달 (결합)</strong></td>
+      <td>5.62</td>
+      <td>두 데이터 유형 통합</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>흥미롭게도, 멀티모달 모델의 MAE는 메틸화 단독 모델보다 낮았다. 이는 서로 다른 데이터 유형을 통합할 때 발생하는 노이즈와 데이터 간 불일치가 원인으로 보인다. 그러나 저자들은 이 trade-off가 <strong>타겟 발굴이라는 더 큰 목표</strong>를 위해 감수할 만하다고 주장한다.</p>
+
+<p>조직별로 보면, 갑상선(thyroid) 조직에서 메틸화 모델이 MAE 2.456년, R² 0.900으로 우수한 성능을 보이는 등, 조직 특이적 성능 차이도 관찰되었다.</p>
+
+<h3 id="ipsc-및-태아-조직-검증">iPSC 및 태아 조직 검증</h3>
+
+<p>모델의 생물학적 타당성을 검증하기 위해, GEO 데이터베이스에서 두 가지 독립적인 데이터셋을 활용했다:</p>
+
+<ul>
+  <li><strong>iPSC 유도 데이터셋 (GSE54848)</strong>: 체세포를 리프로그래밍 인자로 역분화시키면서 예측 나이가 <strong>점진적으로 감소</strong>하는 패턴을 확인 — iPSC는 생물학적으로 “젊어지는” 과정이므로 모델의 예측이 생물학적 기대와 일치</li>
+  <li><strong>태아 조직 데이터셋 (GSE76641)</strong>: 임신 주수가 증가함에 따라 예측 나이가 <strong>점진적으로 증가</strong> — 태아 발달과 함께 생물학적 나이가 증가하는 것을 정확히 포착</li>
+</ul>
+
+<hr />
+
+<h2 id="전이-학습을-통한-질환-분류">전이 학습을 통한 질환 분류</h2>
+
+<p><img src="https://pmc.ncbi.nlm.nih.gov/articles/PMC10292881/bin/aging-15-204788-g003.jpg" alt="전이 학습 기반 질환-대조군 분류 결과 — 노화 시계의 사전 학습된 표현이 질환 분류에 효과적임을 보여주는 결과" />
+<em>Figure 3: 전이 학습을 통한 질환-대조군 분류 성능 및 feature importance 기반 유전자 우선순위 (출처: Urban et al., Aging 2023)</em></p>
+
+<p>Precious1GPT의 핵심 혁신은 <strong>나이 예측에서 학습된 표현(representation)을 질환 분류에 전이</strong>하는 전략이다. 이 접근법의 핵심 가정은 다음과 같다:</p>
+
+<blockquote>
+  <p>나이를 예측하도록 학습된 신경망의 마지막 레이어에는 <strong>질환군과 대조군을 구분하기에 충분한 정보</strong>가 이미 포함되어 있다</p>
+</blockquote>
+
+<p>이 가설을 검증하기 위해, 연구팀은 4개의 대표적 노화 관련 질환을 선정했다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>질환 분류</th>
+      <th>대표 질환</th>
+      <th>약어</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>섬유화(Fibrotic)</td>
+      <td>특발성 폐섬유증</td>
+      <td>IPF</td>
+    </tr>
+    <tr>
+      <td>염증성(Inflammatory)</td>
+      <td>만성 폐쇄성 폐질환</td>
+      <td>COPD</td>
+    </tr>
+    <tr>
+      <td>신경퇴행성(Neurological)</td>
+      <td>파킨슨병</td>
+      <td>PD</td>
+    </tr>
+    <tr>
+      <td>심혈관(Cardiovascular)</td>
+      <td>심부전</td>
+      <td>HF</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>전이 학습 결과, 노화 시계에서 사전 학습된 모델이 <strong>처음부터 학습한 모델(from scratch)</strong>보다 질환-대조군 분류에서 더 나은 성능을 보였다. 이는 노화와 질환이 분자 수준에서 밀접하게 연결되어 있음을 시사한다.</p>
+
+<hr />
+
+<h2 id="타겟-발굴-aplnr과-il23r">타겟 발굴: APLNR과 IL23R</h2>
+
+<p><img src="https://pmc.ncbi.nlm.nih.gov/articles/PMC10292881/bin/aging-15-204788-g004.jpg" alt="PandaOmics 플랫폼을 활용한 타겟 발굴 결과 — APLNR과 IL23R이 다수의 노화 관련 질환에서 상위 타겟으로 식별됨" />
+<em>Figure 4: PandaOmics 플랫폼을 통한 노화 관련 질환 타겟 분석. APLNR과 IL23R이 다수의 질환에서 공통적으로 상위에 랭크됨 (출처: Urban et al., Aging 2023)</em></p>
+
+<p>Feature importance 분석에서 도출된 상위 200개 유전자를 <strong>PandaOmics</strong> 플랫폼에 입력한 결과, 두 가지 핵심 타겟이 발굴되었다:</p>
+
+<h3 id="aplnr-apelin-receptor">APLNR (Apelin Receptor)</h3>
+
+<ul>
+  <li><strong>4개 질환 모두에서 상위 20위</strong> 이내로 랭크</li>
+  <li>Apelin과 Elabela 펩타이드 리간드의 수용체</li>
+  <li>심혈관 기능, 체액 균형, 대사 조절에 관여</li>
+  <li><strong>Apelin/APLNR 신호 감소가 노화를 촉진</strong>하며, 그 회복이 건강수명(healthspan)을 연장</li>
+  <li>마우스 모델에서 내인성 Apelin이 노화 관련 망막 신경절 세포 손실을 보호</li>
+</ul>
+
+<h3 id="il23r-interleukin-23-receptor">IL23R (Interleukin-23 Receptor)</h3>
+
+<ul>
+  <li><strong>COPD, 파킨슨병, 심부전에서 상위 20위</strong> 이내로 랭크</li>
+  <li>염증성 사이토카인 IL-23의 수용체</li>
+  <li>만성 염증(chronic inflammation)과 밀접한 관련 — 노화의 핵심 특징(hallmark) 중 하나인 <strong>inflammaging</strong>과 직결</li>
+  <li>자가면역 질환 및 염증성 질환에서 이미 치료 타겟으로 활발히 연구 중</li>
+</ul>
+
+<blockquote>
+  <p>APLNR과 IL23R은 노화와 노화 관련 질환을 연결하는 <strong>이중 목적(dual-purpose) 치료 타겟</strong>으로 제시됨</p>
+</blockquote>
+
+<hr />
+
+<h2 id="의의-및-한계">의의 및 한계</h2>
+
+<h3 id="의의">의의</h3>
+
+<ol>
+  <li><strong>패러다임 전환</strong>: 나이 예측 정확도 중심에서 <strong>치료 타겟 발굴</strong>이라는 실용적 목적으로 노화 시계의 활용 방향을 전환</li>
+  <li><strong>멀티모달 통합</strong>: 메틸화와 전사체 데이터를 하나의 트랜스포머 모델로 통합하여 다층적 노화 정보를 포착</li>
+  <li><strong>전이 학습 전략</strong>: 노화 → 질환으로의 전이 학습이라는 참신한 접근법으로, 노화와 질환의 분자적 연결 고리를 활용</li>
+  <li><strong>해석 가능한 타겟</strong>: Feature importance 분석을 통해 블랙박스가 아닌 해석 가능한 타겟 발굴</li>
+</ol>
+
+<h3 id="한계">한계</h3>
+
+<ul>
+  <li><strong>개별 데이터 유형 대비 낮은 정확도</strong>: 멀티모달 통합 시 단일 데이터 유형 전용 모델 대비 나이 예측 정확도가 감소 (MAE 5.62 vs 4.23)</li>
+  <li><strong>제한된 데이터 유형</strong>: 메틸화와 전사체 2가지 데이터만 사용하여, 프로테오믹스(proteomics)나 대사체학(metabolomics) 등 추가 오믹스 데이터의 통합은 미비</li>
+  <li><strong>실험적 검증 부재</strong>: 발굴된 타겟(APLNR, IL23R)에 대한 직접적인 실험적 검증이 본 논문에 포함되지 않음</li>
+  <li><strong>데이터셋 제한</strong>: EWAS Data Hub과 GTEx 데이터의 샘플 수가 대규모 딥러닝 모델 학습에는 상대적으로 적음</li>
+</ul>
+
+<hr />
+
+<h2 id="후속-연구-precious-시리즈의-진화">후속 연구: Precious 시리즈의 진화</h2>
+
+<p>Precious1GPT는 Insilico Medicine의 <strong>Precious 시리즈</strong>의 첫 번째 모델로, 이후 지속적으로 발전하고 있다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>모델</th>
+      <th>주요 특징</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Precious1GPT</strong></td>
+      <td>멀티모달 노화 시계 + 전이 학습 기반 타겟 발굴</td>
+    </tr>
+    <tr>
+      <td><strong>Precious2GPT</strong></td>
+      <td>트랜스포머 + 확산 모델(diffusion model)을 결합한 합성 멀티오믹스 데이터 생성</td>
+    </tr>
+    <tr>
+      <td><strong>Precious3GPT</strong></td>
+      <td>멀티모달 멀티종(multi-species) 멀티오믹스 약물 발굴 플랫폼 (LLLM)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>특히 Precious3GPT는 원래 다중 오믹스 나이 예측과 합성 데이터 생성 도구로 구상되었으나, 포괄적인 <strong>멀티모달 약물 발굴 플랫폼</strong>으로 진화했다.</p>
+
+<hr />
+
+<h2 id="개인적-소감">개인적 소감</h2>
+
+<p>이 논문은 노화 시계의 활용 방향에 대해 중요한 질문을 던진다: <strong>“노화 시계의 목적이 단순히 나이를 맞추는 것인가, 아니면 노화를 이해하고 치료하는 것인가?”</strong></p>
+
+<p>Precious1GPT는 후자를 선택했다. 나이 예측 정확도에서는 기존의 특화된 시계들(Horvath clock, BiT age 등)에 미치지 못하지만, <strong>노화 → 질환으로의 전이 학습</strong>이라는 아이디어는 매우 독창적이다. 특히 APLNR과 IL23R이라는 구체적인 타겟을 발굴하고, 이들이 실제로 노화 생물학에서 의미 있는 역할을 한다는 점은 이 접근법의 잠재력을 보여준다.</p>
+
+<p>다만 몇 가지 아쉬운 점도 있다:</p>
+
+<ol>
+  <li>“GPT”라는 이름이 붙었지만, 실제로는 TabTransformer 아키텍처를 사용한 것으로, 자기회귀(autoregressive) 생성 모델과는 거리가 있음</li>
+  <li>멀티모달 통합의 이점이 타겟 발굴에서 구체적으로 어떻게 발현되는지에 대한 추가 분석이 부족</li>
+  <li>발굴된 타겟에 대한 실험적 검증이 후속 연구로 남겨져 있음</li>
+</ol>
+
+<p>그럼에도 불구하고, 노화 연구와 약물 발굴의 접점에서 <strong>해석 가능한 AI 모델</strong>의 가능성을 보여주는 의미 있는 연구다. Precious 시리즈의 진화를 계속 지켜볼 필요가 있다.</p>
+
+<hr />
+
+<p><strong>References</strong></p>
+<ul>
+  <li>Urban, A., Sidorenko, D., Zagirova, D. et al. Precious1GPT: multimodal transformer-based transfer learning for aging clock development and feature importance analysis for aging and age-related disease target discovery. <em>Aging</em> <strong>15</strong>, 4649–4666 (2023). <a href="https://doi.org/10.18632/aging.204788">https://doi.org/10.18632/aging.204788</a></li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://pubmed.ncbi.nlm.nih.gov/37315204/">PubMed</a></td>
+          <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10292881/">PMC Full Text</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Pun, F.W. et al. Precious2GPT: the combination of multiomics pretrained transformer and conditional diffusion for artificial multi-omics multi-species multi-tissue sample generation. <em>npj Aging</em> (2024). <a href="https://doi.org/10.1038/s41514-024-00163-3">https://doi.org/10.1038/s41514-024-00163-3</a></li>
+</ul>
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-nav">
+      
+      <a class="post-nav__prev" href="/research/2026/02/26/diffusion-model-omics-tutorial/">
+        <span class="post-nav__label">← 이전 글</span>
+        <span class="post-nav__title">Diffusion Model 기초 이론과 오믹스 데이터 적용 가이드</span>
+      </a>
+      
+      
+    </div>
+  </footer>
+   <!-- 댓글 (giscus) -->
+  
+   <!-- 댓글 영역 -->
+<div class="comments-section">
+    <h2 class="comments-title">💬 댓글</h2>
+    <script src="https://giscus.app/client.js"
+    data-repo="jsungwon/jsungwon.github.io"
+    data-repo-id="R_kgDORQmu8A"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORQmu8M4C2eY7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+</script>
+  </div>
+  
+  <style>
+    .comments-section {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #e8e4df;
+    }
+    .comments-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+  </style>
+  
+ 
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="logo-svg logo-svg--footer" width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <p>Bioinformatics, Tech, Travel & Life</p>
+    </div>
+    <div class="footer-links">
+      
+      <a href="https://github.com/jsungwon" target="_blank" rel="noopener">GitHub</a>
+      
+      
+      <a href="mailto:jsw0061@gmail.com">Email</a>
+      
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 Sungwon. Built with Jekyll & GitHub Pages.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

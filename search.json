@@ -1,6 +1,16 @@
 [
   
   {
+    "title": "Precious1GPT: 멀티모달 트랜스포머 기반 노화 시계와 노화 관련 질환 타겟 발굴",
+    "url": "/research/2026/02/27/precious1gpt-aging-clock/",
+    "date": "2026-02-27",
+    "category": "research",
+    "tags": ["paper review","aging clock","transfer learning","transformer","drug target discovery"],
+    "subtitle": "Aging (2023) — Insilico Medicine의 멀티모달 노화 시계를 활용한 치료 타겟 발굴 전략",
+    "ai_generated": true
+  },
+  
+  {
     "title": "Diffusion Model 기초 이론과 오믹스 데이터 적용 가이드",
     "url": "/research/2026/02/26/diffusion-model-omics-tutorial/",
     "date": "2026-02-26",
