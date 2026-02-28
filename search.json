@@ -1,6 +1,16 @@
 [
   
   {
+    "title": "Korean Genome Project: 1,094명의 한국인 전장유전체와 임상 정보 분석",
+    "url": "/research/2026/02/28/korean-genome-project-korea1k/",
+    "date": "2026-02-28",
+    "category": "research",
+    "tags": ["paper review","genomics","population genetics","GWAS","whole genome sequencing"],
+    "subtitle": "Science Advances (2020) — Korea1K: 한국인 집단 유전체 레퍼런스 구축과 임상 활용",
+    "ai_generated": true
+  },
+  
+  {
     "title": "Precious1GPT: 멀티모달 트랜스포머 기반 노화 시계와 노화 관련 질환 타겟 발굴",
     "url": "/research/2026/02/27/precious1gpt-aging-clock/",
     "date": "2026-02-27",

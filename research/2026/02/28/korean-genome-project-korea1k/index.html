@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korean Genome Project: 1,094명의 한국인 전장유전체와 임상 정보 분석 — 놀놀할할</title>
+  <meta name="description" content="논문 정보 Title: Korean Genome Project: 1094 Korean personal genomes with clinical information Authors: Sungwon Jeon, Youngjune Bhak, Yeonsong Choi, Yeonsu Jeon, Seunghoon Kim, Jaeyoung Jang, Jinho Jang, Asta Blazyte, Changjae Kim, Yeonkyung Kim, … Semin Lee, Jong Bhak Affiliation: Korean Genomics Center (KOGIC), UNIST; Personal Genome Project, Harvard Medical...">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- SEO -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Korean Genome Project: 1,094명의 한국인 전장유전체와 임상 정보 분석 | 놀놀할할</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Korean Genome Project: 1,094명의 한국인 전장유전체와 임상 정보 분석" />
+<meta name="author" content="Sungwon" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="논문 정보 Title: Korean Genome Project: 1094 Korean personal genomes with clinical information Authors: Sungwon Jeon, Youngjune Bhak, Yeonsong Choi, Yeonsu Jeon, Seunghoon Kim, Jaeyoung Jang, Jinho Jang, Asta Blazyte, Changjae Kim, Yeonkyung Kim, … Semin Lee, Jong Bhak Affiliation: Korean Genomics Center (KOGIC), UNIST; Personal Genome Project, Harvard Medical School Journal: Science Advances, Volume 6, Issue 22, eaaz7835 (2020) DOI: 10.1126/sciadv.aaz7835" />
+<meta property="og:description" content="논문 정보 Title: Korean Genome Project: 1094 Korean personal genomes with clinical information Authors: Sungwon Jeon, Youngjune Bhak, Yeonsong Choi, Yeonsu Jeon, Seunghoon Kim, Jaeyoung Jang, Jinho Jang, Asta Blazyte, Changjae Kim, Yeonkyung Kim, … Semin Lee, Jong Bhak Affiliation: Korean Genomics Center (KOGIC), UNIST; Personal Genome Project, Harvard Medical School Journal: Science Advances, Volume 6, Issue 22, eaaz7835 (2020) DOI: 10.1126/sciadv.aaz7835" />
+<link rel="canonical" href="https://jsungwon.github.io/research/2026/02/28/korean-genome-project-korea1k/" />
+<meta property="og:url" content="https://jsungwon.github.io/research/2026/02/28/korean-genome-project-korea1k/" />
+<meta property="og:site_name" content="놀놀할할" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-02-28T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Korean Genome Project: 1,094명의 한국인 전장유전체와 임상 정보 분석" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sungwon"},"dateModified":"2026-02-28T00:00:00+00:00","datePublished":"2026-02-28T00:00:00+00:00","description":"논문 정보 Title: Korean Genome Project: 1094 Korean personal genomes with clinical information Authors: Sungwon Jeon, Youngjune Bhak, Yeonsong Choi, Yeonsu Jeon, Seunghoon Kim, Jaeyoung Jang, Jinho Jang, Asta Blazyte, Changjae Kim, Yeonkyung Kim, … Semin Lee, Jong Bhak Affiliation: Korean Genomics Center (KOGIC), UNIST; Personal Genome Project, Harvard Medical School Journal: Science Advances, Volume 6, Issue 22, eaaz7835 (2020) DOI: 10.1126/sciadv.aaz7835","headline":"Korean Genome Project: 1,094명의 한국인 전장유전체와 임상 정보 분석","mainEntityOfPage":{"@type":"WebPage","@id":"https://jsungwon.github.io/research/2026/02/28/korean-genome-project-korea1k/"},"url":"https://jsungwon.github.io/research/2026/02/28/korean-genome-project-korea1k/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWB335C28N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DWB335C28N');
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <svg class="logo-svg" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">놀놀할할</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="/research/" class="nav-link nav-link--active">Research</a>
+      <a href="/tech/" class="nav-link ">Tech</a>
+      <a href="/trip/" class="nav-link ">Trip</a>
+      <a href="/food/" class="nav-link ">Food</a>
+      <a href="/tags/" class="nav-link ">Tags</a>
+      <a href="/about/" class="nav-link ">About</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="search-toggle" aria-label="검색 열기">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+      <button class="nav-toggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-modal__header">
+      <div class="search-input-wrap">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="제목 또는 태그로 검색..."
+          autocomplete="off"
+        >
+        <kbd class="search-kbd">ESC</kbd>
+      </div>
+    </div>
+    <div class="search-modal__body" id="searchResults">
+      <div class="search-empty">
+        <p class="search-empty__text">검색어를 입력하세요</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/search.js"></script>
+
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  toggle?.addEventListener('click', () => {
+    nav.classList.toggle('is-open');
+    toggle.classList.toggle('is-active');
+  });
+</script>
+
+  
+  <main class="site-main">
+    <article class="post-full">
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-category post-category--research">
+        🧬 Research
+      </span>
+      <time datetime="2026-02-28T00:00:00+00:00">
+        2026년 02월 28일
+      </time>
+    </div>
+    <h1 class="post-title">Korean Genome Project: 1,094명의 한국인 전장유전체와 임상 정보 분석<span class="badge-ai">AI Generated</span></h1>
+    
+    <p class="post-subtitle">Science Advances (2020) — Korea1K: 한국인 집단 유전체 레퍼런스 구축과 임상 활용</p>
+    
+    
+    <div class="post-tags">
+      
+      <a href="/tags/#paper-review" class="tag tag--link">#paper review</a>
+      
+      <a href="/tags/#genomics" class="tag tag--link">#genomics</a>
+      
+      <a href="/tags/#population-genetics" class="tag tag--link">#population genetics</a>
+      
+      <a href="/tags/#gwas" class="tag tag--link">#GWAS</a>
+      
+      <a href="/tags/#whole-genome-sequencing" class="tag tag--link">#whole genome sequencing</a>
+      
+    </div>
+    
+  </header>
+
+  
+
+  <div class="post-content">
+    <blockquote>
+  <p><strong>논문 정보</strong></p>
+  <ul>
+    <li><strong>Title</strong>: Korean Genome Project: 1094 Korean personal genomes with clinical information</li>
+    <li><strong>Authors</strong>: Sungwon Jeon, Youngjune Bhak, Yeonsong Choi, Yeonsu Jeon, Seunghoon Kim, Jaeyoung Jang, Jinho Jang, Asta Blazyte, Changjae Kim, Yeonkyung Kim, … Semin Lee, Jong Bhak</li>
+    <li><strong>Affiliation</strong>: Korean Genomics Center (KOGIC), UNIST; Personal Genome Project, Harvard Medical School</li>
+    <li><strong>Journal</strong>: Science Advances, Volume 6, Issue 22, eaaz7835 (2020)</li>
+    <li><strong>DOI</strong>: <a href="https://doi.org/10.1126/sciadv.aaz7835">10.1126/sciadv.aaz7835</a></li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h2 id="연구-배경-및-동기">연구 배경 및 동기</h2>
+
+<p>인간 유전체 연구의 핵심 과제 중 하나는 <strong>집단 특이적(population-specific) 유전 변이</strong>를 체계적으로 카탈로그화하는 것이다. 1000 Genomes Project(1KGP)를 비롯한 대규모 국제 프로젝트가 전 세계 집단의 유전적 다양성을 밝히는 데 기여했지만, 동아시아 인구의 대표성은 상대적으로 부족했다. 특히 한국인은 수천 년간의 <strong>지정학적 고립(geopolitical isolation)</strong>으로 인해 유전적으로 균질한 집단을 형성하고 있어, 별도의 인구 특이적 레퍼런스가 필수적이다.</p>
+
+<p><strong>Korean Genome Project(KGP)</strong>는 Harvard Medical School의 Personal Genome Project, 한국표준과학연구원(KRISS), Clinomics Inc., 그리고 UNIST의 Korean Genomics Center(KOGIC)가 공동으로 추진한 대규모 유전체 프로젝트다. 본 논문은 KGP의 첫 번째 단계인 <strong>Korea1K</strong>의 성과를 보고하며, <strong>1,094명의 한국인 전장유전체(WGS)</strong>와 <strong>79가지 정량적 임상 형질(quantitative clinical traits)</strong> 데이터를 공개했다.</p>
+
+<blockquote>
+  <p><strong>한국인 집단 유전체 레퍼런스를 구축하여 임상 연구, 민족유전학 연구, 그리고 암 유전체 분석에 활용 가능한 자원을 제공하는 것이 이 연구의 핵심 목표다.</strong></p>
+</blockquote>
+
+<hr />
+
+<h2 id="연구-설계-및-방법론">연구 설계 및 방법론</h2>
+
+<h3 id="코호트-구성">코호트 구성</h3>
+
+<p>Korea1K 데이터셋은 총 1,094개의 전장유전체로 구성된다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>수량</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>신규 시퀀싱</strong></td>
+      <td>1,007명</td>
+      <td>혈액 또는 타액 샘플, 984명에 대한 임상·생화학 정보 포함</td>
+    </tr>
+    <tr>
+      <td><strong>KoVariome 기존 데이터</strong></td>
+      <td>87명</td>
+      <td>이전에 공개된 KoVariome 데이터베이스 통합</td>
+    </tr>
+    <tr>
+      <td><strong>비혈연 건강 개체</strong></td>
+      <td>916명</td>
+      <td>친족 관계 제거 후 집단 유전학 분석에 사용</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>대부분의 샘플은 <strong>울산광역시(Ulsan metropolitan area)</strong> 거주자로부터 수집되었다.</p>
+
+<h3 id="시퀀싱-및-분석-파이프라인">시퀀싱 및 분석 파이프라인</h3>
+
+<ul>
+  <li><strong>시퀀싱 플랫폼</strong>: Illumina HiSeq X10</li>
+  <li><strong>평균 커버리지</strong>: 31×</li>
+  <li><strong>변이 검출(variant calling)</strong>: SNV, indel, CNV, 전위인자(transposable element, TE) 삽입, HLA 타이핑을 포함한 다층적 분석</li>
+  <li><strong>레퍼런스 게놈</strong>: 최신 인간 게놈 레퍼런스 사용</li>
+  <li><strong>품질 관리</strong>: 시퀀싱 배치 효과(batch effect) 및 친족 관계에 의한 위양성 변이 필터링</li>
+</ul>
+
+<hr />
+
+<h2 id="주요-결과">주요 결과</h2>
+
+<h3 id="1-변이-통계-및-신규-변이-발견율">1. 변이 통계 및 신규 변이 발견율</h3>
+
+<p>Korea1K에서 총 <strong>3,920만 개의 SNV</strong>와 <strong>760만 개의 indel</strong>이 검출되었다. 품질 필터링 후 <strong>3,400만 SNV</strong>와 <strong>480만 indel</strong>이 최종 분석에 사용되었다.</p>
+
+<p><img src="https://www.science.org/cms/10.1126/sciadv.aaz7835/asset/f5d1b9cf-f3c2-4bb6-b8f2-01eb64d82e8e/assets/graphic/aaz7835-f1.jpeg" alt="Korea1K 변이 통계 및 신규 변이 발견율" />
+<em>Figure 1: Korea1K의 변이 통계 및 신규 변이 발견율. (A) 대립유전자 빈도 카테고리별 변이 수 분포. (B) 비혈연 한국인 게놈 수에 따른 신규 변이 발견 곡선. 매우 흔한 변이(AF &gt;0.05)는 132개 샘플(14.4%) 이후 포화되었으나, 싱글톤·더블톤 변이는 916개 전체 샘플 분석 후에도 지속적으로 증가했다. (출처: Jeon et al., Sci Adv 2020)</em></p>
+
+<p>변이는 대립유전자 빈도(allele frequency)에 따라 5가지 카테고리로 분류되었다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>카테고리</th>
+      <th>정의</th>
+      <th>비율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>싱글톤(Singleton)</strong></td>
+      <td>대립유전자 수 = 1</td>
+      <td>전체의 ~50%</td>
+    </tr>
+    <tr>
+      <td><strong>더블톤(Doubleton)</strong></td>
+      <td>대립유전자 수 = 2</td>
+      <td>(싱글톤과 합산 ~50%)</td>
+    </tr>
+    <tr>
+      <td><strong>희귀(Rare)</strong></td>
+      <td>대립유전자 수 &gt;2, AF ≤0.01</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><strong>흔한(Common)</strong></td>
+      <td>0.01 &lt; AF ≤ 0.05</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><strong>매우 흔한(Very common)</strong></td>
+      <td>AF &gt; 0.05</td>
+      <td>132개 샘플 후 포화</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>주목할 점은 전체 변이의 <strong>약 절반이 싱글톤 또는 더블톤</strong>이라는 것이다. 이는 한국인 집단 내에서도 개인 간 유전적 다양성이 상당히 크며, 더 많은 샘플 시퀀싱이 희귀 변이 발견에 필수적임을 시사한다.</p>
+
+<h3 id="2-집단-구조-분석-및-타-집단과의-비교">2. 집단 구조 분석 및 타 집단과의 비교</h3>
+
+<p><img src="https://www.science.org/cms/10.1126/sciadv.aaz7835/asset/bae87c49-9ebc-4ec4-88e9-29e38b94b1d1/assets/graphic/aaz7835-f2.jpeg" alt="Korea1K와 1KGP 집단 간 PCA 및 TE 삽입 비교" />
+<em>Figure 2: Korea1K와 1KGP 세계 집단 간 주성분 분석(PCA) 및 전위인자(TE) 삽입 빈도 비교. 한국인은 동아시아 집단 내에서도 뚜렷한 클러스터를 형성하며, 유전적으로 매우 균질한 집단임이 확인되었다. (출처: Jeon et al., Sci Adv 2020)</em></p>
+
+<p>PCA(주성분 분석)를 통해 Korea1K와 1KGP의 전 세계 26개 집단을 비교한 결과:</p>
+
+<ul>
+  <li>한국인은 동아시아 집단과 함께 클러스터링되지만, <strong>동아시아 내에서도 독립적인 클러스터</strong>를 형성</li>
+  <li><strong>ADMIXTURE 분석</strong>에서 한국인 단독 분석 시 최적 하위집단 수(K)는 <strong>K=1</strong>로, 한국인이 유전적으로 매우 <strong>균질한(homogeneous) 집단</strong>임을 확인</li>
+  <li><strong>fineSTRUCTURE</strong> 분석에서도 한국인은 단일 분기(single clade)를 형성</li>
+  <li>이러한 균질성은 수천 년간의 지정학적 고립으로 설명 가능</li>
+</ul>
+
+<p>전위인자(TE) 삽입 분석에서도 한국인과 다른 동아시아 집단 간 유의하게 다른 대립유전자 빈도를 보이는 TE가 다수 확인되어, <strong>한국인 특이적 유전체 패턴</strong>이 존재함을 보여주었다.</p>
+
+<h3 id="3-비동의-변이-및-기능적-주석">3. 비동의 변이 및 기능적 주석</h3>
+
+<p>Korea1K에서 <strong>266,081개의 비동의(nonsynonymous) SNV</strong>가 확인되었다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>예측 도구</th>
+      <th>분류</th>
+      <th>수량</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>PolyPhen</strong></td>
+      <td>Possibly damaging</td>
+      <td>46,116</td>
+    </tr>
+    <tr>
+      <td><strong>PolyPhen</strong></td>
+      <td>Probably damaging</td>
+      <td>72,301</td>
+    </tr>
+    <tr>
+      <td><strong>SIFT</strong></td>
+      <td>Deleterious</td>
+      <td>117,414</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이러한 잠재적 병원성 변이(pathogenic variant) 정보는 한국인 특이적 질병 유전학 연구에 중요한 기초 자원이 된다.</p>
+
+<h3 id="4-전장유전체-연관-분석-gwas">4. 전장유전체 연관 분석 (GWAS)</h3>
+
+<p><img src="https://www.science.org/cms/10.1126/sciadv.aaz7835/asset/01fa0ffd-c9fc-4cbb-a5f9-e75e7e4b75d3/assets/graphic/aaz7835-f3.jpeg" alt="Korea1K GWAS Manhattan plot" />
+<em>Figure 3: Korea1K GWAS Manhattan plot. 각 색상은 서로 다른 임상 형질을 나타낸다. 삼각형은 가장 유의한 마커를 표시하며, 점선은 유전체 전체 유의 수준(7.5 × 10⁻⁹)과 연구 전체 유의 수준(9.5 × 10⁻¹¹) 임계값을 나타낸다. (출처: Jeon et al., Sci Adv 2020)</em></p>
+
+<p>79가지 임상 형질에 대한 GWAS를 수행한 결과:</p>
+
+<ul>
+  <li><strong>467개 변이</strong>가 <strong>11가지 정량적 형질</strong>과 통계적으로 유의한 연관성을 보임</li>
+  <li>467개 변이는 <strong>8개 염색체 상의 15개 독립 좌위(independent loci)</strong>로 클러스터링</li>
+  <li>15개 좌위 중 <strong>11개</strong>는 이전에 보고된 형질 연관 변이 포함</li>
+  <li><strong>4개의 새로운 좌위</strong>가 이 연구에서 최초로 발견</li>
+  <li>기존 연관불균형(LD) 블록에서 <strong>9개의 더 유의한 후보 대립유전자</strong>를 발견</li>
+</ul>
+
+<p>이 결과는 <strong>어레이 기반 유전형 분석(genotyping array)</strong>보다 <strong>전장유전체 시퀀싱(WGS)</strong>이 GWAS에서 더 높은 해상도와 검출력을 제공함을 입증한다.</p>
+
+<h3 id="5-임퓨테이션-정확도-비교">5. 임퓨테이션 정확도 비교</h3>
+
+<p><img src="https://www.science.org/cms/10.1126/sciadv.aaz7835/asset/76e2805a-1ebf-4e50-a720-65314e9e7a02/assets/graphic/aaz7835-f4.jpeg" alt="Korea1K 임퓨테이션 성능 평가" />
+<em>Figure 4: 레퍼런스 패널별 임퓨테이션 정확도 비교. X축은 Korea1K에서의 대체 대립유전자 빈도, Y축은 SNV의 집계 R² 값을 나타낸다. Korea1K를 레퍼런스로 사용했을 때 한국인에 대한 임퓨테이션 정확도가 1KGP 패널보다 우수했다. (출처: Jeon et al., Sci Adv 2020)</em></p>
+
+<p>유전형 임퓨테이션(genotype imputation)은 GWAS에서 직접 측정되지 않은 변이를 추정하는 핵심 기술이다. Korea1K를 레퍼런스 패널로 사용한 결과:</p>
+
+<ul>
+  <li><strong>Korea1K 레퍼런스가 1KGP 패널보다 한국인에 대한 임퓨테이션 정확도가 높음</strong></li>
+  <li>특히 <strong>희귀 변이(rare variant)</strong> 영역에서 정확도 차이가 두드러짐</li>
+  <li>이는 <strong>인구 특이적 레퍼런스 패널</strong>의 중요성을 강조하는 결과</li>
+</ul>
+
+<h3 id="6-암-유전체-분석에서의-활용-panel-of-normals">6. 암 유전체 분석에서의 활용: Panel of Normals</h3>
+
+<p><img src="https://www.science.org/cms/10.1126/sciadv.aaz7835/asset/f6ddc5b6-83b1-474e-a8e3-eed20e1e8fc5/assets/graphic/aaz7835-f5.jpeg" alt="변이 분류 성능 비교 - Panel of Normals" />
+<em>Figure 5: 서로 다른 Panel of Normals를 사용한 변이 분류 성능 비교. (A) 정확도(ACC), (B) Matthews 상관계수(MCC), (C) 생식세포 변이 회수율. EAS, SAS, AMR, EUR, AFR은 각각 1KGP의 동아시아, 남아시아, 아메리카, 유럽, 아프리카 집단을 나타낸다. (출처: Jeon et al., Sci Adv 2020)</em></p>
+
+<p>암 유전체 분석에서 <strong>체세포 변이(somatic variant)</strong>와 <strong>생식세포 변이(germline variant)</strong>를 정확히 구분하는 것은 매우 중요하다. Korea1K를 <strong>Panel of Normals</strong>로 활용한 결과:</p>
+
+<ul>
+  <li>Korea1K를 사용했을 때 <strong>가장 높은 변이 분류 정확도</strong>를 달성</li>
+  <li>비한국인 변이 데이터베이스를 사용할 때보다 <strong>생식세포 변이 필터링 성능이 우수</strong></li>
+  <li>이는 <strong>민족 특이적 정상 변이 데이터베이스</strong>가 암 유전체 분석에서 필수적임을 시사</li>
+</ul>
+
+<p>Korea1K와 일본인 데이터(3.5KJPN)를 결합하여 변이의 대립유전자 빈도 기반 임계값으로 체세포/생식세포 변이를 분류하였으며, 분류 결과를 실제 검증 세트(true set)와 비교하여 성능을 평가했다.</p>
+
+<hr />
+
+<h2 id="의의-및-한계">의의 및 한계</h2>
+
+<h3 id="의의">의의</h3>
+
+<ol>
+  <li><strong>최대 규모의 한국인 유전체 레퍼런스</strong>: 1,094개의 전장유전체와 79가지 임상 형질 데이터를 포함한 한국 최대 규모의 유전체 자원 공개</li>
+  <li><strong>GWAS 해상도 향상</strong>: WGS 기반 GWAS가 어레이 기반보다 우수한 검출력을 보이며, 새로운 형질 연관 좌위 발견</li>
+  <li><strong>임퓨테이션 정확도 개선</strong>: 한국인 특이적 레퍼런스 패널이 국제 패널보다 높은 정확도를 제공</li>
+  <li><strong>암 유전체 분석 활용</strong>: Panel of Normals로서 한국인 암 환자의 변이 분류 정확도 향상</li>
+  <li><strong>공개 데이터</strong>: 연구 결과를 <a href="http://1000genomes.kr/">Korea1K 웹페이지</a>를 통해 공개하여 학계 전반의 활용 가능</li>
+</ol>
+
+<h3 id="한계">한계</h3>
+
+<ul>
+  <li><strong>지역적 편향</strong>: 대부분의 샘플이 울산광역시에서 수집되어 한반도 전체를 대표하기에 한계</li>
+  <li><strong>샘플 크기</strong>: 1,094명은 한국인 집단의 희귀 변이 구조를 완전히 파악하기에는 여전히 부족</li>
+  <li><strong>잠재적 구조 변이 한계</strong>: 숨겨진 유전체 구조 변이(latent genomic structural variation)를 포괄적으로 매핑하기에 제한적</li>
+</ul>
+
+<hr />
+
+<h2 id="후속-연구-korea4k로의-확장">후속 연구: Korea4K로의 확장</h2>
+
+<p>Korea1K의 성과를 바탕으로 <strong>Korea4K</strong> 프로젝트가 후속으로 진행되었다. Korea4K는 <strong>4,157명의 전장유전체</strong>와 <strong>107가지 건강검진 파라미터</strong>를 포함하며, 한국인에서 대립유전자 빈도 0.001 이상인 대부분의 변이를 포괄한다. Korea4K에서는 <strong>45,537,252개의 변이</strong>가 확인되었으며, 그중 절반은 Korea1K에 없던 새로운 변이였다.</p>
+
+<hr />
+
+<h2 id="개인적-소감">개인적 소감</h2>
+
+<p>이 논문은 <strong>인구 집단 특이적 유전체 레퍼런스</strong>가 왜 중요한지를 명확히 보여주는 연구다. 전 세계적으로 유전체 연구가 유럽계 중심으로 편향되어 있는 현실에서, Korea1K는 동아시아, 특히 한국인 집단을 위한 독자적인 유전체 인프라를 구축했다는 점에서 큰 의미가 있다.</p>
+
+<p>특히 인상적인 것은 <strong>실용적 활용성(translational utility)</strong>의 다층적 입증이다. 단순한 변이 카탈로그를 넘어, GWAS의 해상도 향상, 임퓨테이션 정확도 개선, 그리고 암 유전체 분석에서의 Panel of Normals 활용까지, 실제 임상 연구에 직접 기여할 수 있는 다양한 경로를 제시했다. 노화 연구(aging research) 관점에서도, 한국인 특이적 유전 변이와 임상 형질 간의 연관 관계 데이터는 <strong>한국인 노화 바이오마커 발굴</strong>이나 <strong>정밀 의학(precision medicine)</strong> 접근에 핵심 자원이 될 것이다.</p>
+
+<p>다만 울산 지역 중심의 샘플 수집이라는 한계는 분명히 존재하며, 향후 Korea4K를 넘어 전국적 규모의 다양한 코호트로 확장되기를 기대한다.</p>
+
+<hr />
+
+<h2 id="references">References</h2>
+
+<ol>
+  <li>Jeon, S., Bhak, Y., Choi, Y., et al. Korean Genome Project: 1094 Korean personal genomes with clinical information. <em>Science Advances</em>, 6(22), eaaz7835 (2020). <a href="https://doi.org/10.1126/sciadv.aaz7835">DOI</a></li>
+  <li>1000 Genomes Project Consortium. A global reference for human genetic variation. <em>Nature</em>, 526, 68–74 (2015).</li>
+  <li>Jeon, S., et al. Korea4K: whole genome sequences of 4,157 Koreans with 107 phenotypes derived from extensive health check-ups. <em>GigaScience</em> (2024). <a href="https://pubmed.ncbi.nlm.nih.gov/38626723/">PubMed</a></li>
+  <li>Korea1K 데이터 포털: <a href="http://1000genomes.kr/">http://1000genomes.kr/</a></li>
+</ol>
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-nav">
+      
+      <a class="post-nav__prev" href="/research/2026/02/27/precious1gpt-aging-clock/">
+        <span class="post-nav__label">← 이전 글</span>
+        <span class="post-nav__title">Precious1GPT: 멀티모달 트랜스포머 기반 노화 시계와 노화 관련 질환 타겟 발굴</span>
+      </a>
+      
+      
+    </div>
+  </footer>
+   <!-- 댓글 (giscus) -->
+  
+   <!-- 댓글 영역 -->
+<div class="comments-section">
+    <h2 class="comments-title">💬 댓글</h2>
+    <script src="https://giscus.app/client.js"
+    data-repo="jsungwon/jsungwon.github.io"
+    data-repo-id="R_kgDORQmu8A"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORQmu8M4C2eY7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+</script>
+  </div>
+  
+  <style>
+    .comments-section {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #e8e4df;
+    }
+    .comments-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+  </style>
+  
+ 
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="logo-svg logo-svg--footer" width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <p>Bioinformatics, Tech, Travel & Life</p>
+    </div>
+    <div class="footer-links">
+      
+      <a href="https://github.com/jsungwon" target="_blank" rel="noopener">GitHub</a>
+      
+      
+      <a href="mailto:jsw0061@gmail.com">Email</a>
+      
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 Sungwon. Built with Jekyll & GitHub Pages.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
