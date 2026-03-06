@@ -1,6 +1,16 @@
 [
   
   {
+    "title": "Evo 2: 생명의 모든 도메인을 아우르는 게놈 모델링과 설계",
+    "url": "/research/2026/03/05/evo2-genome-modelling-design-all-domains-of-life/",
+    "date": "2026-03-05",
+    "category": "research",
+    "tags": ["paper review","genomics","foundation model","deep learning","generative model"],
+    "subtitle": "Nature (2026) — 9조 개 염기쌍으로 학습한 40B 파라미터 DNA 파운데이션 모델",
+    "ai_generated": true
+  },
+  
+  {
     "title": "Korean Genome Project: 1,094명의 한국인 전장유전체와 임상 정보 분석",
     "url": "/research/2026/02/28/korean-genome-project-korea1k/",
     "date": "2026-02-28",

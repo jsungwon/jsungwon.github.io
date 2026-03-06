@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evo 2: 생명의 모든 도메인을 아우르는 게놈 모델링과 설계 — 놀놀할할</title>
+  <meta name="description" content="논문 정보 Title: Genome modelling and design across all domains of life with Evo 2 Authors: Garyk Brixi, Matthew G. Durrant, Jerome Ku, Michael Poli, Greg Brockman, Daniel Chang, Gabriel A. Gonzalez, Samuel H. King, David B. Li, Aditi T. Merchant, … Dave P. Burke, Hani Goodarzi, Patrick D. Hsu,...">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- SEO -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Evo 2: 생명의 모든 도메인을 아우르는 게놈 모델링과 설계 | 놀놀할할</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Evo 2: 생명의 모든 도메인을 아우르는 게놈 모델링과 설계" />
+<meta name="author" content="Sungwon" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="논문 정보 Title: Genome modelling and design across all domains of life with Evo 2 Authors: Garyk Brixi, Matthew G. Durrant, Jerome Ku, Michael Poli, Greg Brockman, Daniel Chang, Gabriel A. Gonzalez, Samuel H. King, David B. Li, Aditi T. Merchant, … Dave P. Burke, Hani Goodarzi, Patrick D. Hsu, Brian L. Hie (총 50명 이상) Affiliation: Arc Institute, Stanford University, NVIDIA, UC Berkeley, UC San Francisco, Liquid AI, Goodfire, Columbia University Journal: Nature (2026) DOI: 10.1038/s41586-026-10176-5 Preprint: bioRxiv 2025.02.18.638918 GitHub: ArcInstitute/evo2" />
+<meta property="og:description" content="논문 정보 Title: Genome modelling and design across all domains of life with Evo 2 Authors: Garyk Brixi, Matthew G. Durrant, Jerome Ku, Michael Poli, Greg Brockman, Daniel Chang, Gabriel A. Gonzalez, Samuel H. King, David B. Li, Aditi T. Merchant, … Dave P. Burke, Hani Goodarzi, Patrick D. Hsu, Brian L. Hie (총 50명 이상) Affiliation: Arc Institute, Stanford University, NVIDIA, UC Berkeley, UC San Francisco, Liquid AI, Goodfire, Columbia University Journal: Nature (2026) DOI: 10.1038/s41586-026-10176-5 Preprint: bioRxiv 2025.02.18.638918 GitHub: ArcInstitute/evo2" />
+<link rel="canonical" href="https://jsungwon.github.io/research/2026/03/05/evo2-genome-modelling-design-all-domains-of-life/" />
+<meta property="og:url" content="https://jsungwon.github.io/research/2026/03/05/evo2-genome-modelling-design-all-domains-of-life/" />
+<meta property="og:site_name" content="놀놀할할" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-03-05T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Evo 2: 생명의 모든 도메인을 아우르는 게놈 모델링과 설계" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sungwon"},"dateModified":"2026-03-05T00:00:00+00:00","datePublished":"2026-03-05T00:00:00+00:00","description":"논문 정보 Title: Genome modelling and design across all domains of life with Evo 2 Authors: Garyk Brixi, Matthew G. Durrant, Jerome Ku, Michael Poli, Greg Brockman, Daniel Chang, Gabriel A. Gonzalez, Samuel H. King, David B. Li, Aditi T. Merchant, … Dave P. Burke, Hani Goodarzi, Patrick D. Hsu, Brian L. Hie (총 50명 이상) Affiliation: Arc Institute, Stanford University, NVIDIA, UC Berkeley, UC San Francisco, Liquid AI, Goodfire, Columbia University Journal: Nature (2026) DOI: 10.1038/s41586-026-10176-5 Preprint: bioRxiv 2025.02.18.638918 GitHub: ArcInstitute/evo2","headline":"Evo 2: 생명의 모든 도메인을 아우르는 게놈 모델링과 설계","mainEntityOfPage":{"@type":"WebPage","@id":"https://jsungwon.github.io/research/2026/03/05/evo2-genome-modelling-design-all-domains-of-life/"},"url":"https://jsungwon.github.io/research/2026/03/05/evo2-genome-modelling-design-all-domains-of-life/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWB335C28N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DWB335C28N');
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <svg class="logo-svg" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">놀놀할할</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="/research/" class="nav-link nav-link--active">Research</a>
+      <a href="/tech/" class="nav-link ">Tech</a>
+      <a href="/trip/" class="nav-link ">Trip</a>
+      <a href="/food/" class="nav-link ">Food</a>
+      <a href="/tags/" class="nav-link ">Tags</a>
+      <a href="/about/" class="nav-link ">About</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="search-toggle" aria-label="검색 열기">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+      <button class="nav-toggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-modal__header">
+      <div class="search-input-wrap">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="제목 또는 태그로 검색..."
+          autocomplete="off"
+        >
+        <kbd class="search-kbd">ESC</kbd>
+      </div>
+    </div>
+    <div class="search-modal__body" id="searchResults">
+      <div class="search-empty">
+        <p class="search-empty__text">검색어를 입력하세요</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/search.js"></script>
+
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  toggle?.addEventListener('click', () => {
+    nav.classList.toggle('is-open');
+    toggle.classList.toggle('is-active');
+  });
+</script>
+
+  
+  <main class="site-main">
+    <article class="post-full">
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-category post-category--research">
+        🧬 Research
+      </span>
+      <time datetime="2026-03-05T00:00:00+00:00">
+        2026년 03월 05일
+      </time>
+    </div>
+    <h1 class="post-title">Evo 2: 생명의 모든 도메인을 아우르는 게놈 모델링과 설계<span class="badge-ai">AI Generated</span></h1>
+    
+    <p class="post-subtitle">Nature (2026) — 9조 개 염기쌍으로 학습한 40B 파라미터 DNA 파운데이션 모델</p>
+    
+    
+    <div class="post-tags">
+      
+      <a href="/tags/#paper-review" class="tag tag--link">#paper review</a>
+      
+      <a href="/tags/#genomics" class="tag tag--link">#genomics</a>
+      
+      <a href="/tags/#foundation-model" class="tag tag--link">#foundation model</a>
+      
+      <a href="/tags/#deep-learning" class="tag tag--link">#deep learning</a>
+      
+      <a href="/tags/#generative-model" class="tag tag--link">#generative model</a>
+      
+    </div>
+    
+  </header>
+
+  
+
+  <div class="post-content">
+    <blockquote>
+  <p><strong>논문 정보</strong></p>
+  <ul>
+    <li><strong>Title</strong>: Genome modelling and design across all domains of life with Evo 2</li>
+    <li><strong>Authors</strong>: Garyk Brixi, Matthew G. Durrant, Jerome Ku, Michael Poli, Greg Brockman, Daniel Chang, Gabriel A. Gonzalez, Samuel H. King, David B. Li, Aditi T. Merchant, … Dave P. Burke, Hani Goodarzi, Patrick D. Hsu, Brian L. Hie (총 50명 이상)</li>
+    <li><strong>Affiliation</strong>: Arc Institute, Stanford University, NVIDIA, UC Berkeley, UC San Francisco, Liquid AI, Goodfire, Columbia University</li>
+    <li><strong>Journal</strong>: Nature (2026)</li>
+    <li><strong>DOI</strong>: <a href="https://doi.org/10.1038/s41586-026-10176-5">10.1038/s41586-026-10176-5</a></li>
+    <li><strong>Preprint</strong>: <a href="https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1">bioRxiv 2025.02.18.638918</a></li>
+    <li><strong>GitHub</strong>: <a href="https://github.com/ArcInstitute/evo2">ArcInstitute/evo2</a></li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h2 id="연구-배경-및-동기">연구 배경 및 동기</h2>
+
+<p>생물학의 중심 원리(central dogma)는 DNA → RNA → 단백질이라는 정보 흐름으로 요약된다. 그러나 게놈(genome)은 이 흐름의 시작점이면서 동시에 가장 복잡한 생물학적 언어(biological language)다. 유전자 코딩 서열뿐 아니라, 조절 요소(regulatory elements), 비코딩 RNA, 전이인자(transposable elements), 염색질 구조(chromatin structure) 등 다양한 기능적 요소가 DNA 서열 안에 중첩적으로 인코딩되어 있다.</p>
+
+<p>최근 대규모 언어 모델(LLM)의 성공에 영감을 받아, DNA 서열을 자연어처럼 모델링하려는 시도가 활발히 이루어지고 있다. 2024년 Science에 발표된 <strong>Evo (v1)</strong>은 원핵생물(prokaryote)과 파지(phage)의 게놈 ~3,000억 개 뉴클레오타이드로 학습된 7B 파라미터 모델로, 단일 뉴클레오타이드 해상도에서 분자-게놈 규모의 시퀀스 모델링이 가능함을 보여주었다. 그러나 Evo 1은 진핵생물(eukaryote) 게놈을 포함하지 않아, 인간을 포함한 다세포 생물의 게놈 패턴을 학습하지 못했다는 근본적인 한계가 있었다.</p>
+
+<p><strong>Evo 2</strong>는 이 한계를 극복하기 위해, <strong>생명의 세 도메인(bacteria, archaea, eukaryota) 전체</strong>를 아우르는 대규모 게놈 데이터로 학습된 차세대 DNA 파운데이션 모델이다.</p>
+
+<hr />
+
+<h2 id="모델-아키텍처-stripedhyena-2">모델 아키텍처: StripedHyena 2</h2>
+
+<p><img src="https://raw.githubusercontent.com/ArcInstitute/evo2/main/evo2.jpg" alt="Evo 2 프로젝트 개요 — 생명의 모든 도메인에 걸친 게놈 모델링 및 설계를 위한 DNA 파운데이션 모델" />
+<em>Figure 1: Evo 2 개요. 생명의 모든 도메인에 걸친 게놈으로부터 학습하여 변이 효과 예측, 게놈 생성, 에피게놈 설계 등 다양한 다운스트림 태스크를 수행한다. (출처: Brixi et al., Nature 2026)</em></p>
+
+<p>Evo 2의 핵심 아키텍처는 <strong>StripedHyena 2 (Multi-hybrid)</strong>로, 기존 Transformer의 한계를 극복하기 위해 설계된 하이브리드 아키텍처다.</p>
+
+<h3 id="핵심-구성-요소">핵심 구성 요소</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>구성 요소</th>
+      <th>역할</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>입력 의존 합성곱 연산자 (Input-dependent convolution)</strong></td>
+      <td>Hyena 레이어 기반, 긴 시퀀스의 장거리 의존성을 효율적으로 처리</td>
+    </tr>
+    <tr>
+      <td><strong>어텐션 메커니즘 (Attention)</strong></td>
+      <td>국소적 패턴의 정밀한 포착</td>
+    </tr>
+    <tr>
+      <td><strong>상태 공간 모델 (State-space model)</strong></td>
+      <td>시퀀스의 연속적 동역학 모델링</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이 하이브리드 구조 덕분에 Evo 2는 기존 최적화된 Transformer 모델 대비 <strong>약 3배 빠른 학습 속도</strong>를 달성했다. 가장 중요한 개선은 <strong>컨텍스트 길이의 확장</strong>으로, Evo 1의 131kb에서 <strong>1 메가베이스(1Mb = 100만 bp)</strong>로 약 8배 증가했다. 이는 진핵생물 게놈의 크고 복잡한 유전자 구조(긴 인트론, 원거리 조절 요소 등)를 모델링하는 데 필수적이다.</p>
+
+<h3 id="evo-1-vs-evo-2-비교">Evo 1 vs Evo 2 비교</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>특성</th>
+      <th>Evo 1</th>
+      <th>Evo 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>파라미터 수</strong></td>
+      <td>7B</td>
+      <td><strong>40B</strong></td>
+    </tr>
+    <tr>
+      <td><strong>학습 데이터</strong></td>
+      <td>~300B 토큰 (원핵생물/파지)</td>
+      <td><strong>~8.85T 토큰 (전 생물 도메인)</strong></td>
+    </tr>
+    <tr>
+      <td><strong>컨텍스트 길이</strong></td>
+      <td>131 kb</td>
+      <td><strong>1 Mb</strong></td>
+    </tr>
+    <tr>
+      <td><strong>도메인 범위</strong></td>
+      <td>원핵생물</td>
+      <td><strong>세균, 고세균, 진핵생물 전체</strong></td>
+    </tr>
+    <tr>
+      <td><strong>아키텍처</strong></td>
+      <td>StripedHyena</td>
+      <td><strong>StripedHyena 2 (Multi-hybrid)</strong></td>
+    </tr>
+    <tr>
+      <td><strong>인간 게놈</strong></td>
+      <td>미포함</td>
+      <td><strong>포함</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="학습-데이터-opengenome2">학습 데이터: OpenGenome2</h2>
+
+<p>Evo 2는 <strong>OpenGenome2</strong>라는 대규모 고품질 게놈 아틀라스로 학습되었다. 이 데이터셋은 HuggingFace에서 공개적으로 이용 가능하다.</p>
+
+<h3 id="데이터-구성">데이터 구성</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>데이터 유형</th>
+      <th>게놈 수</th>
+      <th>비고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>진핵생물 (Eukaryota)</strong></td>
+      <td>15,032</td>
+      <td>인간, 식물, 동물, 균류 등</td>
+    </tr>
+    <tr>
+      <td><strong>원핵생물 (Prokaryota)</strong></td>
+      <td>113,379</td>
+      <td>세균, 고세균</td>
+    </tr>
+    <tr>
+      <td><strong>세포소기관 (Organelle)</strong></td>
+      <td>32,241</td>
+      <td>미토콘드리아 1,613개, 엽록체 12,856개, 색소체 1,751개 등</td>
+    </tr>
+    <tr>
+      <td><strong>합계</strong></td>
+      <td><strong>128,000+</strong></td>
+      <td><strong>총 9.3조 뉴클레오타이드</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="2단계-학습-전략">2단계 학습 전략</h3>
+
+<p>Evo 2는 두 단계에 걸친 학습 전략을 사용했다:</p>
+
+<ol>
+  <li><strong>사전 학습 (Pretraining)</strong>: 8,192bp 윈도우 크기로, <strong>유전자 영역(genic region)</strong>이 풍부한 서열을 우선 학습. 기능적 유전 요소의 패턴을 집중적으로 습득</li>
+  <li><strong>중간 학습 (Midtraining)</strong>: 컨텍스트를 <strong>1Mb</strong>로 확장하고, 전체 게놈 서열(whole-genome sequence) 비중을 높여 광범위한 게놈 패턴 학습</li>
+</ol>
+
+<p>학습에는 <strong>NVIDIA DGX Cloud (AWS)</strong> 위에서 <strong>2,000개 이상의 NVIDIA H100 GPU</strong>가 수개월간 활용되었으며, 추정 비용은 약 <strong>1,000만 달러</strong>다.</p>
+
+<blockquote>
+  <p><strong>안전성 고려</strong>: OpenGenome2에서는 진핵생물 숙주를 감염시키는 바이러스의 게놈 서열을 의도적으로 제외하여 잠재적 오용을 방지했다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="주요-결과">주요 결과</h2>
+
+<h3 id="1-변이-효과-예측-variant-effect-prediction">1. 변이 효과 예측 (Variant Effect Prediction)</h3>
+
+<p>Evo 2의 가장 인상적인 성과 중 하나는 <strong>제로샷(zero-shot) 변이 효과 예측</strong> 능력이다. 변이 특이적 학습, 아키텍처 최적화, 다중 서열 정렬(MSA) 없이도 다양한 유형의 변이가 병원성(pathogenicity)과 스플라이싱(splicing)에 미치는 영향을 정확하게 예측한다.</p>
+
+<h4 id="brca1-변이-예측">BRCA1 변이 예측</h4>
+
+<p>유방암의 핵심 유전자인 <strong>BRCA1</strong>의 변이를 Evo 2에 입력했을 때, 유해한 변이(harmful mutation)를 <strong>90% 이상의 정확도</strong>로 예측했다. 주목할 점은:</p>
+
+<ul>
+  <li>OpenGenome2에 포함된 인간 게놈은 <strong>참조 게놈(reference genome) 단 1개</strong>뿐</li>
+  <li>BRCA1 변이 데이터로 별도 학습한 적이 <strong>전혀 없음</strong></li>
+  <li>다종(multi-species) 변이를 진화적 제약의 대리 지표로 활용하여 이 성능을 달성</li>
+  <li>코딩 및 비코딩 변이를 함께 예측할 때, 기존 특화 모델 <strong>GPN-MSA를 능가</strong></li>
+</ul>
+
+<p>Evo 2 임베딩 위에 구축한 지도 학습 모델은 <strong>BRCA1 의의불명변이(VUS, Variants of Unknown Significance)</strong> 분류에서 최고 수준(state-of-the-art)의 성능을 달성했다.</p>
+
+<h3 id="2-게놈-규모-서열-생성-genome-scale-generation">2. 게놈 규모 서열 생성 (Genome-Scale Generation)</h3>
+
+<p>Evo 2는 예측을 넘어, <strong>게놈 규모의 DNA 서열을 de novo로 생성</strong>할 수 있다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>생성 유형</th>
+      <th>특징</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>미토콘드리아 게놈</strong></td>
+      <td>자연스럽고 일관성 있는 서열 생성</td>
+    </tr>
+    <tr>
+      <td><strong>원핵생물 게놈</strong></td>
+      <td>기존 방법 대비 높은 자연성(naturalness)</td>
+    </tr>
+    <tr>
+      <td><strong>진핵생물 서열</strong></td>
+      <td>게놈 규모에서의 유전자 구조 유지</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>생성된 서열은 기존의 어떤 방법보다 <strong>자연성(naturalness)</strong>과 <strong>일관성(coherence)</strong> 면에서 우수했다.</p>
+
+<h3 id="3-메커니즘-해석-가능성-mechanistic-interpretability">3. 메커니즘 해석 가능성 (Mechanistic Interpretability)</h3>
+
+<p>Evo 2의 내부에서 무엇을 학습했는지 이해하기 위해, 연구팀은 <strong>희소 오토인코더(Sparse Autoencoder, SAE)</strong> 기법을 적용했다. 이는 모델의 내부 활성화(activation)를 해석 가능한 특징(feature)으로 분해하는 기술이다.</p>
+
+<p>SAE 분석을 통해 발견된 Evo 2의 자율 학습 특징들:</p>
+
+<ul>
+  <li><strong>엑손-인트론 경계 (Exon-intron boundaries)</strong>: 유전자 구조의 핵심 요소를 자발적으로 학습</li>
+  <li><strong>전사 인자 결합 부위 (Transcription factor binding sites)</strong>: 유전자 발현 조절의 핵심 요소</li>
+  <li><strong>단백질 구조적 요소 (Protein structural elements)</strong>: 2차 구조 등의 특성</li>
+  <li><strong>프로파지 게놈 영역 (Prophage genomic regions)</strong>: 게놈에 삽입된 바이러스 서열</li>
+  <li><strong>CRISPR 관련 서열 (CRISPR-associated sequences)</strong>: 면역 시스템 요소</li>
+  <li><strong>이동 유전 요소 (Mobile genetic elements)</strong>: 전이인자 등</li>
+</ul>
+
+<p>특히 흥미로운 점은, 일부 특징이 기존 주석(annotation)과 일치하지 않으면서도 <strong>게놈의 기능적으로 중요한 영역</strong>과 일관되게 연관되어 있었다는 것이다. 이는 Evo 2가 아직 알려지지 않은 새로운 생물학적 패턴을 포착했을 가능성을 시사한다.</p>
+
+<h3 id="4-추론-시간-스케일링과-에피게놈-설계-inference-time-scaling">4. 추론 시간 스케일링과 에피게놈 설계 (Inference-Time Scaling)</h3>
+
+<p>Evo 2의 가장 독창적인 기여 중 하나는 <strong>추론 시간 스케일링(inference-time scaling)</strong>을 생물학에 최초로 도입한 것이다.</p>
+
+<p>Enformer, Borzoi 등의 <strong>염색질 접근성 모델(chromatin accessibility model)</strong>을 결합하여, Evo 2의 생성 과정을 가이드함으로써 특정 에피게놈 구조를 가진 DNA 서열을 제어 가능하게 생성할 수 있다. 추론에 투입하는 연산량(compute)을 늘릴수록 생성 품질이 향상되는 <strong>스케일링 법칙(scaling law)</strong>이 생물학 영역에서도 성립함을 보였다.</p>
+
+<h4 id="모스-부호-실험-morse-code-experiment">모스 부호 실험 (Morse Code Experiment)</h4>
+
+<p>이 기능의 극적인 시연으로, 연구팀은 <strong>“ARC”</strong>와 <strong>“EVO2”</strong>를 모스 부호(Morse code)로 인코딩한 염색질 접근성 프로파일을 가진 DNA 서열을 설계했다. 이렇게 설계된 서열을 <strong>마우스 배아 줄기세포(mouse embryonic stem cells)</strong>에서 실험적으로 검증한 결과, <strong>AUROC 0.92~0.95</strong>의 높은 정확도로 의도한 염색질 접근성 패턴이 재현되었다.</p>
+
+<p>이는 단순한 기술적 시연을 넘어, <strong>합성 생물학(synthetic biology)</strong>에서 원하는 후성유전학적(epigenetic) 특성을 가진 DNA 서열을 설계할 수 있는 가능성을 보여준 중요한 결과다.</p>
+
+<hr />
+
+<h2 id="의의-및-한계">의의 및 한계</h2>
+
+<h3 id="의의">의의</h3>
+
+<ol>
+  <li><strong>범용 게놈 파운데이션 모델</strong>: 세균, 고세균, 진핵생물을 포함한 생명의 모든 도메인을 단일 모델로 학습한 최초의 대규모 DNA 모델</li>
+  <li><strong>제로샷 임상 변이 예측</strong>: 특화된 학습 없이도 BRCA1 등 임상적으로 중요한 유전자의 변이 효과를 정확하게 예측. 정밀 의학(precision medicine)에 대한 직접적 응용 가능성</li>
+  <li><strong>추론 시간 스케일링</strong>: 생물학에서 최초로 추론 시간 스케일링을 시연하여, 에피게놈 구조의 제어 가능한 설계를 가능케 함</li>
+  <li><strong>해석 가능성</strong>: SAE를 통해 모델 내부에서 학습된 생물학적 특징을 체계적으로 분석하여, 블랙박스 비판을 부분적으로 해소</li>
+  <li><strong>완전 공개(Fully Open Source)</strong>: 학습 데이터(OpenGenome2), 학습/추론 코드, 모델 가중치 모두를 공개하여 <strong>최대 규모의 완전 오픈소스 AI 모델</strong></li>
+</ol>
+
+<h3 id="한계-및-후속-연구-방향">한계 및 후속 연구 방향</h3>
+
+<ul>
+  <li><strong>학습 비용</strong>: 2,000개 이상의 H100 GPU를 수개월간 사용하는 ~1,000만 달러 규모의 학습 비용은 대부분의 연구 기관에서 재현 불가능</li>
+  <li><strong>생성 서열의 실험적 검증</strong>: 게놈 규모 서열 생성 능력은 인상적이나, 실제 생물학적 기능의 실험적 검증은 아직 제한적 (모스 부호 실험은 에피게놈 수준의 검증에 한정)</li>
+  <li><strong>진핵생물 게놈 생성의 한계</strong>: 원핵생물에 비해 진핵생물 게놈의 복잡성(반복 서열, 이질염색질 등)이 훨씬 크므로, 기능적으로 완전한 진핵생물 게놈 생성은 여전히 도전적인 과제</li>
+  <li><strong>단일 모달리티</strong>: DNA 서열만을 입력으로 사용하므로, 3D 게놈 구조(Hi-C), 후성유전체(epigenome), 전사체(transcriptome) 등의 다중 모달리티 통합은 향후 과제</li>
+  <li><strong>안전성과 윤리</strong>: 진핵생물 바이러스 서열을 제외하는 등의 안전 조치를 취했으나, 게놈 설계 기술의 잠재적 이중 용도에 대한 지속적인 논의가 필요</li>
+</ul>
+
+<hr />
+
+<h2 id="개인적-소감">개인적 소감</h2>
+
+<p>Evo 2는 생물학 AI 분야에서 하나의 이정표(milestone)라 할 수 있다. 특히 인상적인 부분은:</p>
+
+<ol>
+  <li>
+    <p><strong>스케일의 힘</strong>: 7B → 40B 파라미터, 300B → 8.85T 토큰으로의 스케일업이 단순한 양적 개선이 아닌 <strong>질적 도약</strong>을 가져왔다는 점이다. 원핵생물에서만 작동하던 모델이 인간 게놈의 임상적 변이까지 예측할 수 있게 된 것은, 다양한 생물종의 게놈에서 공통적인 진화적 규칙을 학습했음을 시사한다.</p>
+  </li>
+  <li>
+    <p><strong>추론 시간 스케일링의 생물학적 적용</strong>: LLM 분야에서 주목받고 있는 추론 시간 스케일링(test-time compute)을 생물학에 접목한 것은 매우 흥미로운 시도다. 이는 모델 크기를 더 키우지 않고도 성능을 개선할 수 있는 경로를 제시한다.</p>
+  </li>
+  <li>
+    <p><strong>모스 부호 실험의 상징성</strong>: “ARC”와 “EVO2”를 모스 부호로 염색질에 새긴 실험은, 과학적 의미를 넘어 <strong>“우리는 이제 게놈을 설계할 수 있다”</strong>라는 선언과도 같다. AUROC 0.92~0.95라는 높은 정확도는 이 기술이 실용적 수준에 도달했음을 보여준다.</p>
+  </li>
+</ol>
+
+<p>노화 연구(aging research) 관점에서, Evo 2는 여러 흥미로운 응용 가능성을 갖고 있다. 노화 관련 비코딩 변이(noncoding variant)의 기능적 영향 예측, 노화에 따른 후성유전학적 변화의 모델링, 그리고 SAE를 통해 발견된 미지의 생물학적 특징 중 노화 관련 패턴이 포함되어 있을 가능성이 있다. 특히 Evo 2가 학습한 다종(multi-species) 게놈 패턴은 종간 수명 차이의 유전적 기반을 탐구하는 데에도 활용될 수 있을 것이다.</p>
+
+<p>Arc Institute가 제시하는 다음 목표인 <strong>“가상 세포(virtual cell)”</strong> 구축은, Evo 2가 그 기반이 되는 첫 걸음임을 분명히 보여준다.</p>
+
+<hr />
+
+<p><strong>References</strong></p>
+<ul>
+  <li>Brixi, G., Durrant, M.G., Ku, J., Poli, M. <em>et al.</em> Genome modelling and design across all domains of life with Evo 2. <em>Nature</em> (2026). <a href="https://doi.org/10.1038/s41586-026-10176-5">https://doi.org/10.1038/s41586-026-10176-5</a></li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://www.biorxiv.org/content/10.1101/2025.02.18.638918v1">bioRxiv Preprint</a></td>
+          <td><a href="https://github.com/ArcInstitute/evo2">GitHub</a></td>
+          <td><a href="https://arcinstitute.org/news/evo2">Arc Institute</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-nav">
+      
+      <a class="post-nav__prev" href="/research/2026/02/28/korean-genome-project-korea1k/">
+        <span class="post-nav__label">← 이전 글</span>
+        <span class="post-nav__title">Korean Genome Project: 1,094명의 한국인 전장유전체와 임상 정보 분석</span>
+      </a>
+      
+      
+    </div>
+  </footer>
+   <!-- 댓글 (giscus) -->
+  
+   <!-- 댓글 영역 -->
+<div class="comments-section">
+    <h2 class="comments-title">💬 댓글</h2>
+    <script src="https://giscus.app/client.js"
+    data-repo="jsungwon/jsungwon.github.io"
+    data-repo-id="R_kgDORQmu8A"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORQmu8M4C2eY7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+</script>
+  </div>
+  
+  <style>
+    .comments-section {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #e8e4df;
+    }
+    .comments-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+  </style>
+  
+ 
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="logo-svg logo-svg--footer" width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <p>Bioinformatics, Tech, Travel & Life</p>
+    </div>
+    <div class="footer-links">
+      
+      <a href="https://github.com/jsungwon" target="_blank" rel="noopener">GitHub</a>
+      
+      
+      <a href="mailto:jsw0061@gmail.com">Email</a>
+      
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 Sungwon. Built with Jekyll & GitHub Pages.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
