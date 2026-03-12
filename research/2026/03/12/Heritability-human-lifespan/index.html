@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인간 수명의 유전율은 교란 요인을 보정하면 약 50% — 놀놀할할</title>
+  <meta name="description" content="
+  Heritability of intrinsic human life span is about 50% when confounding factors are addressed
+Ben Shenhar, Glen Pridham, Thaís Lopes De Oliveira, Naveh Raz, Yifan Yang, Joris Deelen, Sara Hägg, Uri Alon
+Science 391, 6784 (2026). DOI: 10.1126/science.adz1187
+
+">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- SEO -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>인간 수명의 유전율은 교란 요인을 보정하면 약 50% | 놀놀할할</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="인간 수명의 유전율은 교란 요인을 보정하면 약 50%" />
+<meta name="author" content="Sungwon" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Heritability of intrinsic human life span is about 50% when confounding factors are addressed Ben Shenhar, Glen Pridham, Thaís Lopes De Oliveira, Naveh Raz, Yifan Yang, Joris Deelen, Sara Hägg, Uri Alon Science 391, 6784 (2026). DOI: 10.1126/science.adz1187" />
+<meta property="og:description" content="Heritability of intrinsic human life span is about 50% when confounding factors are addressed Ben Shenhar, Glen Pridham, Thaís Lopes De Oliveira, Naveh Raz, Yifan Yang, Joris Deelen, Sara Hägg, Uri Alon Science 391, 6784 (2026). DOI: 10.1126/science.adz1187" />
+<link rel="canonical" href="https://jsungwon.github.io/research/2026/03/12/Heritability-human-lifespan/" />
+<meta property="og:url" content="https://jsungwon.github.io/research/2026/03/12/Heritability-human-lifespan/" />
+<meta property="og:site_name" content="놀놀할할" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-03-12T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="인간 수명의 유전율은 교란 요인을 보정하면 약 50%" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sungwon"},"dateModified":"2026-03-12T00:00:00+00:00","datePublished":"2026-03-12T00:00:00+00:00","description":"Heritability of intrinsic human life span is about 50% when confounding factors are addressed Ben Shenhar, Glen Pridham, Thaís Lopes De Oliveira, Naveh Raz, Yifan Yang, Joris Deelen, Sara Hägg, Uri Alon Science 391, 6784 (2026). DOI: 10.1126/science.adz1187","headline":"인간 수명의 유전율은 교란 요인을 보정하면 약 50%","mainEntityOfPage":{"@type":"WebPage","@id":"https://jsungwon.github.io/research/2026/03/12/Heritability-human-lifespan/"},"url":"https://jsungwon.github.io/research/2026/03/12/Heritability-human-lifespan/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWB335C28N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DWB335C28N');
+  </script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <svg class="logo-svg" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">놀놀할할</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="/research/" class="nav-link nav-link--active">Research</a>
+      <a href="/tech/" class="nav-link ">Tech</a>
+      <a href="/trip/" class="nav-link ">Trip</a>
+      <a href="/food/" class="nav-link ">Food</a>
+      <a href="/tags/" class="nav-link ">Tags</a>
+      <a href="/about/" class="nav-link ">About</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="search-toggle" aria-label="검색 열기">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+      <button class="nav-toggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-modal__header">
+      <div class="search-input-wrap">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="제목 또는 태그로 검색..."
+          autocomplete="off"
+        >
+        <kbd class="search-kbd">ESC</kbd>
+      </div>
+    </div>
+    <div class="search-modal__body" id="searchResults">
+      <div class="search-empty">
+        <p class="search-empty__text">검색어를 입력하세요</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/search.js"></script>
+
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  toggle?.addEventListener('click', () => {
+    nav.classList.toggle('is-open');
+    toggle.classList.toggle('is-active');
+  });
+</script>
+
+  
+  <main class="site-main">
+    <article class="post-full">
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-category post-category--research">
+        🧬 Research
+      </span>
+      <time datetime="2026-03-12T00:00:00+00:00">
+        2026년 03월 12일
+      </time>
+    </div>
+    <h1 class="post-title">인간 수명의 유전율은 교란 요인을 보정하면 약 50%<span class="badge-ai">AI Generated</span></h1>
+    
+    <p class="post-subtitle">Science (2026) 리뷰 — 외인성 사망률이 쌍둥이 연구 추정치를 어떻게 왜곡했는가</p>
+    
+    
+    <div class="post-tags">
+      
+      <a href="/tags/#paper-review" class="tag tag--link">#paper review</a>
+      
+      <a href="/tags/#aging" class="tag tag--link">#aging</a>
+      
+      <a href="/tags/#heritability" class="tag tag--link">#heritability</a>
+      
+      <a href="/tags/#twin-study" class="tag tag--link">#twin study</a>
+      
+      <a href="/tags/#longevity" class="tag tag--link">#longevity</a>
+      
+    </div>
+    
+  </header>
+
+  
+
+  <div class="post-content">
+    <blockquote>
+  <p><strong>Heritability of intrinsic human life span is about 50% when confounding factors are addressed</strong>
+Ben Shenhar, Glen Pridham, Thaís Lopes De Oliveira, Naveh Raz, Yifan Yang, Joris Deelen, Sara Hägg, Uri Alon
+<em>Science</em> 391, 6784 (2026). DOI: 10.1126/science.adz1187</p>
+</blockquote>
+
+<hr />
+
+<h2 id="연구-배경">연구 배경</h2>
+
+<p>인간 수명의 유전율(heritability)은 노화 연구의 핵심 질문 중 하나다. 유전율이 높다면, 장수 관련 유전자를 찾아 노화 메커니즘을 이해하고 의학·공중보건에 적용할 수 있는 가능성이 열린다.</p>
+
+<p>그러나 지금까지의 추정치는 실망스러웠다. 기존 쌍둥이 연구들은 수명의 유전율을 <strong>20~25%</strong> 수준으로 보고했고, 최근 대규모 족보(pedigree) 데이터를 분석한 연구들은 이를 <strong>6~16%</strong>까지 낮게 추정했다. 이는 마우스(38~55%)나 다른 인간 생리적 형질의 평균 유전율(약 49%)과 비교해 현저히 낮은 수치다.</p>
+
+<p>이러한 불일치가 연구자들의 의문을 자극했다. Shenhar et al.은 기존 추정치를 낮추는 <strong>교란 요인</strong>이 존재한다고 주장하며, 그 핵심으로 <strong>외인성 사망률(extrinsic mortality)</strong>을 지목했다.</p>
+
+<hr />
+
+<h2 id="핵심-개념-내인성-사망-vs-외인성-사망">핵심 개념: 내인성 사망 vs 외인성 사망</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>정의</th>
+      <th>예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>외인성 사망률</strong> (extrinsic mortality)</td>
+      <td>신체 외부 요인에 의한 사망</td>
+      <td>사고, 살인, 감염병, 환경 위해</td>
+    </tr>
+    <tr>
+      <td><strong>내인성 사망률</strong> (intrinsic mortality)</td>
+      <td>신체 내부 과정에 의한 사망</td>
+      <td>유전적 돌연변이, 노화 관련 질병, 생리 기능 저하</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>대부분의 쌍둥이 코호트는 18~19세기에 태어난 사람들로 구성되어 있어, 현재보다 <strong>약 10배</strong> 높은 외인성 사망률을 경험했다. 또한 이 역사적 코호트들은 사망 원인 데이터가 부재하여 두 사망 유형을 구분하기 어려웠다.</p>
+
+<hr />
+
+<h2 id="방법론">방법론</h2>
+
+<h3 id="수학적-모델링">수학적 모델링</h3>
+
+<p>연구진은 전체 사망률을 다음과 같이 분해했다:</p>
+
+\[m(t) = m_{ex} + f(t, \vec{\theta})\]
+
+<ul>
+  <li>$m_{ex}$: 연령 독립적인 외인성 사망률 상수</li>
+  <li>$f(t, \vec{\theta})$: 연령 의존적 내인성 사망률 (파라미터 $\vec{\theta}$는 유전적으로 변이 가능)</li>
+</ul>
+
+<p>두 가지 수리 모델을 사용했다:</p>
+<ol>
+  <li><strong>MGG 모델</strong> (Makeham-Gamma-Gompertz): 사망 데이터에 대한 유연한 경험적 피팅 모델</li>
+  <li><strong>SR 모델</strong> (Saturating-Removal): 손상 축적과 포화되는 제거 과정 간의 상호작용에서 노화가 발생하는 생물학적 기계론적 모델</li>
+</ol>
+
+<h3 id="분석-코호트">분석 코호트</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>코호트</th>
+      <th>출생 연도</th>
+      <th>쌍둥이 쌍 수</th>
+      <th>외인성 사망률 ($m_{ex}$)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>덴마크 쌍둥이</td>
+      <td>1870–1900</td>
+      <td>MZ 1,033쌍 / DZ 1,839쌍</td>
+      <td>4.0 × 10⁻³ year⁻¹</td>
+    </tr>
+    <tr>
+      <td>스웨덴 쌍둥이</td>
+      <td>1886–1925</td>
+      <td>MZ 3,477쌍 / DZ 6,403쌍</td>
+      <td>2.78 × 10⁻³ year⁻¹</td>
+    </tr>
+    <tr>
+      <td>SATSA (스웨덴)</td>
+      <td>1900–1935</td>
+      <td>MZ 196쌍 / DZ 325쌍 + 별거 쌍둥이</td>
+      <td>1.53 × 10⁻³ year⁻¹</td>
+    </tr>
+    <tr>
+      <td>미국 백세인의 형제자매</td>
+      <td>1873–1910</td>
+      <td>2,092명</td>
+      <td>~3.5 × 10⁻³ year⁻¹</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>유전율은 <strong>Falconer의 공식</strong> $h^2 = 2(r_{MZ} - r_{DZ})$를 사용해 산출했다.</p>
+
+<hr />
+
+<h2 id="주요-결과">주요 결과</h2>
+
+<h3 id="1-외인성-사망률이-유전적-상관관계를-은폐한다">1. 외인성 사망률이 유전적 상관관계를 은폐한다</h3>
+
+<p><img src="/assets/img/heritability-lifespan/fig1.png" alt="Fig. 1 - 외인성 사망률이 쌍둥이 수명 상관관계를 낮춘다" />
+<em>Fig. 1. 외인성 사망률이 쌍둥이 코호트의 수명 상관관계를 은폐한다. (A) 1880년 출생 덴마크 여성의 연령별 사망률: 20~40세 구간에 외인성 사망률로 인한 플래토가 나타나고, 이후 내인성 노화를 반영하는 Gompertz 지수 증가가 뒤따른다. (B) 역사적 사망률 곡선은 시간에 따른 외인성 사망률 감소를 보여준다. (C-D) 유전 그룹 개념도: 외인성 사망률 없을 때 집단 간 분산이 크고 상관관계가 높지만, 외인성 사망률을 추가하면 집단 간 분산이 압축되고 분포가 늘어나 상관관계가 낮아진다. (E-F) Gompertz-Makeham 시뮬레이션: 외인성 사망률 없이 r = 0.37이지만, 역사적 수준의 외인성 사망률($m_{ex}$ = 0.003 year⁻¹) 추가 시 r = 0.13으로 급감한다.</em></p>
+
+<p>외인성 사망률은 두 가지 경로로 유전율을 낮춘다:</p>
+<ul>
+  <li>유전 그룹 간 분산 $\text{Var}(\mu)$ <strong>감소</strong></li>
+  <li>그룹 내 분산 $\langle\sigma^2\rangle$ <strong>증가</strong> (조기 사망 꼬리 확대)</li>
+</ul>
+
+<h3 id="2-외인성-사망률-보정-시-유전율-50로-상승">2. 외인성 사망률 보정 시 유전율 ~50%로 상승</h3>
+
+<p><img src="/assets/img/heritability-lifespan/fig2.png" alt="Fig. 2 - 외인성 사망률 보정 후 수명 유전율 증가" />
+<em>Fig. 2. 외인성 사망률 보정 시 수명 유전율이 증가한다. (A) SR 모델로 시뮬레이션한 덴마크 쌍둥이 코호트 5,000쌍: 빨간 점은 외인성 사망을 포함한 쌍, 피어슨 상관관계 r ≈ 0.23. (B) 외인성 사망 제거 후 상관관계 r ≈ 0.5로 증가. (C) 덴마크 쌍둥이(1870-1900)에서 외인성 사망률($m_{ex}$) 감소에 따른 유전율 $2(r_{MZ}-r_{DZ})$ 변화. (D) 스웨덴 쌍둥이(1886-1923)에 대한 동일 분석. 두 코호트 모두 $m_{ex} \to 0$으로 갈수록 유전율이 약 50%에 수렴한다.</em></p>
+
+<p>덴마크와 스웨덴 쌍둥이 코호트 모두에서, 외인성 사망률($m_{ex}$)을 0으로 감소시키면 유전율은 점진적으로 증가하여 <strong>~50% 수준에 수렴</strong>했다. 이는 역사적 쌍둥이 연구에서 관측된 상관관계의 약 <strong>2배</strong>에 해당한다.</p>
+
+<h3 id="3-satsa-연구와-미국-코호트에서의-검증">3. SATSA 연구와 미국 코호트에서의 검증</h3>
+
+<p><img src="/assets/img/heritability-lifespan/fig3.png" alt="Fig. 3 - 내인성 수명 유전율 데이터와 모델 비교" />
+<em>Fig. 3. 내인성 수명 유전율: 데이터와 모델 비교. (A) SATSA 출생 코호트별 외인성 사망률 감소 추세. (B) 외인성 사망률 감소에 따른 SATSA 유전율 추정치 증가. (C) 외인성 사망률(x축 로그 스케일)과 컷오프 연령(색상 스케일)의 함수로서의 유전율: 외인성 사망률이 높을 때는 높은 컷오프 연령이 유전율을 높이지만, 낮을 때는 반대 효과. (D) 미국 백세인 형제자매의 초과 생존 확률 데이터와 SR 모델 예측치. (E) 덴마크, 스웨덴, SATSA 쌍둥이 연구 및 두 족보 연구의 미보정 추정치 vs 보정된 내인성 수명 유전율 추정치 비교 — 보정 후 추정치가 기존 추정치의 약 2배임을 확인.</em></p>
+
+<p>SATSA 연구에서는 1900~1935년 출생 코호트를 세 시기로 구분했을 때, <strong>외인성 사망률이 3배 감소</strong>하는 동안 <strong>보정되지 않은 유전율이 약 2배 상승</strong>하는 패턴을 확인했다. 별거 쌍둥이(reared apart)와 동거 쌍둥이(reared together) 추정치가 1 SE 이내로 일치하여 쌍둥이 연구 가정의 타당성을 지지했다.</p>
+
+<p>미국 백세인의 형제자매 데이터도 외인성 사망률 보정 후 유사하게 <strong>~50%</strong> 유전율을 나타내, 스칸디나비아 코호트에 국한되지 않는 일반화 가능성을 보였다.</p>
+
+<h3 id="4-내인성-수명-유전율hil--055--001">4. 내인성 수명 유전율(HIL) = 0.55 ± 0.01</h3>
+
+<p>연구진은 <strong>HIL(Heritability of Intrinsic Life span)</strong>을 새로운 표준 지표로 제안했다:</p>
+<ul>
+  <li><strong>정의</strong>: 외인성 사망률 = 0, 컷오프 연령 = 15세 조건에서의 유전율 추정치</li>
+  <li><strong>의미</strong>: 성적 성숙에 도달한 후 내인성 생물학적 퇴화에 의한 유전적 기여도</li>
+</ul>
+
+<p>세 쌍둥이 코호트, 백세인 형제자매 데이터, SR/MGG 두 모델 모두에서 일관되게 <strong>HIL = 0.55 ± 0.01 (SE)</strong>로 산출됐다.</p>
+
+<hr />
+
+<h2 id="사망-원인별-유전율-satsa-보조-분석">사망 원인별 유전율 (SATSA 보조 분석)</h2>
+
+<p>SATSA 코호트는 암, 심혈관 질환(CVD), 치매 사망 원인 데이터를 포함하고 있어 원인별 분석이 가능했다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>사망 원인</th>
+      <th>특징</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>암</strong></td>
+      <td>연령 독립적으로 약 0.3의 안정적 유전율</td>
+    </tr>
+    <tr>
+      <td><strong>심혈관 질환</strong></td>
+      <td>80세경 약 0.5, 100세까지 점차 감소</td>
+    </tr>
+    <tr>
+      <td><strong>치매</strong></td>
+      <td>80세경 최고 약 0.7, 이후 0.4~0.5로 안정</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="의의-및-시사점">의의 및 시사점</h2>
+
+<h3 id="왜-기존-연구는-유전율을-과소추정했나">왜 기존 연구는 유전율을 과소추정했나?</h3>
+
+<ol>
+  <li><strong>역사적 코호트의 높은 외인성 사망률</strong>: 18~19세기에는 외인성 사망률이 현재보다 ~10배 높았음</li>
+  <li><strong>사망 원인 데이터 부재</strong>: 역사적 쌍둥이 코호트에는 원인별 사망 정보가 없어 보정 불가</li>
+  <li><strong>부적절한 컷오프 연령</strong>: 연구마다 다른 최소 포함 연령 사용</li>
+  <li><strong>대규모 족보 연구의 한계</strong>: ~300년에 걸친 자기 보고 데이터, 높은 환경적 이질성, 복잡한 동류 교배(assortative mating) 패턴</li>
+</ol>
+
+<h3 id="보정-후-수치가-갖는-의미">보정 후 수치가 갖는 의미</h3>
+
+<p>55%의 수명 유전율은:</p>
+<ul>
+  <li>마우스 수명 유전율(38~55%)과 유사</li>
+  <li>대부분 인간 생리 형질의 평균 유전율(약 49%)과 일치</li>
+  <li>유전 연구를 통한 노화 메커니즘 이해 가능성을 시사</li>
+</ul>
+
+<h3 id="나머지-45의-분산은">나머지 ~45%의 분산은?</h3>
+
+<p>보정 후에도 수명 변이의 절반 가량은 부가적 유전으로 설명되지 않는다. 이는 다음에서 기인할 것으로 보인다:</p>
+<ul>
+  <li>환경적 영향 (생활 습관, 사회경제적 요인, 의료 접근성)</li>
+  <li>내인성 생물학적 확률성(stochasticity)</li>
+  <li>비부가적 유전 효과 및 후성유전학적 변형</li>
+</ul>
+
+<hr />
+
+<h2 id="한계점">한계점</h2>
+
+<ul>
+  <li>쌍둥이 연구의 기본 가정(“동등한 환경” 가정) 의존</li>
+  <li>보정 방법이 SR 및 MGG 모델 구조에 의존</li>
+  <li>역사적 코호트의 상세한 사망 원인 데이터 부재 — 이를 확보하면 결론에 대한 중요한 검증이 될 것</li>
+</ul>
+
+<hr />
+
+<h2 id="개인-소감">개인 소감</h2>
+
+<p>이 논문의 가장 큰 기여는 <strong>측정 방법론 자체를 재검토</strong>했다는 점이다. 수십 년간 낮은 수명 유전율이 보고되면서 노화 유전학 연구에 대한 회의론이 커졌는데, 이 연구는 그 원인이 생물학적 사실이 아니라 <strong>측정의 교란</strong>이었음을 수학적으로 보여줬다.</p>
+
+<p>특히 인상적인 것은 외인성 사망률이라는 단일 교란 요인이 유전율 추정치를 절반 이상 낮출 수 있다는 직관적이지 않은 결과다. MZ 쌍둥이 간 상관관계 공식 $r_{MZ} = \text{Var}(\mu)/(\text{Var}(\mu) + \langle\sigma^2\rangle)$를 생각하면, 외인성 사망률이 분자(집단 간 분산)를 줄이고 분모(집단 내 분산)를 늘리는 이중 효과를 만든다는 설명이 우아하다.</p>
+
+<p>SATSA 코호트를 통한 실증적 검증도 설득력 있다 — 출생 코호트가 달라지면서 실제로 외인성 사망률이 떨어지고, 보정되지 않은 유전율도 예측대로 상승했다. 모델이 데이터를 잘 포착하고 있다는 증거다.</p>
+
+<p>다만 한 가지 주의할 점은, “유전율 55%”가 개인의 수명이 절반 이상 유전자에 의해 결정된다는 의미가 아니라는 것이다. 유전율은 <strong>특정 집단, 특정 환경, 특정 시점</strong>에서의 표현형 분산 중 유전적 분산의 비율이다. 이 연구가 말하는 것은, 과거보다 균일해진 현대 환경에서 수명 차이를 설명하는 데 유전자의 역할이 기존 추정보다 훨씬 크다는 것이다. 이는 장수 유전자 발굴과 노화 연구에 새로운 활력을 불어넣을 결과다.</p>
+
+<hr />
+
+<h2 id="references">References</h2>
+
+<ol>
+  <li>Shenhar B et al., <em>Science</em> 391, 6784 (2026)</li>
+  <li>Herskind AM et al., <em>Hum. Genet.</em> 97, 319–323 (1996)</li>
+  <li>Ljungquist B et al., <em>J. Gerontol. A</em> 53, M441–M446 (1998)</li>
+  <li>Kaplanis J et al., <em>Science</em> 360, 171–175 (2018)</li>
+  <li>Ruby JG et al., <em>Genetics</em> 210, 1109–1124 (2018)</li>
+  <li>Polderman TJC et al., <em>Nat. Genet.</em> 47, 702–709 (2015)</li>
+  <li>Klebanov S et al., <em>Genetica</em> 110, 209–218 (2000)</li>
+  <li>Pedersen NL, SATSA Study (2005)</li>
+  <li>Perls TT et al., <em>Proc. Natl. Acad. Sci.</em> 99, 8442–8447 (2002)</li>
+</ol>
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-nav">
+      
+      <a class="post-nav__prev" href="/research/2026/03/11/Effects-of-daily-multivitamin-multimineral/">
+        <span class="post-nav__label">← 이전 글</span>
+        <span class="post-nav__title">매일 종합비타민이 생물학적 노화를 늦출 수 있을까? COSMOS 임상시험의 에피제네틱 클락 분석</span>
+      </a>
+      
+      
+    </div>
+  </footer>
+   <!-- 댓글 (giscus) -->
+  
+   <!-- 댓글 영역 -->
+<div class="comments-section">
+    <h2 class="comments-title">💬 댓글</h2>
+    <script src="https://giscus.app/client.js"
+    data-repo="jsungwon/jsungwon.github.io"
+    data-repo-id="R_kgDORQmu8A"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORQmu8M4C2eY7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+</script>
+  </div>
+  
+  <style>
+    .comments-section {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #e8e4df;
+    }
+    .comments-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+  </style>
+  
+ 
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="logo-svg logo-svg--footer" width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <p>Bioinformatics, Tech, Travel & Life</p>
+    </div>
+    <div class="footer-links">
+      
+      <a href="https://github.com/jsungwon" target="_blank" rel="noopener">GitHub</a>
+      
+      
+      <a href="mailto:jsw0061@gmail.com">Email</a>
+      
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 Sungwon. Built with Jekyll & GitHub Pages.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
