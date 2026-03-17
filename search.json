@@ -1,6 +1,26 @@
 [
   
   {
+    "title": "PrePR-CT: 세포 유형별 약물 반응을 소규모 데이터에서 예측하는 그래프 딥러닝",
+    "url": "/research/2026/03/18/prepr-ct-cell-type-specific-drug-response-prediction/",
+    "date": "2026-03-18",
+    "category": "research",
+    "tags": ["paper review","deep learning","drug discovery","single-cell","graph neural network"],
+    "subtitle": "Nature Machine Intelligence (2026) 리뷰 — 공발현 네트워크를 귀납적 편향으로 활용한 전사체 반응 예측",
+    "ai_generated": true
+  },
+  
+  {
+    "title": "평생 행동 스크린이 밝힌 척추동물 노화의 구조",
+    "url": "/research/2026/03/18/lifelong-behavioral-screen-architecture-vertebrate-aging/",
+    "date": "2026-03-18",
+    "category": "research",
+    "tags": ["paper review","aging","behavior","killifish","machine learning","longevity"],
+    "subtitle": "Science (2026) 리뷰 — 청소년기부터 죽음까지 연속 행동 추적으로 발견한 노화의 단계적 구조",
+    "ai_generated": true
+  },
+  
+  {
     "title": "PerturbGen: 섭동이 세포 궤적을 어떻게 재편하는지 예측하는 생성 파운데이션 모델",
     "url": "/research/2026/03/14/perturbgen-predicting-perturbation-cellular-trajectories/",
     "date": "2026-03-14",

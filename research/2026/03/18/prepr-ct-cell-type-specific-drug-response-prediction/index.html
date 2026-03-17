@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrePR-CT: 세포 유형별 약물 반응을 소규모 데이터에서 예측하는 그래프 딥러닝 — 놀놀할할</title>
+  <meta name="description" content="
+  Predicting and interpreting cell-type-specific drug responses in the small-data regime using inductive priors
+Reem Alsulami, Robert Lehmann, Sumeer A. Khan, Vincenzo Lagani, Alberto Maillo, David Gomez-Cabrero, Narsis A. Kiani &amp; Jesper Tegner
+Nature Machine Intelligence (2026). DOI: 10.1038/s42256-026-01202-2
+
+">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- SEO -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>PrePR-CT: 세포 유형별 약물 반응을 소규모 데이터에서 예측하는 그래프 딥러닝 | 놀놀할할</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="PrePR-CT: 세포 유형별 약물 반응을 소규모 데이터에서 예측하는 그래프 딥러닝" />
+<meta name="author" content="Sungwon" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Predicting and interpreting cell-type-specific drug responses in the small-data regime using inductive priors Reem Alsulami, Robert Lehmann, Sumeer A. Khan, Vincenzo Lagani, Alberto Maillo, David Gomez-Cabrero, Narsis A. Kiani &amp; Jesper Tegner Nature Machine Intelligence (2026). DOI: 10.1038/s42256-026-01202-2" />
+<meta property="og:description" content="Predicting and interpreting cell-type-specific drug responses in the small-data regime using inductive priors Reem Alsulami, Robert Lehmann, Sumeer A. Khan, Vincenzo Lagani, Alberto Maillo, David Gomez-Cabrero, Narsis A. Kiani &amp; Jesper Tegner Nature Machine Intelligence (2026). DOI: 10.1038/s42256-026-01202-2" />
+<link rel="canonical" href="https://jsungwon.github.io/research/2026/03/18/prepr-ct-cell-type-specific-drug-response-prediction/" />
+<meta property="og:url" content="https://jsungwon.github.io/research/2026/03/18/prepr-ct-cell-type-specific-drug-response-prediction/" />
+<meta property="og:site_name" content="놀놀할할" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-03-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="PrePR-CT: 세포 유형별 약물 반응을 소규모 데이터에서 예측하는 그래프 딥러닝" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Sungwon"},"dateModified":"2026-03-18T00:00:00+00:00","datePublished":"2026-03-18T00:00:00+00:00","description":"Predicting and interpreting cell-type-specific drug responses in the small-data regime using inductive priors Reem Alsulami, Robert Lehmann, Sumeer A. Khan, Vincenzo Lagani, Alberto Maillo, David Gomez-Cabrero, Narsis A. Kiani &amp; Jesper Tegner Nature Machine Intelligence (2026). DOI: 10.1038/s42256-026-01202-2","headline":"PrePR-CT: 세포 유형별 약물 반응을 소규모 데이터에서 예측하는 그래프 딥러닝","mainEntityOfPage":{"@type":"WebPage","@id":"https://jsungwon.github.io/research/2026/03/18/prepr-ct-cell-type-specific-drug-response-prediction/"},"url":"https://jsungwon.github.io/research/2026/03/18/prepr-ct-cell-type-specific-drug-response-prediction/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DWB335C28N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DWB335C28N');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5955148830356528"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <svg class="logo-svg" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">놀놀할할</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="/research/" class="nav-link nav-link--active">Research</a>
+      <a href="/tech/" class="nav-link ">Tech</a>
+      <a href="/trip/" class="nav-link ">Trip</a>
+      <a href="/food/" class="nav-link ">Food</a>
+      <a href="/tags/" class="nav-link ">Tags</a>
+      <a href="/about/" class="nav-link ">About</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="search-toggle" aria-label="검색 열기">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+      <button class="nav-toggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-modal__header">
+      <div class="search-input-wrap">
+        <svg class="search-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="제목 또는 태그로 검색..."
+          autocomplete="off"
+        >
+        <kbd class="search-kbd">ESC</kbd>
+      </div>
+    </div>
+    <div class="search-modal__body" id="searchResults">
+      <div class="search-empty">
+        <p class="search-empty__text">검색어를 입력하세요</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/search.js"></script>
+
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  toggle?.addEventListener('click', () => {
+    nav.classList.toggle('is-open');
+    toggle.classList.toggle('is-active');
+  });
+</script>
+
+  
+  <main class="site-main">
+    <article class="post-full">
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-category post-category--research">
+        🧬 Research
+      </span>
+      <time datetime="2026-03-18T00:00:00+00:00">
+        2026년 03월 18일
+      </time>
+    </div>
+    <h1 class="post-title">PrePR-CT: 세포 유형별 약물 반응을 소규모 데이터에서 예측하는 그래프 딥러닝<span class="badge-ai">AI Generated</span></h1>
+    
+    <p class="post-subtitle">Nature Machine Intelligence (2026) 리뷰 — 공발현 네트워크를 귀납적 편향으로 활용한 전사체 반응 예측</p>
+    
+    
+    <div class="post-tags">
+      
+      <a href="/tags/#paper-review" class="tag tag--link">#paper review</a>
+      
+      <a href="/tags/#deep-learning" class="tag tag--link">#deep learning</a>
+      
+      <a href="/tags/#drug-discovery" class="tag tag--link">#drug discovery</a>
+      
+      <a href="/tags/#single-cell" class="tag tag--link">#single-cell</a>
+      
+      <a href="/tags/#graph-neural-network" class="tag tag--link">#graph neural network</a>
+      
+    </div>
+    
+  </header>
+
+  
+
+  <div class="post-content">
+    <blockquote>
+  <p><strong>Predicting and interpreting cell-type-specific drug responses in the small-data regime using inductive priors</strong>
+Reem Alsulami, Robert Lehmann, Sumeer A. Khan, Vincenzo Lagani, Alberto Maillo, David Gomez-Cabrero, Narsis A. Kiani &amp; Jesper Tegner
+<em>Nature Machine Intelligence</em> (2026). DOI: 10.1038/s42256-026-01202-2</p>
+</blockquote>
+
+<hr />
+
+<h2 id="연구-배경">연구 배경</h2>
+
+<p>신약 개발은 비용 상승과 생산성 저하라는 이중 과제에 직면해 있다. AI는 <em>de novo</em> 약물 설계, 약물 재창출(repurposing), 개발 파이프라인 최적화 등에서 큰 잠재력을 보이고 있으며, 그 핵심 단계 중 하나가 <strong>화학 물질이 세포에 미치는 전사체 수준의 영향을 예측</strong>하는 것이다.</p>
+
+<p>기존 접근법의 한계는 명확하다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>접근법</th>
+      <th>한계</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>High-throughput screening (HTS)</strong></td>
+      <td>벌크 RNA-seq 기반, 세포 유형별 반응 무시</td>
+    </tr>
+    <tr>
+      <td><strong>단일세포 실험</strong></td>
+      <td>비용이 높고 약물 수가 제한적 (보통 100개 미만)</td>
+    </tr>
+    <tr>
+      <td><strong>생성 모델 (scGen, CPA, chemCPA)</strong></td>
+      <td>대규모 데이터 필요, 분포 외(OOD) 일반화 어려움</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>단일세포 수준에서 약물의 세포 유형별 전사체 반응을 예측하되, <strong>소규모 데이터에서도 작동</strong>하고, <strong>보지 못한 세포 유형이나 약물에도 일반화</strong>할 수 있는 방법이 필요하다. 이것이 PrePR-CT의 출발점이다.</p>
+
+<hr />
+
+<h2 id="핵심-아이디어-세포-유형별-공발현-네트워크를-귀납적-편향으로-활용">핵심 아이디어: 세포 유형별 공발현 네트워크를 귀납적 편향으로 활용</h2>
+
+<p>PrePR-CT(Predicting Perturbation Responses in Cell Types)의 핵심 통찰은 단순하면서도 강력하다:</p>
+
+<blockquote>
+  <p><strong>세포 유형마다 고유한 유전자 공발현(co-expression) 패턴이 존재하며, 이것이 약물 반응의 세포 유형 특이성을 결정한다.</strong></p>
+</blockquote>
+
+<p>이 공발현 패턴을 <strong>그래프 구조</strong>로 모델링하고, 이를 <strong>Graph Attention Network(GAT)</strong>의 귀납적 편향(inductive bias)으로 활용함으로써, 학습 데이터에 없던 세포 유형이나 약물에 대해서도 전사체 반응을 예측할 수 있게 된다.</p>
+
+<hr />
+
+<h2 id="모델-구조">모델 구조</h2>
+
+<p><img src="/assets/img/prepr-ct/fig1-02.png" alt="PrePR-CT 모델 아키텍처" />
+<em>Fig 1. PrePR-CT의 전체 파이프라인. 세포 유형별 공발현 그래프 → GAT → 그래프 풀링 → 약물 임베딩과 결합 → MLP로 전사체 반응 예측</em></p>
+
+<h3 id="8단계-파이프라인">8단계 파이프라인</h3>
+
+<ol>
+  <li><strong>배치 샘플링</strong>: 학습 데이터 D에서 랜덤 배치 S 추출</li>
+  <li><strong>세포 유형 그래프 조회</strong>: S에 포함된 세포 유형별 공발현 그래프 $G_{c}$ 가져오기</li>
+  <li><strong>GAT 특성 추출</strong>: 그래프 어텐션 네트워크로 노드(유전자) 수준의 특성 벡터 생성</li>
+  <li><strong>그래프 풀링</strong>: Max pooling으로 세포 유형 수준 특성 벡터 생성</li>
+  <li><strong>특성 스택</strong>: 세포 유형 레이블에 따라 특성 벡터 정렬</li>
+  <li><strong>약물 임베딩 생성</strong>: SMILES → RDKit 화학 기술자(chemical descriptors) → 고정 길이 벡터</li>
+  <li><strong>결합(Concat)</strong>: 세포 유형 특성 + 약물 임베딩</li>
+  <li><strong>MLP 회귀</strong>: 교란 후 유전자 발현의 <strong>평균과 분산</strong> 동시 예측</li>
+</ol>
+
+<h3 id="세포-유형별-공발현-그래프-구축">세포 유형별 공발현 그래프 구축</h3>
+
+<ul>
+  <li>비교란(control) 세포의 단일세포 발현 데이터에서 <strong>5,000개 고변이 유전자(HVG)</strong> 선정</li>
+  <li>SEACells로 메타셀(metacell) 집합 → 유전자 간 <strong>피어슨 상관계수</strong> 계산</li>
+  <li>상위 1% 상관관계만 엣지로 유지 → 희소 그래프 생성</li>
+  <li><strong>교란 데이터 없이</strong> 구축 가능 → 보지 못한 세포 유형에도 적용 가능</li>
+</ul>
+
+<h3 id="손실-함수-earth-movers-distance-emd">손실 함수: Earth Mover’s Distance (EMD)</h3>
+
+<p>일반적인 MSE 대신 <strong>Wasserstein 거리(EMD)</strong>를 사용한다. MSE는 평균만 최적화하는 반면, EMD는 예측 분포와 실제 분포 간의 <strong>최적 수송 비용</strong>을 최소화하여 분포 전체를 더 잘 포착한다.</p>
+
+\[\text{Loss} = \frac{1}{T} \sum_{t=1}^{T} \text{EMD}(Y_t, \hat{Y}_t)\]
+
+<hr />
+
+<h2 id="주요-결과">주요 결과</h2>
+
+<h3 id="1-보지-못한-세포-유형에서의-단일-약물-반응-예측">1. 보지 못한 세포 유형에서의 단일 약물 반응 예측</h3>
+
+<p><img src="/assets/img/prepr-ct/fig2-04.png" alt="보지 못한 세포 유형 예측" />
+<em>Fig 2. IFNβ 처리에 대한 PBMC 세포 유형별 전사체 반응 예측 (Kang 데이터셋). (a) UMAP, (b) 세포 유형별 R² 점수, (c) B세포 예측 vs 실측 UMAP, (d) CPA·scGen·PrePR-CT 비교, (e) 유전자 발현 수준별 예측 정확도</em></p>
+
+<p>Kang 데이터셋(24,249 PBMC 세포, IFNβ 단일 처리)에서 <strong>leave-one-cell-type-out</strong> 교차검증을 수행했다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>지표</th>
+      <th>PrePR-CT</th>
+      <th>CPA</th>
+      <th>scGen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>평균 발현 R² (전체 유전자)</td>
+      <td><strong>&gt; 0.90</strong></td>
+      <td>~0.85</td>
+      <td>~0.80</td>
+    </tr>
+    <tr>
+      <td>평균 발현 R² (상위 100 DEG)</td>
+      <td><strong>&gt; 0.90</strong></td>
+      <td>~0.90</td>
+      <td>~0.85</td>
+    </tr>
+    <tr>
+      <td>발현 분산 R² (전체 유전자)</td>
+      <td><strong>&gt; 0.70</strong></td>
+      <td>~0.40</td>
+      <td>~0.30</td>
+    </tr>
+    <tr>
+      <td>세포 유형 간 R² 변동성</td>
+      <td><strong>가장 낮음</strong></td>
+      <td>중간</td>
+      <td>높음</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>유전자를 발현 수준별로 분류했을 때:</p>
+<ul>
+  <li><strong>고발현 유전자</strong>: R² = 0.93</li>
+  <li><strong>상향 조절 DEG</strong>: R² = 0.99</li>
+  <li><strong>하향 조절 DEG</strong>: R² = 0.84</li>
+  <li><strong>저발현 유전자</strong>: R² = -1.83 (거의 변화 없는 유전자, 예측 무의미)</li>
+</ul>
+
+<p>PrePR-CT는 <strong>실제 전사체 변화가 있는 유전자에서 매우 정확</strong>하며, 변화가 거의 없는 유전자에서는 노이즈에 과적합하지 않는 바람직한 특성을 보였다.</p>
+
+<hr />
+
+<h3 id="2-다중-약물-반응-예측-neurips-pbmc-데이터셋">2. 다중 약물 반응 예측 (NeurIPS PBMC 데이터셋)</h3>
+
+<p><img src="/assets/img/prepr-ct/fig3-05.png" alt="다중 약물 예측" />
+<em>Fig 3. NeurIPS PBMC 데이터셋에서 144개 약물 × 4개 면역세포 유형에 대한 예측 성능. (a) UMAP, (b) 약물별 전사체 변화 강도, (c-d) 약한/강한 교란 약물의 성능 비교, (e) 예측 세포와 실측 세포의 UMAP 비교</em></p>
+
+<p>144개 소분자 약물 × 4개 면역세포 유형(B세포, T세포, NK세포, 골수세포)을 포함하는 대규모 데이터셋에서의 결과:</p>
+
+<ul>
+  <li>전사체 변화가 약한 약물(penflurido, flutamide 등): 높은 예측 정확도</li>
+  <li>전사체 변화가 강한 약물(dactolisib, ketoconazole 등): 예측이 더 어렵지만, PrePR-CT가 <strong>발현 분산 예측에서 일관되게 우수</strong></li>
+  <li>UMAP 시각화에서 예측 세포가 실측 교란 세포와 정확히 겹침 (penflurido의 경우)</li>
+</ul>
+
+<hr />
+
+<h3 id="3-보지-못한-약물에-대한-일반화-chang-데이터셋">3. 보지 못한 약물에 대한 일반화 (Chang 데이터셋)</h3>
+
+<p><img src="/assets/img/prepr-ct/fig4-06.png" alt="보지 못한 약물 예측" />
+<em>Fig 4. 구조적으로 유사한 3개 화합물(GNE-104, GNE-069, erlotinib) 간 leave-one-compound-out 교차검증. (a) 분자 구조, (b) R² 점수, (c) chemCPA와 비교, (d) erlotinib UMAP 시각화</em></p>
+
+<p>구조적으로 유사한 3개 EGFR 억제제에 대해 <strong>leave-one-compound-out</strong> 검증을 수행했다:</p>
+
+<ul>
+  <li>평균 발현 예측: 모든 약물에서 R² &gt; 0.85</li>
+  <li>특히 erlotinib에서 발현 분산 R²가 현저히 높음</li>
+  <li>chemCPA 대비 <strong>발현 분산 예측에서 유의하게 우수</strong></li>
+  <li>UMAP에서 예측 erlotinib 처리 세포가 실측과 강하게 겹침</li>
+</ul>
+
+<hr />
+
+<h3 id="4-소규모-데이터에서의-강건성">4. 소규모 데이터에서의 강건성</h3>
+
+<p><img src="/assets/img/prepr-ct/fig5-07.png" alt="소규모 데이터 성능" />
+<em>Fig 5. 학습 데이터 크기에 따른 성능 변화. (a) 평균 발현 R², (b) 표준편차 R². 데이터의 20%만으로도 수렴</em></p>
+
+<p>이 결과가 PrePR-CT의 가장 큰 실용적 장점이다:</p>
+
+<ul>
+  <li><strong>전체 데이터의 20%만으로도 성능 수렴</strong> (~15,000 세포 → ~3,000 세포)</li>
+  <li>평균 발현 R²: CPA는 60% 이하에서 급격히 하락하지만, PrePR-CT는 안정적</li>
+  <li>발현 분산 R²: CPA는 ~15,000 세포 이하에서 음수(예측 불가), PrePR-CT는 양수 유지</li>
+</ul>
+
+<p>이는 공발현 네트워크라는 <strong>귀납적 편향이 데이터 부족을 효과적으로 보상</strong>한다는 것을 의미한다. 단일세포 약물 스크린 실험은 비용이 높고 세포 수가 제한적이기 때문에, 이 특성은 실제 적용에서 매우 중요하다.</p>
+
+<hr />
+
+<h3 id="5-gat가-학습하는-생물학적-의미-high-attention-genes-hags">5. GAT가 학습하는 생물학적 의미: High-Attention Genes (HAGs)</h3>
+
+<p><img src="/assets/img/prepr-ct/fig6-08.png" alt="HAG 분석" />
+<em>Fig 6. GAT 어텐션 분석. (a) HAG와 DEG의 벤 다이어그램 — 5%만 겹침, (b) HAG 유전자의 GO 경로 분석, (c-d) 특성 셔플링 및 마스킹 절제 실험</em></p>
+
+<p>GAT의 어텐션 가중치를 분석하여 <strong>High-Attention Genes (HAGs)</strong> — 모델이 가장 주목하는 유전자들을 식별했다.</p>
+
+<h4 id="hags-vs-degs-상보적-관계">HAGs vs DEGs: 상보적 관계</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>비교</th>
+      <th>비율</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HAGs 고유</td>
+      <td><strong>70.5%</strong></td>
+    </tr>
+    <tr>
+      <td>DEGs 고유</td>
+      <td>24.5%</td>
+    </tr>
+    <tr>
+      <td>공통</td>
+      <td><strong>5.0%</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>HAGs와 DEGs는 <strong>95%가 겹치지 않는다</strong>. 이는 GAT가 단순히 차등 발현 유전자를 학습하는 것이 아니라, <strong>교란 반응을 예측하는 데 필요한 세포 유형 맥락 정보</strong>를 담은 유전자를 학습한다는 것을 의미한다.</p>
+
+<h4 id="hags의-경로-분석">HAGs의 경로 분석</h4>
+
+<p>HAGs의 GO 경로 분석 결과, T세포 활성화, 사이토카인 신호전달, 항원 수용체 신호전달 등 <strong>IFNβ의 알려진 작용 메커니즘과 일치하는 면역 경로</strong>가 풍부하게 나타났다.</p>
+
+<p>대표적 HAGs:</p>
+<ul>
+  <li><strong>CD74</strong>: 수지상세포 이동을 음성 조절 — 면역학 연구에서 잘 알려진 표적</li>
+  <li><strong>LCK, LAT, CD3E</strong>: CD4⁺ T세포의 T세포 수용체 신호전달 핵심 유전자</li>
+  <li><strong>XAF1, ISG20, STAT1, RSAD2</strong>: IFNβ 관련 인터페론 신호전달 경로 유전자</li>
+</ul>
+
+<h4 id="절제-실험-ablation-study">절제 실험 (Ablation Study)</h4>
+
+<ul>
+  <li><strong>특성 셔플링</strong> (세포 유형 특이성 제거): 상위 100 DEG R²가 크게 하락 → 세포 유형 맥락이 핵심</li>
+  <li><strong>HAG 마스킹</strong> (어텐션 높은 유전자 제거): R² 하락 관찰 → HAGs가 예측에 직접 기여</li>
+  <li>DEGs가 셔플링에 더 민감하고, HAGs가 마스킹에 더 민감 → <strong>상보적 역할</strong> 확인</li>
+</ul>
+
+<hr />
+
+<h2 id="방법론적-특장점-요약">방법론적 특장점 요약</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>특성</th>
+      <th>PrePR-CT</th>
+      <th>scGen</th>
+      <th>CPA/chemCPA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>세포 유형 맥락</td>
+      <td><strong>공발현 그래프</strong></td>
+      <td>없음</td>
+      <td>잠재 공간 연산</td>
+    </tr>
+    <tr>
+      <td>보지 못한 세포 유형</td>
+      <td><strong>가능</strong></td>
+      <td>제한적</td>
+      <td>제한적</td>
+    </tr>
+    <tr>
+      <td>보지 못한 약물</td>
+      <td><strong>가능</strong></td>
+      <td>불가능</td>
+      <td>가능</td>
+    </tr>
+    <tr>
+      <td>소규모 데이터</td>
+      <td><strong>강건</strong></td>
+      <td>약함</td>
+      <td>약함</td>
+    </tr>
+    <tr>
+      <td>해석 가능성</td>
+      <td><strong>GAT 어텐션</strong></td>
+      <td>없음</td>
+      <td>잠재 공간</td>
+    </tr>
+    <tr>
+      <td>손실 함수</td>
+      <td><strong>EMD</strong></td>
+      <td>MSE</td>
+      <td>MSE</td>
+    </tr>
+    <tr>
+      <td>화학 구조 정보</td>
+      <td><strong>SMILES 임베딩</strong></td>
+      <td>없음</td>
+      <td>SMILES</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="한계점">한계점</h2>
+
+<p>저자들이 명시한 한계와 추가적인 고려사항:</p>
+
+<ol>
+  <li><strong>그래프 노드 특성의 제한</strong>: 현재 유전자 발현의 평균과 분산만 사용. 세포 주기 상태, 형태학적 특성, 조직 기원 등을 통합하면 성능 향상 가능</li>
+  <li><strong>분포 외 일반화의 어려움</strong>: NeurIPS → Tahoe 데이터셋 간 전이에서 전사체 거리가 멀수록 성능 저하</li>
+  <li><strong>HAG의 불안정성</strong>: 어텐션 헤드 수 등 하이퍼파라미터에 민감하여, DEG 분석보다 재현성이 낮음</li>
+  <li><strong>배치 효과</strong>: 실험 간 프로토콜 차이, 배치 효과가 참 효과를 가릴 수 있음</li>
+</ol>
+
+<hr />
+
+<h2 id="개인-소감">개인 소감</h2>
+
+<p>이 논문이 제시하는 <strong>“세포 유형별 공발현 네트워크를 귀납적 편향으로 사용한다”</strong>는 아이디어는 우아하고 실용적이다. 특히 세 가지 측면에서 인상적이었다.</p>
+
+<p>첫째, <strong>소규모 데이터에서의 강건성</strong>이다. 단일세포 약물 스크린은 여전히 비싸고 데이터가 제한적인 상황에서, 데이터의 20%만으로도 성능이 수렴한다는 것은 실제 약물 발견 파이프라인에서의 적용 가능성을 크게 높인다.</p>
+
+<p>둘째, <strong>HAGs와 DEGs의 상보성</strong> 발견이다. 모델이 학습하는 유전자(HAGs)의 95%가 전통적 차등 발현 분석(DEGs)과 겹치지 않는다는 것은, GAT가 단순히 결과를 예측하는 것이 아니라 <strong>약물 반응의 세포 유형 맥락</strong>이라는 새로운 생물학적 층위를 포착하고 있음을 시사한다.</p>
+
+<p>셋째, <strong>EMD 손실 함수의 선택</strong>이다. 단일세포 데이터의 본질은 분포이지 평균이 아니다. MSE에서 EMD로의 전환은 작은 변화처럼 보이지만, 세포 집단 내 이질성(heterogeneity)을 보존하는 데 결정적이다.</p>
+
+<p>향후 이 접근법이 약물 조합 효과 예측, 치료 표적 식별, 그리고 환자 유래 단일세포 데이터와의 통합으로 확장된다면, <strong>정밀 의학에서의 약물 반응 예측</strong>에 실질적으로 기여할 수 있을 것이다.</p>
+
+<hr />
+
+<h2 id="references">References</h2>
+
+<ol>
+  <li>Alsulami, R., Lehmann, R., Khan, S. A., Lagani, V., Maillo, A., Gomez-Cabrero, D., Kiani, N. A. &amp; Tegner, J. (2026). Predicting and interpreting cell-type-specific drug responses in the small-data regime using inductive priors. <em>Nature Machine Intelligence</em>. DOI: 10.1038/s42256-026-01202-2</li>
+</ol>
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-nav">
+      
+      <a class="post-nav__prev" href="/research/2026/03/18/lifelong-behavioral-screen-architecture-vertebrate-aging/">
+        <span class="post-nav__label">← 이전 글</span>
+        <span class="post-nav__title">평생 행동 스크린이 밝힌 척추동물 노화의 구조</span>
+      </a>
+      
+      
+    </div>
+  </footer>
+   <!-- 댓글 (giscus) -->
+  
+   <!-- 댓글 영역 -->
+<div class="comments-section">
+    <h2 class="comments-title">💬 댓글</h2>
+    <script src="https://giscus.app/client.js"
+    data-repo="jsungwon/jsungwon.github.io"
+    data-repo-id="R_kgDORQmu8A"
+    data-category="Announcements"
+    data-category-id="DIC_kwDORQmu8M4C2eY7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+</script>
+  </div>
+  
+  <style>
+    .comments-section {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #e8e4df;
+    }
+    .comments-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+  </style>
+  
+ 
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="logo-svg logo-svg--footer" width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M9 2C20 5 20 10 14 14C8 18 8 23 19 26" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M19 2C8 5 8 10 14 14C20 18 20 23 9 26" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="6" x2="17" y2="6" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="10" x2="16" y2="10" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="16" y2="18" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="17" y2="22" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <p>Bioinformatics, Tech, Travel & Life</p>
+    </div>
+    <div class="footer-links">
+      
+      <a href="https://github.com/jsungwon" target="_blank" rel="noopener">GitHub</a>
+      
+      
+      <a href="mailto:jsw0061@gmail.com">Email</a>
+      
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2026 Sungwon. Built with Jekyll & GitHub Pages.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
